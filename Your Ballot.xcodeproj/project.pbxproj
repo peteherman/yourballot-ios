@@ -14,6 +14,8 @@
 		C11075BB2BA7780300E28F5E /* Your_BallotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11075BA2BA7780300E28F5E /* Your_BallotTests.swift */; };
 		C11075C52BA7780300E28F5E /* Your_BallotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11075C42BA7780300E28F5E /* Your_BallotUITests.swift */; };
 		C11075C72BA7780300E28F5E /* Your_BallotUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11075C62BA7780300E28F5E /* Your_BallotUITestsLaunchTests.swift */; };
+		C153271D2BA8626300A8A591 /* Slider+Draggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C153271C2BA8626300A8A591 /* Slider+Draggable.swift */; };
+		C153271F2BA9065E00A8A591 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C153271E2BA9065E00A8A591 /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		C11075C02BA7780300E28F5E /* Your BallotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Your BallotUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C11075C42BA7780300E28F5E /* Your_BallotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Your_BallotUITests.swift; sourceTree = "<group>"; };
 		C11075C62BA7780300E28F5E /* Your_BallotUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Your_BallotUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C153271C2BA8626300A8A591 /* Slider+Draggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Slider+Draggable.swift"; sourceTree = "<group>"; };
+		C153271E2BA9065E00A8A591 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 		C110759D2BA7780200E28F5E = {
 			isa = PBXGroup;
 			children = (
+				C15327162BA860FD00A8A591 /* Components */,
 				C11075A82BA7780200E28F5E /* Your Ballot */,
 				C11075B92BA7780300E28F5E /* Your BallotTests */,
 				C11075C32BA7780300E28F5E /* Your BallotUITests */,
@@ -125,6 +130,23 @@
 				C11075C62BA7780300E28F5E /* Your_BallotUITestsLaunchTests.swift */,
 			);
 			path = "Your BallotUITests";
+			sourceTree = "<group>";
+		};
+		C15327162BA860FD00A8A591 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C15327172BA8610B00A8A591 /* Slider */,
+				C153271E2BA9065E00A8A591 /* Theme.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C15327172BA8610B00A8A591 /* Slider */ = {
+			isa = PBXGroup;
+			children = (
+				C153271C2BA8626300A8A591 /* Slider+Draggable.swift */,
+			);
+			path = Slider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +279,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C153271D2BA8626300A8A591 /* Slider+Draggable.swift in Sources */,
+				C153271F2BA9065E00A8A591 /* Theme.swift in Sources */,
 				C11075AC2BA7780200E28F5E /* ContentView.swift in Sources */,
 				C11075AA2BA7780200E28F5E /* Your_BallotApp.swift in Sources */,
 			);
@@ -422,20 +446,23 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Your Ballot/Preview Content\"";
-				DEVELOPMENT_TEAM = YK85XQVZZM;
+				DEVELOPMENT_TEAM = 3332HA7UZ3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Your Ballot";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "codes.peteherman.proto.Your-Ballot";
+				MARKETING_VERSION = 0.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "codes.peteherman.proto2.Your-Ballot";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -451,20 +478,23 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Your Ballot/Preview Content\"";
-				DEVELOPMENT_TEAM = YK85XQVZZM;
+				DEVELOPMENT_TEAM = 3332HA7UZ3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Your Ballot";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "codes.peteherman.proto.Your-Ballot";
+				MARKETING_VERSION = 0.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "codes.peteherman.proto2.Your-Ballot";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
