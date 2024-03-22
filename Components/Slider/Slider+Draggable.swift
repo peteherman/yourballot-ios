@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomSlider: View {
+struct Slider_Draggable: View {
     @Binding var value: Double
     let maxValue: Double
     var body: some View {
@@ -26,10 +26,10 @@ struct CustomSlider: View {
             }
         }
         .padding()
-        .background(.secondary)
+        .background(Theme.light_gray.mainColor)
     }
 }
 
 #Preview {
-    CustomSlider(value: .constant(5.0), maxValue: 10.0)
+    Slider_Draggable(value: .constant(5.0), maxValue: 10.0)
 }

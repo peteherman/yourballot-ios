@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BaseResponse: Decodable {
+class BaseSerializer: Decodable {
     public enum RootCodingKeys: String, CodingKey {
         case result_info
         case result

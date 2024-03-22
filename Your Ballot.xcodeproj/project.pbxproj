@@ -7,15 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C10494BA2BA9A6E3000C3F36 /* ProviderCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10494B92BA9A6E3000C3F36 /* ProviderCore.swift */; };
+		C10494BC2BA9A865000C3F36 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10494BB2BA9A865000C3F36 /* APIError.swift */; };
+		C10494BF2BA9A985000C3F36 /* MockQuestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10494BD2BA9A96C000C3F36 /* MockQuestionProvider.swift */; };
 		C11075AA2BA7780200E28F5E /* Your_BallotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11075A92BA7780200E28F5E /* Your_BallotApp.swift */; };
 		C11075AC2BA7780200E28F5E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11075AB2BA7780200E28F5E /* ContentView.swift */; };
 		C11075AE2BA7780300E28F5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C11075AD2BA7780300E28F5E /* Assets.xcassets */; };
 		C11075B12BA7780300E28F5E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C11075B02BA7780300E28F5E /* Preview Assets.xcassets */; };
-		C11075BB2BA7780300E28F5E /* Your_BallotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11075BA2BA7780300E28F5E /* Your_BallotTests.swift */; };
+		C11075BB2BA7780300E28F5E /* QuestionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11075BA2BA7780300E28F5E /* QuestionServiceTests.swift */; };
 		C11075C52BA7780300E28F5E /* Your_BallotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11075C42BA7780300E28F5E /* Your_BallotUITests.swift */; };
 		C11075C72BA7780300E28F5E /* Your_BallotUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11075C62BA7780300E28F5E /* Your_BallotUITestsLaunchTests.swift */; };
+		C147496E2BAAFDE100B969F5 /* TestQuestionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10494C12BA9AA16000C3F36 /* TestQuestionData.swift */; };
+		C14749712BAAFE6C00B969F5 /* QuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14749702BAAFE6C00B969F5 /* QuestionService.swift */; };
+		C14749732BAB007400B969F5 /* BaseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14749722BAB007400B969F5 /* BaseSerializer.swift */; };
+		C14749772BAB027C00B969F5 /* IssueQuestionListSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14749762BAB027C00B969F5 /* IssueQuestionListSerializer.swift */; };
 		C153271D2BA8626300A8A591 /* Slider+Draggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C153271C2BA8626300A8A591 /* Slider+Draggable.swift */; };
 		C153271F2BA9065E00A8A591 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C153271E2BA9065E00A8A591 /* Theme.swift */; };
+		C15327222BA9093700A8A591 /* IssueQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15327212BA9093700A8A591 /* IssueQuestionView.swift */; };
+		C15327262BA90BD400A8A591 /* IssueQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15327252BA90BD400A8A591 /* IssueQuestion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,18 +45,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C10494B92BA9A6E3000C3F36 /* ProviderCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderCore.swift; sourceTree = "<group>"; };
+		C10494BB2BA9A865000C3F36 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		C10494BD2BA9A96C000C3F36 /* MockQuestionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuestionProvider.swift; sourceTree = "<group>"; };
+		C10494C12BA9AA16000C3F36 /* TestQuestionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestQuestionData.swift; sourceTree = "<group>"; };
 		C11075A62BA7780200E28F5E /* Your Ballot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Your Ballot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C11075A92BA7780200E28F5E /* Your_BallotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Your_BallotApp.swift; sourceTree = "<group>"; };
 		C11075AB2BA7780200E28F5E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C11075AD2BA7780300E28F5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C11075B02BA7780300E28F5E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C11075B62BA7780300E28F5E /* Your BallotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Your BallotTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C11075BA2BA7780300E28F5E /* Your_BallotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Your_BallotTests.swift; sourceTree = "<group>"; };
+		C11075BA2BA7780300E28F5E /* QuestionServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionServiceTests.swift; sourceTree = "<group>"; };
 		C11075C02BA7780300E28F5E /* Your BallotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Your BallotUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C11075C42BA7780300E28F5E /* Your_BallotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Your_BallotUITests.swift; sourceTree = "<group>"; };
 		C11075C62BA7780300E28F5E /* Your_BallotUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Your_BallotUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C14749702BAAFE6C00B969F5 /* QuestionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionService.swift; sourceTree = "<group>"; };
+		C14749722BAB007400B969F5 /* BaseSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSerializer.swift; sourceTree = "<group>"; };
+		C14749762BAB027C00B969F5 /* IssueQuestionListSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueQuestionListSerializer.swift; sourceTree = "<group>"; };
 		C153271C2BA8626300A8A591 /* Slider+Draggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Slider+Draggable.swift"; sourceTree = "<group>"; };
 		C153271E2BA9065E00A8A591 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		C15327212BA9093700A8A591 /* IssueQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueQuestionView.swift; sourceTree = "<group>"; };
+		C15327252BA90BD400A8A591 /* IssueQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueQuestion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,9 +93,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C10494B82BA9A6D1000C3F36 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				C10494B92BA9A6E3000C3F36 /* ProviderCore.swift */,
+				C10494BB2BA9A865000C3F36 /* APIError.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		C10494C02BA9A9D4000C3F36 /* Questions */ = {
+			isa = PBXGroup;
+			children = (
+				C10494BD2BA9A96C000C3F36 /* MockQuestionProvider.swift */,
+				C10494C12BA9AA16000C3F36 /* TestQuestionData.swift */,
+			);
+			path = Questions;
+			sourceTree = "<group>";
+		};
 		C110759D2BA7780200E28F5E = {
 			isa = PBXGroup;
 			children = (
+				C14749742BAB024800B969F5 /* Serializers */,
+				C147496F2BAAFE6100B969F5 /* Services */,
+				C10494B82BA9A6D1000C3F36 /* Providers */,
+				C15327232BA90BC200A8A591 /* Models */,
+				C15327202BA9092C00A8A591 /* Views */,
 				C15327162BA860FD00A8A591 /* Components */,
 				C11075A82BA7780200E28F5E /* Your Ballot */,
 				C11075B92BA7780300E28F5E /* Your BallotTests */,
@@ -118,7 +159,7 @@
 		C11075B92BA7780300E28F5E /* Your BallotTests */ = {
 			isa = PBXGroup;
 			children = (
-				C11075BA2BA7780300E28F5E /* Your_BallotTests.swift */,
+				C1B629552BAD0B0F00340ADF /* Unittests */,
 			);
 			path = "Your BallotTests";
 			sourceTree = "<group>";
@@ -130,6 +171,31 @@
 				C11075C62BA7780300E28F5E /* Your_BallotUITestsLaunchTests.swift */,
 			);
 			path = "Your BallotUITests";
+			sourceTree = "<group>";
+		};
+		C147496F2BAAFE6100B969F5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C14749702BAAFE6C00B969F5 /* QuestionService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C14749742BAB024800B969F5 /* Serializers */ = {
+			isa = PBXGroup;
+			children = (
+				C14749722BAB007400B969F5 /* BaseSerializer.swift */,
+				C14749752BAB024D00B969F5 /* Questions */,
+			);
+			path = Serializers;
+			sourceTree = "<group>";
+		};
+		C14749752BAB024D00B969F5 /* Questions */ = {
+			isa = PBXGroup;
+			children = (
+				C14749762BAB027C00B969F5 /* IssueQuestionListSerializer.swift */,
+			);
+			path = Questions;
 			sourceTree = "<group>";
 		};
 		C15327162BA860FD00A8A591 /* Components */ = {
@@ -147,6 +213,39 @@
 				C153271C2BA8626300A8A591 /* Slider+Draggable.swift */,
 			);
 			path = Slider;
+			sourceTree = "<group>";
+		};
+		C15327202BA9092C00A8A591 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C15327212BA9093700A8A591 /* IssueQuestionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C15327232BA90BC200A8A591 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C15327242BA90BC700A8A591 /* Issues */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C15327242BA90BC700A8A591 /* Issues */ = {
+			isa = PBXGroup;
+			children = (
+				C15327252BA90BD400A8A591 /* IssueQuestion.swift */,
+			);
+			path = Issues;
+			sourceTree = "<group>";
+		};
+		C1B629552BAD0B0F00340ADF /* Unittests */ = {
+			isa = PBXGroup;
+			children = (
+				C11075BA2BA7780300E28F5E /* QuestionServiceTests.swift */,
+				C10494C02BA9A9D4000C3F36 /* Questions */,
+			);
+			path = Unittests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,10 +378,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C10494BF2BA9A985000C3F36 /* MockQuestionProvider.swift in Sources */,
 				C153271D2BA8626300A8A591 /* Slider+Draggable.swift in Sources */,
+				C15327222BA9093700A8A591 /* IssueQuestionView.swift in Sources */,
+				C14749732BAB007400B969F5 /* BaseSerializer.swift in Sources */,
 				C153271F2BA9065E00A8A591 /* Theme.swift in Sources */,
+				C14749772BAB027C00B969F5 /* IssueQuestionListSerializer.swift in Sources */,
+				C15327262BA90BD400A8A591 /* IssueQuestion.swift in Sources */,
+				C147496E2BAAFDE100B969F5 /* TestQuestionData.swift in Sources */,
 				C11075AC2BA7780200E28F5E /* ContentView.swift in Sources */,
+				C14749712BAAFE6C00B969F5 /* QuestionService.swift in Sources */,
+				C10494BC2BA9A865000C3F36 /* APIError.swift in Sources */,
 				C11075AA2BA7780200E28F5E /* Your_BallotApp.swift in Sources */,
+				C10494BA2BA9A6E3000C3F36 /* ProviderCore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +398,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C11075BB2BA7780300E28F5E /* Your_BallotTests.swift in Sources */,
+				C11075BB2BA7780300E28F5E /* QuestionServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

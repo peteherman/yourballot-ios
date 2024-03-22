@@ -7,22 +7,11 @@
 
 import SwiftUI
 enum Theme: String {
-    case bubblegum
-    case buttercup
-    case indigo
-    case lavender
-    case magenta
-    case navy
-    case orange
-    case oxblood
-    case periwinkle
-    case poppy
-    case purple
-    case seafoam
-    case sky
-    case tan
-    case teal
-    case yellow
+    case light_blue
+    case light_blue_accent
+    case light_red
+    case light_red_accent
+    case light_gray
     
     var mainColor: Color {
         Color(rawValue)
