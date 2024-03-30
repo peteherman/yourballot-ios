@@ -12,6 +12,8 @@ struct IssueQuestionView: View {
     let maxResponseValue: Double
     let issueQuestion: IssueQuestion
     
+    
+    
     var body: some View {
         VStack {
             Text(issueQuestion.question)

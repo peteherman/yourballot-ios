@@ -17,6 +17,11 @@
 		C11075BB2BA7780300E28F5E /* QuestionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11075BA2BA7780300E28F5E /* QuestionServiceTests.swift */; };
 		C11075C52BA7780300E28F5E /* Your_BallotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11075C42BA7780300E28F5E /* Your_BallotUITests.swift */; };
 		C11075C72BA7780300E28F5E /* Your_BallotUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11075C62BA7780300E28F5E /* Your_BallotUITestsLaunchTests.swift */; };
+		C122794B2BB79C4D00BF5A60 /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C122794A2BB79C4D00BF5A60 /* Candidate.swift */; };
+		C12279502BB79D7600BF5A60 /* Ethnicity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C122794F2BB79D7600BF5A60 /* Ethnicity.swift */; };
+		C12279532BB79DB500BF5A60 /* Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12279522BB79DB500BF5A60 /* Race.swift */; };
+		C12279552BB79DE200BF5A60 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12279542BB79DE200BF5A60 /* Gender.swift */; };
+		C12279582BB79E5200BF5A60 /* PoliticalParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12279572BB79E5200BF5A60 /* PoliticalParty.swift */; };
 		C147496E2BAAFDE100B969F5 /* TestQuestionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10494C12BA9AA16000C3F36 /* TestQuestionData.swift */; };
 		C14749712BAAFE6C00B969F5 /* QuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14749702BAAFE6C00B969F5 /* QuestionService.swift */; };
 		C14749732BAB007400B969F5 /* BaseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14749722BAB007400B969F5 /* BaseSerializer.swift */; };
@@ -59,6 +64,11 @@
 		C11075C02BA7780300E28F5E /* Your BallotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Your BallotUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C11075C42BA7780300E28F5E /* Your_BallotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Your_BallotUITests.swift; sourceTree = "<group>"; };
 		C11075C62BA7780300E28F5E /* Your_BallotUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Your_BallotUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C122794A2BB79C4D00BF5A60 /* Candidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
+		C122794F2BB79D7600BF5A60 /* Ethnicity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ethnicity.swift; sourceTree = "<group>"; };
+		C12279522BB79DB500BF5A60 /* Race.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Race.swift; sourceTree = "<group>"; };
+		C12279542BB79DE200BF5A60 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		C12279572BB79E5200BF5A60 /* PoliticalParty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticalParty.swift; sourceTree = "<group>"; };
 		C14749702BAAFE6C00B969F5 /* QuestionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionService.swift; sourceTree = "<group>"; };
 		C14749722BAB007400B969F5 /* BaseSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSerializer.swift; sourceTree = "<group>"; };
 		C14749762BAB027C00B969F5 /* IssueQuestionListSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueQuestionListSerializer.swift; sourceTree = "<group>"; };
@@ -173,6 +183,32 @@
 			path = "Your BallotUITests";
 			sourceTree = "<group>";
 		};
+		C12279492BB79C3F00BF5A60 /* Candidate */ = {
+			isa = PBXGroup;
+			children = (
+				C122794A2BB79C4D00BF5A60 /* Candidate.swift */,
+			);
+			path = Candidate;
+			sourceTree = "<group>";
+		};
+		C122794C2BB79CF100BF5A60 /* Identity */ = {
+			isa = PBXGroup;
+			children = (
+				C122794F2BB79D7600BF5A60 /* Ethnicity.swift */,
+				C12279522BB79DB500BF5A60 /* Race.swift */,
+				C12279542BB79DE200BF5A60 /* Gender.swift */,
+			);
+			path = Identity;
+			sourceTree = "<group>";
+		};
+		C12279562BB79E4300BF5A60 /* PoliticalIdentity */ = {
+			isa = PBXGroup;
+			children = (
+				C12279572BB79E5200BF5A60 /* PoliticalParty.swift */,
+			);
+			path = PoliticalIdentity;
+			sourceTree = "<group>";
+		};
 		C147496F2BAAFE6100B969F5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +262,9 @@
 		C15327232BA90BC200A8A591 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C12279562BB79E4300BF5A60 /* PoliticalIdentity */,
+				C122794C2BB79CF100BF5A60 /* Identity */,
+				C12279492BB79C3F00BF5A60 /* Candidate */,
 				C15327242BA90BC700A8A591 /* Issues */,
 			);
 			path = Models;
@@ -378,19 +417,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C12279582BB79E5200BF5A60 /* PoliticalParty.swift in Sources */,
+				C12279532BB79DB500BF5A60 /* Race.swift in Sources */,
 				C10494BF2BA9A985000C3F36 /* MockQuestionProvider.swift in Sources */,
 				C153271D2BA8626300A8A591 /* Slider+Draggable.swift in Sources */,
 				C15327222BA9093700A8A591 /* IssueQuestionView.swift in Sources */,
 				C14749732BAB007400B969F5 /* BaseSerializer.swift in Sources */,
 				C153271F2BA9065E00A8A591 /* Theme.swift in Sources */,
 				C14749772BAB027C00B969F5 /* IssueQuestionListSerializer.swift in Sources */,
+				C12279502BB79D7600BF5A60 /* Ethnicity.swift in Sources */,
 				C15327262BA90BD400A8A591 /* IssueQuestion.swift in Sources */,
 				C147496E2BAAFDE100B969F5 /* TestQuestionData.swift in Sources */,
 				C11075AC2BA7780200E28F5E /* ContentView.swift in Sources */,
 				C14749712BAAFE6C00B969F5 /* QuestionService.swift in Sources */,
 				C10494BC2BA9A865000C3F36 /* APIError.swift in Sources */,
+				C122794B2BB79C4D00BF5A60 /* Candidate.swift in Sources */,
 				C11075AA2BA7780200E28F5E /* Your_BallotApp.swift in Sources */,
 				C10494BA2BA9A6E3000C3F36 /* ProviderCore.swift in Sources */,
+				C12279552BB79DE200BF5A60 /* Gender.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
