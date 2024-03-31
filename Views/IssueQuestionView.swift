@@ -25,37 +25,8 @@ struct IssueQuestionView: View {
                 .cornerRadius(10.0)
                 .padding([.leading, .trailing])
             HStack {
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                    Text("Skip")
-                        .font(.headline)
-                        .foregroundColor(.black)
-                        .padding([.leading, .trailing])
-                })
-                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
-                .padding()
-                .background(Theme.light_red.mainColor)
-                .cornerRadius(10.0)
-                .overlay( /// apply a rounded border
-                    RoundedRectangle(cornerRadius: 10.0)
-                        .stroke(Theme.light_red_accent.mainColor, lineWidth: 2)
-                )
-                .padding(.bottom)
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                    Text("Submit")
-                        .font(.headline)
-                        .foregroundColor(.black)
-                        .padding([.leading, .trailing])
-                })
-                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
-                .padding()
-                .background(Theme.light_blue.mainColor)
-                .cornerRadius(10.0)
-                .overlay( /// apply a rounded border
-                    RoundedRectangle(cornerRadius: 10.0)
-                        .stroke(Theme.light_blue_accent.mainColor, lineWidth: 2)
-                )
-                .padding(.bottom)
-
+                RectangleButton_Red(buttonText: "Skip", onPress: {})
+                RectangleButton_Blue(buttonText: "Submit", onPress: {})
             }
             .padding([.leading, .trailing])
         }
