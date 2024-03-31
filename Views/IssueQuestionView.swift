@@ -11,8 +11,18 @@ struct IssueQuestionView: View {
     @State var responseValue: Double
     let maxResponseValue: Double
     let issueQuestion: IssueQuestion
+    let questionService: QuestionService
+    var currentQuestion: IssueQuestion?
     
+    func submitQuestion() {
+        // question
+//        guard currentQuestion
+//        currentQuestion?.rating = responseValue
+    }
     
+    func skipQuestion() {
+        
+    }
     
     var body: some View {
         VStack {
@@ -37,7 +47,9 @@ struct IssueQuestionView: View {
 struct IssueQuestionView_Preview : PreviewProvider {
     static let maxValue: Double = 10.0
     static var value: Double = 5.0
+    static var questionProvider: any HTTPProvider = MockQuestionProvider()
+    static var questionService = QuestionService(provider: questionProvider)
     static var previews: some View {
-        IssueQuestionView(responseValue: value, maxResponseValue: maxValue, issueQuestion: IssueQuestion.sampleData[0])
+        IssueQuestionView(responseValue: value, maxResponseValue: maxValue, issueQuestion: IssueQuestion.sampleData[0], questionService: questionService)
     }
 }
