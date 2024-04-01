@@ -33,7 +33,7 @@ extension URLSession: HTTPProvider {
         let data = try encoder.encode(message)
         request.httpBody = data
 
-        guard let (responseData, response) = try await self.upload(for: request, from: data, delegate: nil) as? (Data, HTTPURLResponse),
+        guard let (_, response) = try await self.upload(for: request, from: data, delegate: nil) as? (Data, HTTPURLResponse),
               validStatus.contains(response.statusCode) else {
                   throw APIError.unexpectedError(error: "Received unknown")
         }

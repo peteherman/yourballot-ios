@@ -10,37 +10,47 @@ import SwiftUI
 struct IssueQuestionView: View {
     @State var responseValue: Double
     let maxResponseValue: Double
-    let issueQuestion: IssueQuestion
-    let questionService: QuestionService
-    var currentQuestion: IssueQuestion?
+    @StateObject var questionService: QuestionService
     
+    // Score question, submit to api, and update current question
     func submitQuestion() {
-        // question
-//        guard currentQuestion
-//        currentQuestion?.rating = responseValue
+        guard questionService.currentQuestion != nil else { return }
+        Task {
+            var question = questionService.currentQuestion!
+            question.rating = responseValue
+            try await questionService.answerQuestion(question: question)
+        }
     }
     
     func skipQuestion() {
-        
+        guard questionService.currentQuestion != nil else { return }
+        let question = questionService.currentQuestion!
+        questionService.skipQuestion(question: question)
     }
     
+    @ViewBuilder
     var body: some View {
-        VStack {
-            Text(issueQuestion.question)
-                .padding([.top, .leading, .trailing])
-                .multilineTextAlignment(.center)
-                .font(.title2)
-            Spacer()
-            Slider_Draggable(value: $responseValue, maxValue: maxResponseValue)
-                .cornerRadius(10.0)
+        if questionService.currentQuestion != nil {
+            VStack {
+                Text(questionService.currentQuestion!.question)
+                    .padding([.top, .leading, .trailing])
+                    .multilineTextAlignment(.center)
+                    .font(.title2)
+                Spacer()
+                Slider_Draggable(value: $responseValue, maxValue: maxResponseValue)
+                    .cornerRadius(10.0)
+                    .padding([.leading, .trailing])
+                HStack {
+                    RectangleButton_Red(buttonText: "Skip", onPress: submitQuestion)
+                    RectangleButton_Blue(buttonText: "Submit", onPress: skipQuestion)
+                }
                 .padding([.leading, .trailing])
-            HStack {
-                RectangleButton_Red(buttonText: "Skip", onPress: {})
-                RectangleButton_Blue(buttonText: "Submit", onPress: {})
             }
-            .padding([.leading, .trailing])
+            .padding(.top)
         }
-        .padding(.top)
+        else {
+            Text("No more questions at this time")
+        }
     }
 }
 
@@ -50,6 +60,6 @@ struct IssueQuestionView_Preview : PreviewProvider {
     static var questionProvider: any HTTPProvider = MockQuestionProvider()
     static var questionService = QuestionService(provider: questionProvider)
     static var previews: some View {
-        IssueQuestionView(responseValue: value, maxResponseValue: maxValue, issueQuestion: IssueQuestion.sampleData[0], questionService: questionService)
+        IssueQuestionView(responseValue: value, maxResponseValue: maxValue, questionService: questionService)
     }
 }

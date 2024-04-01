@@ -10,6 +10,8 @@ import SwiftUI
 struct RectangleButton_Red: View {
     let buttonText: String
     let onPress: () -> Void
+    var disabled: Bool = false
+    
     var body: some View {
         Button(action: onPress, label: {
             Text(buttonText)
@@ -26,6 +28,7 @@ struct RectangleButton_Red: View {
                 .stroke(Theme.light_red_accent.mainColor, lineWidth: 2)
         )
         .padding(.bottom)
+        .disabled(disabled)
     }
 }
 

@@ -22,43 +22,47 @@ final class QuestionServiceTests: XCTestCase {
         // Tests that the question provider will receive questions when querying api for questions without any
         // starting questions
         let provider = MockQuestionProvider()
-        let questionService = QuestionService(provider: provider)
+        let questionService = await QuestionService(provider: provider)
         
         try await questionService.fetchQuestions()
         for _ in 1...10 {
-            let question: IssueQuestion? = questionService.popFirstQuestion()
+            let question: IssueQuestion? = await questionService.popFirstQuestion()
             XCTAssert(question != nil)
         }
-        let question: IssueQuestion? = questionService.popFirstQuestion()
+        let question: IssueQuestion? = await questionService.popFirstQuestion()
         XCTAssertEqual(question, nil)
     }
     
-    func testPopFirstQuestionNoQuestions() {
+    func testPopFirstQuestionNoQuestions() async {
         // Test that the question provider returns nil when popping from an empty queue
         let provider = MockQuestionProvider()
-        let questionService = QuestionService(provider: provider)
-        XCTAssertEqual(questionService.popFirstQuestion(), nil)
+        let questionService = await QuestionService(provider: provider)
+        let firstQuestion = await questionService.popFirstQuestion()
+        XCTAssertEqual(firstQuestion, nil)
     }
     
     func testReplaceQuestionPlacesQuestionAtFrontOfQueue() async throws {
         // Test replaceQuestion places question at front of queue
         let provider = MockQuestionProvider()
-        let questionService = QuestionService(provider: provider)
+        let questionService = await QuestionService(provider: provider)
         
         try await questionService.fetchQuestions()
-        XCTAssertEqual(questionService.getQuestionQueue().count, 10)
+        var questionQueue = await questionService.getQuestionQueue()
+        XCTAssertEqual(questionQueue.count, 10)
         
-        let firstQuestion: IssueQuestion? = questionService.popFirstQuestion()
+        let firstQuestion: IssueQuestion? = await questionService.popFirstQuestion()
         XCTAssertNotNil(firstQuestion)
-        XCTAssertEqual(questionService.getQuestionQueue().count, 9)
-        questionService.replaceQuestion(question: firstQuestion!)
-        XCTAssertEqual(questionService.getQuestionQueue()[0], firstQuestion)
+        questionQueue = await questionService.getQuestionQueue()
+        XCTAssertEqual(questionQueue.count, 9)
+        await questionService.replaceQuestion(question: firstQuestion!)
+        questionQueue = await questionService.getQuestionQueue()
+        XCTAssertEqual(questionQueue[0], firstQuestion)
     }
     
     func testPostAnswerSuccess() async throws {
         // Test replaceQuestion places question at front of queue
         let provider = MockQuestionProvider()
-        let questionService = QuestionService(provider: provider)
+        let questionService = await QuestionService(provider: provider)
         let decoder = JSONDecoder()
         let issueQuestionListSerializer = try decoder.decode(IssueQuestionListSerializer.self, from: testVoterRemainingQuestionsData)
         var testQuestion = issueQuestionListSerializer.issueQuestions[0]

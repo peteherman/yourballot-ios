@@ -9,9 +9,19 @@ import SwiftUI
 
 @main
 struct Your_BallotApp: App {
+    @StateObject private var questionService = QuestionService(provider: MockQuestionProvider())
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            IssueQuestionView(responseValue: 0.0, maxResponseValue: 5.0, questionService: questionService)
+                .task {
+                    do {
+                        try await questionService.fetchQuestions()
+                        questionService.currentQuestion = questionService.popFirstQuestion()
+                    } catch {
+                        print("Caught error", error.localizedDescription)
+                        fatalError(error.localizedDescription)
+                    }
+                }
         }
     }
 }
