@@ -12,6 +12,10 @@ struct IssueQuestionView: View {
     let maxResponseValue: Double
     @StateObject var questionService: QuestionService
     
+    func resetSlider() {
+        self.responseValue = maxResponseValue / 2
+    }
+    
     // Score question, submit to api, and update current question
     func submitQuestion() {
         guard questionService.currentQuestion != nil else { return }
@@ -20,12 +24,16 @@ struct IssueQuestionView: View {
             question.rating = responseValue
             try await questionService.answerQuestion(question: question)
         }
+        self.resetSlider()
     }
     
     func skipQuestion() {
         guard questionService.currentQuestion != nil else { return }
-        let question = questionService.currentQuestion!
-        questionService.skipQuestion(question: question)
+        Task {
+            let question = questionService.currentQuestion!
+            questionService.skipQuestion(question: question)
+        }
+        self.resetSlider()
     }
     
     @ViewBuilder

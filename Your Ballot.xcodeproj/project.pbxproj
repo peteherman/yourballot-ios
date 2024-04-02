@@ -32,6 +32,8 @@
 		C15327262BA90BD400A8A591 /* IssueQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15327252BA90BD400A8A591 /* IssueQuestion.swift */; };
 		C163C60C2BBA0AC000A03E14 /* RectangleButton+Red.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163C60B2BBA0AC000A03E14 /* RectangleButton+Red.swift */; };
 		C163C60E2BBA0B9900A03E14 /* RectangleButton_Blue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163C60D2BBA0B9900A03E14 /* RectangleButton_Blue.swift */; };
+		C16511522BBC189A0056E640 /* CandidateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16511512BBC189A0056E640 /* CandidateView.swift */; };
+		C16511562BBC212D0056E640 /* CandidateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16511552BBC212D0056E640 /* CandidateCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,8 @@
 		C15327252BA90BD400A8A591 /* IssueQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueQuestion.swift; sourceTree = "<group>"; };
 		C163C60B2BBA0AC000A03E14 /* RectangleButton+Red.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RectangleButton+Red.swift"; sourceTree = "<group>"; };
 		C163C60D2BBA0B9900A03E14 /* RectangleButton_Blue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleButton_Blue.swift; sourceTree = "<group>"; };
+		C16511512BBC189A0056E640 /* CandidateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateView.swift; sourceTree = "<group>"; };
+		C16511552BBC212D0056E640 /* CandidateCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +245,7 @@
 		C15327162BA860FD00A8A591 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C16511532BBC21150056E640 /* Candidate */,
 				C163C60A2BBA0AA700A03E14 /* Buttons */,
 				C15327172BA8610B00A8A591 /* Slider */,
 				C153271E2BA9065E00A8A591 /* Theme.swift */,
@@ -260,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				C15327212BA9093700A8A591 /* IssueQuestionView.swift */,
+				C16511512BBC189A0056E640 /* CandidateView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -290,6 +296,14 @@
 				C163C60D2BBA0B9900A03E14 /* RectangleButton_Blue.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		C16511532BBC21150056E640 /* Candidate */ = {
+			isa = PBXGroup;
+			children = (
+				C16511552BBC212D0056E640 /* CandidateCard.swift */,
+			);
+			path = Candidate;
 			sourceTree = "<group>";
 		};
 		C1B629552BAD0B0F00340ADF /* Unittests */ = {
@@ -436,6 +450,7 @@
 				C12279532BB79DB500BF5A60 /* Race.swift in Sources */,
 				C10494BF2BA9A985000C3F36 /* MockQuestionProvider.swift in Sources */,
 				C153271D2BA8626300A8A591 /* Slider+Draggable.swift in Sources */,
+				C16511562BBC212D0056E640 /* CandidateCard.swift in Sources */,
 				C15327222BA9093700A8A591 /* IssueQuestionView.swift in Sources */,
 				C14749732BAB007400B969F5 /* BaseSerializer.swift in Sources */,
 				C153271F2BA9065E00A8A591 /* Theme.swift in Sources */,
@@ -449,6 +464,7 @@
 				C10494BC2BA9A865000C3F36 /* APIError.swift in Sources */,
 				C122794B2BB79C4D00BF5A60 /* Candidate.swift in Sources */,
 				C11075AA2BA7780200E28F5E /* Your_BallotApp.swift in Sources */,
+				C16511522BBC189A0056E640 /* CandidateView.swift in Sources */,
 				C10494BA2BA9A6E3000C3F36 /* ProviderCore.swift in Sources */,
 				C12279552BB79DE200BF5A60 /* Gender.swift in Sources */,
 			);

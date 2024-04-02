@@ -9,9 +9,12 @@ import SwiftUI
 enum Theme: String {
     case light_blue
     case light_blue_accent
+    case blue_accent
     case light_red
     case light_red_accent
+    case red_accent
     case light_gray
+    case white
     
     var mainColor: Color {
         Color(rawValue)
