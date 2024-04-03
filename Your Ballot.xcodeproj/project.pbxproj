@@ -34,6 +34,10 @@
 		C163C60E2BBA0B9900A03E14 /* RectangleButton_Blue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163C60D2BBA0B9900A03E14 /* RectangleButton_Blue.swift */; };
 		C16511522BBC189A0056E640 /* CandidateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16511512BBC189A0056E640 /* CandidateView.swift */; };
 		C16511562BBC212D0056E640 /* CandidateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16511552BBC212D0056E640 /* CandidateCard.swift */; };
+		C1C9036D2BBD6BD700B8AE94 /* PoliticalProfileLabelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9036C2BBD6BD700B8AE94 /* PoliticalProfileLabelCard.swift */; };
+		C1C903702BBD6DEB00B8AE94 /* PoliticalIssueCard+Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9036F2BBD6DEB00B8AE94 /* PoliticalIssueCard+Comparison.swift */; };
+		C1C903722BBD704700B8AE94 /* CustomSliderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C903712BBD704700B8AE94 /* CustomSliderBar.swift */; };
+		C1C903752BBD718F00B8AE94 /* ColoredSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C903742BBD718F00B8AE94 /* ColoredSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +88,10 @@
 		C163C60D2BBA0B9900A03E14 /* RectangleButton_Blue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleButton_Blue.swift; sourceTree = "<group>"; };
 		C16511512BBC189A0056E640 /* CandidateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateView.swift; sourceTree = "<group>"; };
 		C16511552BBC212D0056E640 /* CandidateCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateCard.swift; sourceTree = "<group>"; };
+		C1C9036C2BBD6BD700B8AE94 /* PoliticalProfileLabelCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticalProfileLabelCard.swift; sourceTree = "<group>"; };
+		C1C9036F2BBD6DEB00B8AE94 /* PoliticalIssueCard+Comparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PoliticalIssueCard+Comparison.swift"; sourceTree = "<group>"; };
+		C1C903712BBD704700B8AE94 /* CustomSliderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSliderBar.swift; sourceTree = "<group>"; };
+		C1C903742BBD718F00B8AE94 /* ColoredSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +309,7 @@
 		C16511532BBC21150056E640 /* Candidate */ = {
 			isa = PBXGroup;
 			children = (
+				C1C9036B2BBD6BC300B8AE94 /* Political Profile */,
 				C16511552BBC212D0056E640 /* CandidateCard.swift */,
 			);
 			path = Candidate;
@@ -313,6 +322,25 @@
 				C10494C02BA9A9D4000C3F36 /* Questions */,
 			);
 			path = Unittests;
+			sourceTree = "<group>";
+		};
+		C1C9036B2BBD6BC300B8AE94 /* Political Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C1C903732BBD714C00B8AE94 /* ColoredSlider */,
+				C1C9036C2BBD6BD700B8AE94 /* PoliticalProfileLabelCard.swift */,
+				C1C9036F2BBD6DEB00B8AE94 /* PoliticalIssueCard+Comparison.swift */,
+			);
+			path = "Political Profile";
+			sourceTree = "<group>";
+		};
+		C1C903732BBD714C00B8AE94 /* ColoredSlider */ = {
+			isa = PBXGroup;
+			children = (
+				C1C903712BBD704700B8AE94 /* CustomSliderBar.swift */,
+				C1C903742BBD718F00B8AE94 /* ColoredSlider.swift */,
+			);
+			path = ColoredSlider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,6 +473,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1C9036D2BBD6BD700B8AE94 /* PoliticalProfileLabelCard.swift in Sources */,
 				C163C60C2BBA0AC000A03E14 /* RectangleButton+Red.swift in Sources */,
 				C12279582BB79E5200BF5A60 /* PoliticalParty.swift in Sources */,
 				C12279532BB79DB500BF5A60 /* Race.swift in Sources */,
@@ -461,12 +490,15 @@
 				C11075AC2BA7780200E28F5E /* ContentView.swift in Sources */,
 				C14749712BAAFE6C00B969F5 /* QuestionService.swift in Sources */,
 				C163C60E2BBA0B9900A03E14 /* RectangleButton_Blue.swift in Sources */,
+				C1C903752BBD718F00B8AE94 /* ColoredSlider.swift in Sources */,
 				C10494BC2BA9A865000C3F36 /* APIError.swift in Sources */,
+				C1C903702BBD6DEB00B8AE94 /* PoliticalIssueCard+Comparison.swift in Sources */,
 				C122794B2BB79C4D00BF5A60 /* Candidate.swift in Sources */,
 				C11075AA2BA7780200E28F5E /* Your_BallotApp.swift in Sources */,
 				C16511522BBC189A0056E640 /* CandidateView.swift in Sources */,
 				C10494BA2BA9A6E3000C3F36 /* ProviderCore.swift in Sources */,
 				C12279552BB79DE200BF5A60 /* Gender.swift in Sources */,
+				C1C903722BBD704700B8AE94 /* CustomSliderBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
