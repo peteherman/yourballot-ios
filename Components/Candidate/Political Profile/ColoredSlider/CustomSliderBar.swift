@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CustomSliderBar: View {
     let color: Color
+    
     var body: some View {
         HStack(spacing: 0) {
             Rectangle()

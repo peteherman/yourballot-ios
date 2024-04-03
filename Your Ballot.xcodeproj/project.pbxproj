@@ -38,6 +38,7 @@
 		C1C903702BBD6DEB00B8AE94 /* PoliticalIssueCard+Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9036F2BBD6DEB00B8AE94 /* PoliticalIssueCard+Comparison.swift */; };
 		C1C903722BBD704700B8AE94 /* CustomSliderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C903712BBD704700B8AE94 /* CustomSliderBar.swift */; };
 		C1C903752BBD718F00B8AE94 /* ColoredSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C903742BBD718F00B8AE94 /* ColoredSlider.swift */; };
+		C1C903782BBD759C00B8AE94 /* SizeCalculatorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C903772BBD759C00B8AE94 /* SizeCalculatorModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		C1C9036F2BBD6DEB00B8AE94 /* PoliticalIssueCard+Comparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PoliticalIssueCard+Comparison.swift"; sourceTree = "<group>"; };
 		C1C903712BBD704700B8AE94 /* CustomSliderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSliderBar.swift; sourceTree = "<group>"; };
 		C1C903742BBD718F00B8AE94 /* ColoredSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredSlider.swift; sourceTree = "<group>"; };
+		C1C903772BBD759C00B8AE94 /* SizeCalculatorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCalculatorModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 		C15327162BA860FD00A8A591 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C1C903762BBD758D00B8AE94 /* Modifiers */,
 				C16511532BBC21150056E640 /* Candidate */,
 				C163C60A2BBA0AA700A03E14 /* Buttons */,
 				C15327172BA8610B00A8A591 /* Slider */,
@@ -341,6 +344,14 @@
 				C1C903742BBD718F00B8AE94 /* ColoredSlider.swift */,
 			);
 			path = ColoredSlider;
+			sourceTree = "<group>";
+		};
+		C1C903762BBD758D00B8AE94 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				C1C903772BBD759C00B8AE94 /* SizeCalculatorModifier.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -477,6 +488,7 @@
 				C163C60C2BBA0AC000A03E14 /* RectangleButton+Red.swift in Sources */,
 				C12279582BB79E5200BF5A60 /* PoliticalParty.swift in Sources */,
 				C12279532BB79DB500BF5A60 /* Race.swift in Sources */,
+				C1C903782BBD759C00B8AE94 /* SizeCalculatorModifier.swift in Sources */,
 				C10494BF2BA9A985000C3F36 /* MockQuestionProvider.swift in Sources */,
 				C153271D2BA8626300A8A591 /* Slider+Draggable.swift in Sources */,
 				C16511562BBC212D0056E640 /* CandidateCard.swift in Sources */,

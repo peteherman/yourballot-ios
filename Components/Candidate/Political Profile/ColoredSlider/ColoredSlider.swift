@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ColoredSlider: View {
+    @State private var sliderBarSize: CGSize = .zero
     var body: some View {
         VStack(spacing: 0) {
             Text("Issue")
@@ -16,10 +17,7 @@ struct ColoredSlider: View {
                 .padding(.top, 3.0)
             ZStack {
                 CustomSliderBar(color: .black)
-                Circle()
-                    .stroke(Theme.red_accent.mainColor, lineWidth: 3.0)
-                    .background(Circle().foregroundColor(Theme.light_red.mainColor))
-                    .frame(width: 30)
+                    .saveSize(in: $sliderBarSize)
             }
         }
         .background(Theme.light_blue.mainColor)
