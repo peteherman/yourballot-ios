@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct SizeCalculatorModifier: ViewModifier {
-    
-    @Binding var size: CGSize
+    @Binding var frame: CGRect
     
     func body(content: Content) -> some View {
         content
@@ -17,7 +16,7 @@ struct SizeCalculatorModifier: ViewModifier {
                 GeometryReader { proxy in
                     Color.clear // want reader to get triggered, so we'll use an empty color
                         .onAppear {
-                            size = proxy.size
+                            self.frame = proxy.frame(in: .local)
                         }
                 }
             )
@@ -25,7 +24,7 @@ struct SizeCalculatorModifier: ViewModifier {
 }
 
 extension View {
-    func saveSize(in size: Binding<CGSize>) -> some View {
-        modifier(SizeCalculatorModifier(size: size))
+    func saveFrame(in frame: Binding<CGRect>) -> some View {
+        modifier(SizeCalculatorModifier(frame: frame))
     }
 }

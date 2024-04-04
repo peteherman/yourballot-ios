@@ -8,17 +8,27 @@
 import SwiftUI
 
 struct ColoredSlider: View {
-    @State private var sliderBarSize: CGSize = .zero
+    @State private var sliderFrame: CGRect = .zero
+    
+    func circlePositionOnSlider(ratingPercentage: Double) -> CGPoint {
+        let midpoint = sliderFrame.midX
+        let xPosition = midpoint + (ratingPercentage - 0.5) * sliderFrame.width
+        return CGPoint(x: xPosition, y: sliderFrame.midY)
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             Text("Issue")
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                .padding(.leading)
-                .padding(.top, 3.0)
-            ZStack {
-                CustomSliderBar(color: .black)
-                    .saveSize(in: $sliderBarSize)
-            }
+                .padding([.leading, .top])
+            CustomSliderBar(color: .black)
+                .saveFrame(in: $sliderFrame)
+                .overlay(Circle()
+                    .fill(.red)
+                    .frame(width: 30)
+                    .position(circlePositionOnSlider(ratingPercentage: 0.5))
+                )
+                .padding(.bottom)
         }
         .background(Theme.light_blue.mainColor)
     }
