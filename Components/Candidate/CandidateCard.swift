@@ -80,9 +80,6 @@ struct CandidateCard: View {
             .padding()
             .background(Theme.light_blue.mainColor)
             .cornerRadius(10.0)
-            ColoredSlider()
-                .cornerRadius(10.0)
-                .padding([.leading, .trailing])
         }
     }
 }

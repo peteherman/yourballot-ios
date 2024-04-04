@@ -30,7 +30,7 @@ struct CandidateView: View {
                         .font(.title3)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding([.leading, .bottom])
-                    ColoredSlider()
+                    PoliticalIssueSlider(candidateRatingPercentage: 0.5, voterRatingPercentage: 0.7)
                         .padding([.leading, .trailing])
                 }
             }
