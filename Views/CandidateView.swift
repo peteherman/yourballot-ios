@@ -31,7 +31,9 @@ struct CandidateView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding([.leading, .bottom])
                     PoliticalIssueSlider(candidateRatingPercentage: 0.5, voterRatingPercentage: 0.7)
+                        .cornerRadius(7.0)
                         .padding([.leading, .trailing])
+
                 }
             }
         }

@@ -7,7 +7,9 @@
 
 import Foundation
 
-let API_BASE = "http://localhost:8080"
+let environment = ProcessInfo.processInfo.environment
+
+let API_BASE = environment["API_BASE_URI"] ?? "http://localhost:8080"
 
 let validStatus = 200...299
 

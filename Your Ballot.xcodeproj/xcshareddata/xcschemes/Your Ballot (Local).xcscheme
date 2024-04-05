@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C11075A52BA7780200E28F5E"
-               BuildableName = "Your Ballot.app"
-               BlueprintName = "Your Ballot"
+               BlueprintIdentifier = "C17ABE492BBF9BC500BE8CB0"
+               BuildableName = "Your Ballot (Local).app"
+               BlueprintName = "Your Ballot (Local)"
                ReferencedContainer = "container:Your Ballot.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,30 +29,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
-      <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C11075B52BA7780300E28F5E"
-               BuildableName = "Your BallotTests.xctest"
-               BlueprintName = "Your BallotTests"
-               ReferencedContainer = "container:Your Ballot.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C11075BF2BA7780300E28F5E"
-               BuildableName = "Your BallotUITests.xctest"
-               BlueprintName = "Your BallotUITests"
-               ReferencedContainer = "container:Your Ballot.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -68,18 +44,13 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C11075A52BA7780200E28F5E"
-            BuildableName = "Your Ballot.app"
-            BlueprintName = "Your Ballot"
+            BlueprintIdentifier = "C17ABE492BBF9BC500BE8CB0"
+            BuildableName = "Your Ballot (Local).app"
+            BlueprintName = "Your Ballot (Local)"
             ReferencedContainer = "container:Your Ballot.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "IDEPreferLogStreaming"
-            value = "YES"
-            isEnabled = "YES">
-         </EnvironmentVariable>
          <EnvironmentVariable
             key = "API_BASE_URI"
             value = "https://localhost:8080"
@@ -97,9 +68,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C11075A52BA7780200E28F5E"
-            BuildableName = "Your Ballot.app"
-            BlueprintName = "Your Ballot"
+            BlueprintIdentifier = "C17ABE492BBF9BC500BE8CB0"
+            BuildableName = "Your Ballot (Local).app"
+            BlueprintName = "Your Ballot (Local)"
             ReferencedContainer = "container:Your Ballot.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
