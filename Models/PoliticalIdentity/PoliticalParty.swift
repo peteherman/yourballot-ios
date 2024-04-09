@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PoliticalParty: String {
+enum PoliticalParty: String, Decodable {
     case democratic
     case republican
     case independent

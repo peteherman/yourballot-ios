@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Ethnicity: String {
+enum Ethnicity: String, Decodable {
     case hispanic_or_latino
     case not_hispanic_or_latino
 }

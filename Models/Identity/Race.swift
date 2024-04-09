@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Race: String {
+enum Race: String, Decodable {
     case american_indian_or_alaska_native
     case asian
     case black_or_african_american
