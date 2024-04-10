@@ -19,6 +19,14 @@ class SingleCandidateService: ObservableObject {
     }
     
     /*
+     * Initializer/constructor useful for previews
+     */
+    init(candidate: Candidate, provider: any HTTPProvider = URLSession.shared) {
+        self.candidate = candidate
+        self.provider = provider
+    }
+    
+    /*
      * Fetch a candidate's detailed view from the API, serialize the results into a candidate
      * struct which is saved as a @Published var candidate on this class
      */
