@@ -15,8 +15,7 @@ class CandidateAuthenticatedDetailedSerializer: BaseSerializer {
         try super.init(from: decoder)
         let rootContainer = try decoder.container(keyedBy: RootCodingKeys.self)
         let _ = try rootContainer.nestedContainer(keyedBy: PaginationCodingKeys.self, forKey: RootCodingKeys.result_info)
-        var candidateContainer = try rootContainer.nestedUnkeyedContainer(forKey: RootCodingKeys.result)
-        let decodedCandidate = try? candidateContainer.decode(Candidate.self)
-        candidate = decodedCandidate!
+        let decodedCandidate = try rootContainer.decode(Candidate.self, forKey: RootCodingKeys.result)
+        candidate = decodedCandidate
     }
 }

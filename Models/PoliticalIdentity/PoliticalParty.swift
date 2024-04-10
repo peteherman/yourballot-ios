@@ -62,3 +62,117 @@ enum PoliticalParty: String, Decodable {
     case socialist_action
     case transhumanist
 }
+
+extension PoliticalParty {
+    func string() -> String {
+        switch self {
+        case .democratic:
+            return "Democratic"
+        case .republican:
+            return "Republican"
+        case .independent:
+            return "Independent"
+        case .libertarian:
+            return "Libertarian"
+        case .forward:
+            return "Forward"
+        case .vermont_progressive:
+            return "Vermont Progressive"
+        case .independent_of_oregon:
+            return "Independent Of Oregon"
+        case .green:
+            return "Green"
+        case .constitution:
+            return "Constitution"
+        case .working_families:
+            return "Working Families"
+        case .alliance:
+            return "Alliance"
+        case .reform:
+            return "Reform"
+        case .working_class:
+            return "Working Class"
+        case .socialism_liberation:
+            return "Socialism Liberation"
+        case .american_independent:
+            return "American Independent"
+        case .peace_freedom:
+            return "Peace Freedom"
+        case .solidarity:
+            return "Solidarity"
+        case .legal_marijuana:
+            return "Legal Marijuana"
+        case .unity_party:
+            return "Unity Party"
+        case .natural_law:
+            return "Natural Law"
+        case .approval_voting:
+            return "Approval Voting"
+        case .justice:
+            return "Justice"
+        case .people:
+            return "People"
+        case .colorado_center:
+            return "Colorado Center"
+        case .conservative_ny:
+            return "Conservative Ny"
+        case .libertarian_mass:
+            return "Libertarian Mass"
+        case .libertariran_nm:
+            return "Libertariran Nm"
+        case .oregon_progressive:
+            return "Oregon Progressive"
+        case .green_mountain:
+            return "Green Mountain"
+        case .alaskan_independence:
+            return "Alaskan Independence"
+        case .independent_delaware:
+            return "Independent Delaware"
+        case .united_utah:
+            return "United Utah"
+        case .ecology_florida:
+            return "Ecology Florida"
+        case .independent_florida:
+            return "Independent Florida"
+        case .aloha:
+            return "Aloha"
+        case .grassroots_cannabis:
+            return "Grassroots Cannabis"
+        case .labor:
+            return "Labor"
+        case .united_citizens:
+            return "United Citizens"
+        case .independent_citizens:
+            return "Independent Citizens"
+        case .sovereign_union:
+            return "Sovereign Union"
+        case .socialist_workers:
+            return "Socialist Workers"
+        case .prohibition:
+            return "Prohibition"
+        case .socialist_equality:
+            return "Socialist Equality"
+        case .socialist_usa:
+            return "Socialist Usa"
+        case .communist:
+            return "Communist"
+        case .progressive_labor:
+            return "Progressive Labor"
+        case .socialist_alternative:
+            return "Socialist Alternative"
+        case .pirate:
+            return "Pirate"
+        case .workers_world:
+            return "Workers World"
+        case .freedom_socialist:
+            return "Freedom Socialist"
+        case .american_freedom:
+            return "American Freedom"
+        case .socialist_action:
+            return "Socialist Action"
+        case .transhumanist:
+            return "Transhumanist"
+        }
+
+    }
+}

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CandidateView: View {
     @StateObject var candidateService: SingleCandidateService
-    
+    let errorText: String
     @ViewBuilder
     var body: some View {
         if candidateService.candidate != nil {
@@ -23,11 +23,11 @@ struct CandidateView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding([.leading, .bottom])
                         PoliticalProfileLabelCard(label: "Position", value: candidateService.candidate?.position?.title ?? "")
-                        PoliticalProfileLabelCard(label: "Position", value: "")
-                        PoliticalProfileLabelCard(label: "Locality", value: "United States")
-                        PoliticalProfileLabelCard(label: "Years of Service", value: "2.2")
+                        PoliticalProfileLabelCard(label: "Position", value: candidateService.candidate?.position?.locality.name ?? "")
+//                        PoliticalProfileLabelCard(label: "Years of Service", value: "2.2")
                         PoliticalProfileLabelCard(label: "Self-Identity", value: "Democrat")
-                        PoliticalProfileLabelCard(label: "Ballot Identity", value: "Democrat")
+                        PoliticalProfileLabelCard(label: "Self-Identity", value: candidateService.candidate?.political_party.string() ?? "")
+//                        PoliticalProfileLabelCard(label: "Ballot Identity", value: "Democrat")
                     }
                     .padding(.bottom)
                     VStack {
@@ -43,7 +43,8 @@ struct CandidateView: View {
                 }
             }
         } else {
-            
+            Text("Candidate loading...")
+            Text("Error: \(errorText)")
         }
     }
 }
@@ -51,8 +52,17 @@ struct CandidateView: View {
 struct CandidateView_Preview: PreviewProvider {
     static var candidateProvider: any HTTPProvider = MockSingleCandidateProvider()
     static var singleCandidateService = SingleCandidateService(provider: candidateProvider)
+    static var errorText: String = ""
     
     static var previews: some View {
-        CandidateView(candidateService: singleCandidateService)
+        CandidateView(candidateService: singleCandidateService, errorText: errorText)
+            .task {
+                do {
+                    try await singleCandidateService.fetchCandidate(candidateID: 1)
+                } catch {
+                    print("Caught error", error.localizedDescription)
+                    errorText = error.localizedDescription
+                }
+            }
     }
 }

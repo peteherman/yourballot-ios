@@ -15,16 +15,17 @@ let testCandidateDetail = """
         "total": 0
     },
     "result": {
+        "id": 1,
         "external_id": "b275f458-1f71-401b-b77c-1da58331cd69",
         "name": "Joe Biden",
         "age": 81,
         "bio": "Together, we can finish the job for the American People",
         "start_date": "2020-01-20T12:00:00Z",
         "similarity": 0.6509835247441749,
-        "ethnicity": "NOT_HISPANIC_OR_LATINO",
+        "ethnicity": "not_hispanic_or_latino",
         "gender": "MALE",
         "political_identity": "Democrat",
-        "political_party": "DEMOCRATIC",
+        "political_party": "democratic",
         "position": {
             "id": 1,
             "title": "President",
@@ -34,7 +35,7 @@ let testCandidateDetail = """
                 "created": "2024-04-05T11:27:30.893103Z",
                 "updated": "2024-04-05T11:27:30.893132Z",
                 "name": "United States",
-                "type": "FEDERAL"
+                "type": "federal"
             },
             "term_limit": 1460
         },

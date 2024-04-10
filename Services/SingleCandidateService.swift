@@ -11,6 +11,7 @@ import Foundation
 class SingleCandidateService: ObservableObject {
     private let provider: any HTTPProvider
     private let decoder: JSONDecoder = JSONDecoder()
+    
     @Published var candidate: Candidate?
     
     init(provider: any HTTPProvider = URLSession.shared) {
@@ -24,6 +25,7 @@ class SingleCandidateService: ObservableObject {
     func fetchCandidate(candidateID: Int) async throws {
         let task = Task<Candidate, Error> {
             let candidateData = try await provider.getHttp(from: getCandidateURL(candidateID: candidateID))
+            decoder.dateDecodingStrategy = .iso8601
             let candidateSerializer = try decoder.decode(CandidateAuthenticatedDetailedSerializer.self, from: candidateData)
             return candidateSerializer.candidate
         }
