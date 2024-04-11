@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CandidateView: View {
     @StateObject var candidateService: SingleCandidateService
+    @StateObject var voterIssueViewService: VoterIssueViewService
     @ViewBuilder
     var body: some View {
         if candidateService.candidate != nil {
@@ -32,11 +33,7 @@ struct CandidateView: View {
                             .font(.title3)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding([.leading, .bottom])
-                        ForEach(Array(candidate.issue_views.keys), id: \.self) { issue_name in
-                            PoliticalIssueSlider(issueName: issue_name, candidateRating: candidate.issue_views[issue_name]!, voterRating: 3.0)
-                                .cornerRadius(7.0)
-                                .padding([.leading, .trailing])
-                        }
+                        CandidateVoterSliderComparison(candidateService: candidateService, voterIssueViewService: voterIssueViewService)
                     }
                 }
             }
@@ -50,8 +47,12 @@ struct CandidateView_Preview: PreviewProvider {
     static var candidateProvider: any HTTPProvider = MockSingleCandidateProvider()
     static var sampleCandidate = Candidate.sampleData[0]
     static var singleCandidateService = SingleCandidateService(candidate: sampleCandidate)
+    
+    static var voterIssueViewProvider: any HTTPProvider = MockVoterIssueViewSummaryProvider()
+    static var sampleVoterIssueViews = VoterIssueViews.sampleData[0]
+    static var voterIssueViewService = VoterIssueViewService(issue_views: sampleVoterIssueViews)
 
     static var previews: some View {
-        CandidateView(candidateService: singleCandidateService)
+        CandidateView(candidateService: singleCandidateService, voterIssueViewService: voterIssueViewService)
     }
 }

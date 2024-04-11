@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 class CandidateAuthenticatedDetailedSerializer: BaseSerializer {
     var candidate: Candidate = Candidate.sampleData[0]
     required init(from decoder: Decoder) throws {
