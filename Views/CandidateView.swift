@@ -24,9 +24,7 @@ struct CandidateView: View {
                             .padding([.leading, .bottom])
                         PoliticalProfileLabelCard(label: "Position", value: candidate.position?.title ?? "")
                         PoliticalProfileLabelCard(label: "Position", value: candidate.position?.locality.name ?? "")
-//                        PoliticalProfileLabelCard(label: "Years of Service", value: "2.2")
                         PoliticalProfileLabelCard(label: "Self-Identity", value: candidate.political_party.string())
-//                        PoliticalProfileLabelCard(label: "Ballot Identity", value: "Democrat")
                     }
                     .padding(.bottom)
                     VStack {
@@ -35,8 +33,7 @@ struct CandidateView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding([.leading, .bottom])
                         ForEach(Array(candidate.issue_views.keys), id: \.self) { issue_name in
-                            Text("Issue: \(issue_name): \(candidate.issue_views[issue_name]!)")
-                            PoliticalIssueSlider(candidateRatingPercentage: candidate.issue_views[issue_name]! / 10.0, voterRatingPercentage: 0.7)
+                            PoliticalIssueSlider(issueName: issue_name, candidateRating: candidate.issue_views[issue_name]!, voterRating: 3.0)
                                 .cornerRadius(7.0)
                                 .padding([.leading, .trailing])
                         }

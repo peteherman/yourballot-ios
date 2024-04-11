@@ -9,34 +9,35 @@ import SwiftUI
 
 struct PoliticalIssueSlider: View {
     @State private var sliderFrame: CGRect = .zero
-    let candidateRatingPercentage: Double
-    let voterRatingPercentage: Double
+    let issueName: String
+    let candidateRating: Double
+    let voterRating: Double
     
-    func circlePositionOnSlider(ratingPercentage: Double) -> CGPoint {
+    func circlePositionOnSlider(rating: Double) -> CGPoint {
         let midpoint = sliderFrame.midX
-        let xPosition = midpoint + (ratingPercentage - 0.5) * sliderFrame.width
+        let xPosition = midpoint + ((rating / 22) * sliderFrame.width)
         return CGPoint(x: xPosition, y: sliderFrame.midY)
     }
     
     func candidateCircle() -> some View {
-        return sliderCircle(color: .blue, rating: candidateRatingPercentage)
+        return sliderCircle(color: .blue, rating: candidateRating)
     }
     
     func voterCircle() -> some View {
-        return sliderCircle(color: .white, rating: voterRatingPercentage)
+        return sliderCircle(color: .white, rating: voterRating)
     }
     
     func sliderCircle(color: Color, rating: Double) -> some View {
         return Circle()
             .fill(color)
             .frame(width: 30)
-            .position(circlePositionOnSlider(ratingPercentage: rating))
+            .position(circlePositionOnSlider(rating: rating))
             .shadow(color: Color.black.opacity(0.3), radius: 2, x: 0, y: 2)
     }
     
     var body: some View {
         VStack(spacing: 0) {
-            Text("Issue")
+            Text(issueName)
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
                 .padding([.leading, .top])
             CustomSliderBar(color: .black)
@@ -54,5 +55,5 @@ struct PoliticalIssueSlider: View {
 }
 
 #Preview {
-    PoliticalIssueSlider(candidateRatingPercentage: 0.5, voterRatingPercentage: 0.6)
+    PoliticalIssueSlider(issueName: "Issue Name", candidateRating: 10, voterRating: -7.5)
 }
