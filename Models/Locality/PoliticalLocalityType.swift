@@ -8,8 +8,8 @@
 import Foundation
 
 enum PoliticalLocalityType: String, Decodable {
-    case town
-    case city
-    case state
-    case federal
+    case town = "TOWN"
+    case city = "CITY"
+    case state = "STATE"
+    case federal = "FEDERAL"
 }

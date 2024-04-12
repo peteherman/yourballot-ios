@@ -8,6 +8,6 @@
 import Foundation
 
 enum Ethnicity: String, Decodable {
-    case hispanic_or_latino
-    case not_hispanic_or_latino
+    case hispanic_or_latino = "Hispanic or Latino"
+    case not_hispanic_or_latino = "Not Hispanic or Latino"
 }

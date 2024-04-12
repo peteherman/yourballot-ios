@@ -22,8 +22,8 @@ let testCandidateDetail = """
         "bio": "Together, we can finish the job for the American People",
         "start_date": "2020-01-20T12:00:00Z",
         "similarity": 0.6509835247441749,
-        "ethnicity": "not_hispanic_or_latino",
-        "gender": "MALE",
+        "ethnicity": "Not Hispanic or Latino",
+        "gender": "male",
         "political_identity": "Democrat",
         "political_party": "democratic",
         "position": {
@@ -35,7 +35,7 @@ let testCandidateDetail = """
                 "created": "2024-04-05T11:27:30.893103Z",
                 "updated": "2024-04-05T11:27:30.893132Z",
                 "name": "United States",
-                "type": "federal"
+                "type": "FEDERAL"
             },
             "term_limit": 1460
         },
