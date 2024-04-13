@@ -40,4 +40,22 @@ class VoterCandidatesService: ObservableObject {
         let fetchedCandidates = try await task.value
         self.candidates = fetchedCandidates
     }
+    
+    /*
+     * Groups the candidates within .candidates by political locality type
+     * @returns a dictionary which maps politicallocalitytype to an array of candidates
+     */
+    func groupCandidatesByLocalityType() -> Dictionary<PoliticalLocalityType,[Candidate]> {
+        var candidateLocalityMap: Dictionary<PoliticalLocalityType,[Candidate]> = [:]
+        for candidate in self.candidates {
+            guard candidate.position != nil else { continue }
+            let candidatePosition = candidate.position!
+            if candidateLocalityMap.keys.contains(candidatePosition.locality.type) {
+                candidateLocalityMap[candidatePosition.locality.type]?.append(candidate)
+            } else {
+                candidateLocalityMap[candidatePosition.locality.type] = [ candidate ]
+            }
+        }
+        return candidateLocalityMap
+    }
 }

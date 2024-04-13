@@ -13,3 +13,18 @@ enum PoliticalLocalityType: String, Decodable {
     case state = "STATE"
     case federal = "FEDERAL"
 }
+
+extension PoliticalLocalityType {
+    var pretty: String {
+        switch self {
+        case .town:
+            return "Town"
+        case .city:
+            return "City"
+        case .state:
+            return "State"
+        case .federal:
+            return "Federal"
+        }
+    }
+}

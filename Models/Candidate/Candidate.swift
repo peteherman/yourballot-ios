@@ -24,6 +24,14 @@ struct Candidate: Decodable {
     let issue_views: IssueViewsSummary
     let similarity: Double?
     let position: CandidatePosition?
+    
+    var similarityPercentage: Int? {
+        if let similarity {
+            return Int(similarity * 100)
+        } else {
+            return nil
+        }
+    }
 }
 
 extension Candidate {
@@ -37,6 +45,6 @@ extension Candidate {
                 "Gun Control": -5.0,
                 "Environment": 8.0,
                 "Immigration": -6.0
-            ], similarity: nil, position: candidatePosition)
+        ], similarity: 0.62, position: candidatePosition)
     ]
 }
