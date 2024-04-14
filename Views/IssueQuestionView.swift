@@ -49,8 +49,8 @@ struct IssueQuestionView: View {
                     .cornerRadius(10.0)
                     .padding([.leading, .trailing])
                 HStack {
-                    RectangleButton_Red(buttonText: "Skip", onPress: submitQuestion)
-                    RectangleButton_Blue(buttonText: "Submit", onPress: skipQuestion)
+                    RectangleButton_Red(buttonText: "Skip", onPress: skipQuestion)
+                    RectangleButton_Blue(buttonText: "Submit", onPress: submitQuestion)
                 }
                 .padding([.leading, .trailing])
             }

@@ -33,6 +33,26 @@
 		C12FB32A2BC94EA900F66512 /* MockVoterCandidatesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FB3292BC94EA900F66512 /* MockVoterCandidatesProvider.swift */; };
 		C12FB32B2BC94EA900F66512 /* MockVoterCandidatesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FB3292BC94EA900F66512 /* MockVoterCandidatesProvider.swift */; };
 		C12FB32E2BC94FA200F66512 /* TestVoterCandidates.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FB32D2BC94FA200F66512 /* TestVoterCandidates.swift */; };
+		C140F06A2BCC06DC0036DE89 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F0692BCC06DC0036DE89 /* WelcomeView.swift */; };
+		C140F06B2BCC06DC0036DE89 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F0692BCC06DC0036DE89 /* WelcomeView.swift */; };
+		C140F06D2BCC07B20036DE89 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F06C2BCC07B20036DE89 /* LoginView.swift */; };
+		C140F06E2BCC07B20036DE89 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F06C2BCC07B20036DE89 /* LoginView.swift */; };
+		C140F0712BCC086D0036DE89 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F0702BCC086D0036DE89 /* SignUpView.swift */; };
+		C140F0722BCC086D0036DE89 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F0702BCC086D0036DE89 /* SignUpView.swift */; };
+		C140F0752BCC088C0036DE89 /* GuestTrialZipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F0742BCC088C0036DE89 /* GuestTrialZipView.swift */; };
+		C140F0762BCC088C0036DE89 /* GuestTrialZipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F0742BCC088C0036DE89 /* GuestTrialZipView.swift */; };
+		C140F0792BCC0D350036DE89 /* CustomBackButton+NoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F0782BCC0D350036DE89 /* CustomBackButton+NoText.swift */; };
+		C140F07A2BCC0D350036DE89 /* CustomBackButton+NoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F0782BCC0D350036DE89 /* CustomBackButton+NoText.swift */; };
+		C140F07D2BCC15010036DE89 /* GuestTrial.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F07C2BCC15010036DE89 /* GuestTrial.swift */; };
+		C140F07E2BCC15010036DE89 /* GuestTrial.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F07C2BCC15010036DE89 /* GuestTrial.swift */; };
+		C140F0812BCC173E0036DE89 /* GuestQuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F0802BCC173E0036DE89 /* GuestQuestionService.swift */; };
+		C140F0822BCC173E0036DE89 /* GuestQuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F0802BCC173E0036DE89 /* GuestQuestionService.swift */; };
+		C140F0842BCC17D40036DE89 /* GuestQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F0832BCC17D40036DE89 /* GuestQuestionView.swift */; };
+		C140F0852BCC17D40036DE89 /* GuestQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F0832BCC17D40036DE89 /* GuestQuestionView.swift */; };
+		C140F0872BCC1D1C0036DE89 /* RectangularView+Blue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F0862BCC1D1C0036DE89 /* RectangularView+Blue.swift */; };
+		C140F0882BCC1D1C0036DE89 /* RectangularView+Blue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F0862BCC1D1C0036DE89 /* RectangularView+Blue.swift */; };
+		C140F08A2BCC1D5C0036DE89 /* GuestMatchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F0892BCC1D5C0036DE89 /* GuestMatchesView.swift */; };
+		C140F08B2BCC1D5C0036DE89 /* GuestMatchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C140F0892BCC1D5C0036DE89 /* GuestMatchesView.swift */; };
 		C147496E2BAAFDE100B969F5 /* TestQuestionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10494C12BA9AA16000C3F36 /* TestQuestionData.swift */; };
 		C14749712BAAFE6C00B969F5 /* QuestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14749702BAAFE6C00B969F5 /* QuestionService.swift */; };
 		C14749732BAB007400B969F5 /* BaseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14749722BAB007400B969F5 /* BaseSerializer.swift */; };
@@ -156,6 +176,16 @@
 		C12FB3252BC94DAD00F66512 /* TestVoterCandidatesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVoterCandidatesData.swift; sourceTree = "<group>"; };
 		C12FB3292BC94EA900F66512 /* MockVoterCandidatesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockVoterCandidatesProvider.swift; sourceTree = "<group>"; };
 		C12FB32D2BC94FA200F66512 /* TestVoterCandidates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVoterCandidates.swift; sourceTree = "<group>"; };
+		C140F0692BCC06DC0036DE89 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		C140F06C2BCC07B20036DE89 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		C140F0702BCC086D0036DE89 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		C140F0742BCC088C0036DE89 /* GuestTrialZipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestTrialZipView.swift; sourceTree = "<group>"; };
+		C140F0782BCC0D350036DE89 /* CustomBackButton+NoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomBackButton+NoText.swift"; sourceTree = "<group>"; };
+		C140F07C2BCC15010036DE89 /* GuestTrial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestTrial.swift; sourceTree = "<group>"; };
+		C140F0802BCC173E0036DE89 /* GuestQuestionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestQuestionService.swift; sourceTree = "<group>"; };
+		C140F0832BCC17D40036DE89 /* GuestQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestQuestionView.swift; sourceTree = "<group>"; };
+		C140F0862BCC1D1C0036DE89 /* RectangularView+Blue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RectangularView+Blue.swift"; sourceTree = "<group>"; };
+		C140F0892BCC1D5C0036DE89 /* GuestMatchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestMatchesView.swift; sourceTree = "<group>"; };
 		C14749702BAAFE6C00B969F5 /* QuestionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionService.swift; sourceTree = "<group>"; };
 		C14749722BAB007400B969F5 /* BaseSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSerializer.swift; sourceTree = "<group>"; };
 		C14749762BAB027C00B969F5 /* IssueQuestionListSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueQuestionListSerializer.swift; sourceTree = "<group>"; };
@@ -333,9 +363,45 @@
 			path = PoliticalIdentity;
 			sourceTree = "<group>";
 		};
+		C140F06F2BCC085A0036DE89 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C140F06C2BCC07B20036DE89 /* LoginView.swift */,
+				C140F0702BCC086D0036DE89 /* SignUpView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		C140F0732BCC087A0036DE89 /* GuestTrial */ = {
+			isa = PBXGroup;
+			children = (
+				C140F0742BCC088C0036DE89 /* GuestTrialZipView.swift */,
+				C140F0832BCC17D40036DE89 /* GuestQuestionView.swift */,
+				C140F0892BCC1D5C0036DE89 /* GuestMatchesView.swift */,
+			);
+			path = GuestTrial;
+			sourceTree = "<group>";
+		};
+		C140F07B2BCC14F40036DE89 /* Guest */ = {
+			isa = PBXGroup;
+			children = (
+				C140F07C2BCC15010036DE89 /* GuestTrial.swift */,
+			);
+			path = Guest;
+			sourceTree = "<group>";
+		};
+		C140F07F2BCC172E0036DE89 /* Guest */ = {
+			isa = PBXGroup;
+			children = (
+				C140F0802BCC173E0036DE89 /* GuestQuestionService.swift */,
+			);
+			path = Guest;
+			sourceTree = "<group>";
+		};
 		C147496F2BAAFE6100B969F5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C140F07F2BCC172E0036DE89 /* Guest */,
 				C18CA1A42BC7FA6100900F16 /* Voter */,
 				C14749702BAAFE6C00B969F5 /* QuestionService.swift */,
 				C1F261F22BC555EF006181C2 /* Candidate */,
@@ -385,9 +451,12 @@
 		C15327202BA9092C00A8A591 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C140F0732BCC087A0036DE89 /* GuestTrial */,
+				C140F06F2BCC085A0036DE89 /* Auth */,
 				C15327212BA9093700A8A591 /* IssueQuestionView.swift */,
 				C16511512BBC189A0056E640 /* CandidateView.swift */,
 				C12FB31B2BC94C2A00F66512 /* VoterCandidatesView.swift */,
+				C140F0692BCC06DC0036DE89 /* WelcomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -395,6 +464,7 @@
 		C15327232BA90BC200A8A591 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C140F07B2BCC14F40036DE89 /* Guest */,
 				C18CA1A02BC7F9D500900F16 /* Voter */,
 				C1F2620D2BC55FE9006181C2 /* Locality */,
 				C12279562BB79E4300BF5A60 /* PoliticalIdentity */,
@@ -418,6 +488,8 @@
 			children = (
 				C163C60B2BBA0AC000A03E14 /* RectangleButton+Red.swift */,
 				C163C60D2BBA0B9900A03E14 /* RectangleButton_Blue.swift */,
+				C140F0782BCC0D350036DE89 /* CustomBackButton+NoText.swift */,
+				C140F0862BCC1D1C0036DE89 /* RectangularView+Blue.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -733,34 +805,44 @@
 				C18CA1A92BC7FCE400900F16 /* CandidateVoterSliderComparison.swift in Sources */,
 				C14CE03C2BCAF27B008D7CD8 /* CandidateListComponentCard.swift in Sources */,
 				C18CA1A22BC7F9E800900F16 /* VoterIssueViews.swift in Sources */,
+				C140F08A2BCC1D5C0036DE89 /* GuestMatchesView.swift in Sources */,
+				C140F06D2BCC07B20036DE89 /* LoginView.swift in Sources */,
+				C140F0842BCC17D40036DE89 /* GuestQuestionView.swift in Sources */,
+				C140F0712BCC086D0036DE89 /* SignUpView.swift in Sources */,
 				C153271D2BA8626300A8A591 /* Slider+Draggable.swift in Sources */,
 				C12FB3262BC94DAD00F66512 /* TestVoterCandidatesData.swift in Sources */,
 				C16511562BBC212D0056E640 /* CandidateCard.swift in Sources */,
 				C15327222BA9093700A8A591 /* IssueQuestionView.swift in Sources */,
+				C140F06A2BCC06DC0036DE89 /* WelcomeView.swift in Sources */,
 				C14749732BAB007400B969F5 /* BaseSerializer.swift in Sources */,
 				C153271F2BA9065E00A8A591 /* Theme.swift in Sources */,
 				C14749772BAB027C00B969F5 /* IssueQuestionListSerializer.swift in Sources */,
+				C140F07D2BCC15010036DE89 /* GuestTrial.swift in Sources */,
 				C1F262112BC5603F006181C2 /* PoliticalLocalityType.swift in Sources */,
 				C12279502BB79D7600BF5A60 /* Ethnicity.swift in Sources */,
 				C12FB31C2BC94C2A00F66512 /* VoterCandidatesView.swift in Sources */,
 				C18CA19D2BC7F87A00900F16 /* TestVoterIssueViewSummaryData.swift in Sources */,
 				C18CA19B2BC7F86B00900F16 /* MockVoterIssueViewSummaryProvider.swift in Sources */,
 				C15327262BA90BD400A8A591 /* IssueQuestion.swift in Sources */,
+				C140F0812BCC173E0036DE89 /* GuestQuestionService.swift in Sources */,
 				C1F261FA2BC55A51006181C2 /* SingleCandidateService.swift in Sources */,
 				C147496E2BAAFDE100B969F5 /* TestQuestionData.swift in Sources */,
 				C11075AC2BA7780200E28F5E /* ContentView.swift in Sources */,
 				C1F261F42BC55602006181C2 /* CandidateAuthenticatedDetailedSerializer.swift in Sources */,
 				C14749712BAAFE6C00B969F5 /* QuestionService.swift in Sources */,
 				C18CA1922BC7F73500900F16 /* VoterIssueViewSummarySerializer.swift in Sources */,
+				C140F0792BCC0D350036DE89 /* CustomBackButton+NoText.swift in Sources */,
 				C163C60E2BBA0B9900A03E14 /* RectangleButton_Blue.swift in Sources */,
 				C1F261F72BC5564F006181C2 /* IssueViewsSummary.swift in Sources */,
 				C1F262052BC55EC4006181C2 /* TestCandidateData.swift in Sources */,
 				C1C903752BBD718F00B8AE94 /* PoliticalIssueSlider.swift in Sources */,
 				C12FB31F2BC94CEA00F66512 /* VoterCandidatesSerializer.swift in Sources */,
+				C140F0752BCC088C0036DE89 /* GuestTrialZipView.swift in Sources */,
 				C10494BC2BA9A865000C3F36 /* APIError.swift in Sources */,
 				C122794B2BB79C4D00BF5A60 /* Candidate.swift in Sources */,
 				C11075AA2BA7780200E28F5E /* Your_BallotApp.swift in Sources */,
 				C16511522BBC189A0056E640 /* CandidateView.swift in Sources */,
+				C140F0872BCC1D1C0036DE89 /* RectangularView+Blue.swift in Sources */,
 				C10494BA2BA9A6E3000C3F36 /* ProviderCore.swift in Sources */,
 				C12279552BB79DE200BF5A60 /* Gender.swift in Sources */,
 				C1C903722BBD704700B8AE94 /* CustomSliderBar.swift in Sources */,
@@ -807,34 +889,44 @@
 				C18CA1AA2BC7FCE400900F16 /* CandidateVoterSliderComparison.swift in Sources */,
 				C14CE03D2BCAF27B008D7CD8 /* CandidateListComponentCard.swift in Sources */,
 				C18CA1A32BC7F9E800900F16 /* VoterIssueViews.swift in Sources */,
+				C140F08B2BCC1D5C0036DE89 /* GuestMatchesView.swift in Sources */,
+				C140F06E2BCC07B20036DE89 /* LoginView.swift in Sources */,
+				C140F0852BCC17D40036DE89 /* GuestQuestionView.swift in Sources */,
+				C140F0722BCC086D0036DE89 /* SignUpView.swift in Sources */,
 				C17ABE512BBF9BC500BE8CB0 /* Slider+Draggable.swift in Sources */,
 				C12FB3272BC94DAD00F66512 /* TestVoterCandidatesData.swift in Sources */,
 				C1F262072BC55EF6006181C2 /* CandidateAuthenticatedDetailedSerializer.swift in Sources */,
 				C17ABE522BBF9BC500BE8CB0 /* CandidateCard.swift in Sources */,
+				C140F06B2BCC06DC0036DE89 /* WelcomeView.swift in Sources */,
 				C17ABE532BBF9BC500BE8CB0 /* IssueQuestionView.swift in Sources */,
 				C17ABE542BBF9BC500BE8CB0 /* BaseSerializer.swift in Sources */,
 				C17ABE552BBF9BC500BE8CB0 /* Theme.swift in Sources */,
+				C140F07E2BCC15010036DE89 /* GuestTrial.swift in Sources */,
 				C1F262122BC5603F006181C2 /* PoliticalLocalityType.swift in Sources */,
 				C17ABE562BBF9BC500BE8CB0 /* IssueQuestionListSerializer.swift in Sources */,
 				C12FB31D2BC94C2A00F66512 /* VoterCandidatesView.swift in Sources */,
 				C18CA19C2BC7F87900900F16 /* TestVoterIssueViewSummaryData.swift in Sources */,
 				C18CA19A2BC7F86900900F16 /* MockVoterIssueViewSummaryProvider.swift in Sources */,
 				C17ABE572BBF9BC500BE8CB0 /* Ethnicity.swift in Sources */,
+				C140F0822BCC173E0036DE89 /* GuestQuestionService.swift in Sources */,
 				C17ABE582BBF9BC500BE8CB0 /* IssueQuestion.swift in Sources */,
 				C17ABE592BBF9BC500BE8CB0 /* TestQuestionData.swift in Sources */,
 				C17ABE5A2BBF9BC500BE8CB0 /* ContentView.swift in Sources */,
 				C1F262062BC55EF3006181C2 /* SingleCandidateService.swift in Sources */,
 				C17ABE5B2BBF9BC500BE8CB0 /* QuestionService.swift in Sources */,
 				C18CA1932BC7F73500900F16 /* VoterIssueViewSummarySerializer.swift in Sources */,
+				C140F07A2BCC0D350036DE89 /* CustomBackButton+NoText.swift in Sources */,
 				C17ABE5C2BBF9BC500BE8CB0 /* RectangleButton_Blue.swift in Sources */,
 				C17ABE5D2BBF9BC500BE8CB0 /* PoliticalIssueSlider.swift in Sources */,
 				C17ABE5E2BBF9BC500BE8CB0 /* APIError.swift in Sources */,
 				C17ABE5F2BBF9BC500BE8CB0 /* Candidate.swift in Sources */,
 				C12FB3202BC94CEA00F66512 /* VoterCandidatesSerializer.swift in Sources */,
+				C140F0762BCC088C0036DE89 /* GuestTrialZipView.swift in Sources */,
 				C1F262042BC55EC3006181C2 /* TestCandidateData.swift in Sources */,
 				C1F262002BC55E6A006181C2 /* MockSingleCandidateProvider.swift in Sources */,
 				C17ABE602BBF9BC500BE8CB0 /* Your_BallotApp.swift in Sources */,
 				C17ABE612BBF9BC500BE8CB0 /* CandidateView.swift in Sources */,
+				C140F0882BCC1D1C0036DE89 /* RectangularView+Blue.swift in Sources */,
 				C17ABE622BBF9BC500BE8CB0 /* ProviderCore.swift in Sources */,
 				C17ABE632BBF9BC500BE8CB0 /* Gender.swift in Sources */,
 				C17ABE642BBF9BC500BE8CB0 /* CustomSliderBar.swift in Sources */,
