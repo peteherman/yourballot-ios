@@ -33,11 +33,11 @@ class GuestQuestionService: ObservableObject {
     /*
      * Initializer useful for mocks/testing/previews
      */
-    init(questions: [IssueQuestion] = [], currentQuestion: IssueQuestion? = nil, provider: any HTTPProvider = URLSession.shared, candidates: [Candidate] = []) {
+    init(questions: [IssueQuestion] = [], currentQuestion: IssueQuestion? = nil, provider: any HTTPProvider = URLSession.shared, candidateMatches: [Candidate] = []) {
         self.questionQueue = questions
         self.currentQuestion = currentQuestion
         self.provider = provider
-        self.candidateMatches = candidates
+        self.candidateMatches = candidateMatches
     }
     
     /*
@@ -102,5 +102,23 @@ class GuestQuestionService: ObservableObject {
     func createPostBody(from guestTrial: GuestTrial) throws -> Data {
         let encoder = JSONEncoder()
         return try encoder.encode(guestTrial)
+    }
+    
+    /*
+     * Groups the candidates within .candidates by political locality type
+     * @returns a dictionary which maps politicallocalitytype to an array of candidates
+     */
+    func groupCandidatesByLocalityType() -> Dictionary<PoliticalLocalityType,[Candidate]> {
+        var candidateLocalityMap: Dictionary<PoliticalLocalityType,[Candidate]> = [:]
+        for candidate in self.candidateMatches {
+            guard candidate.position != nil else { continue }
+            let candidatePosition = candidate.position!
+            if candidateLocalityMap.keys.contains(candidatePosition.locality.type) {
+                candidateLocalityMap[candidatePosition.locality.type]?.append(candidate)
+            } else {
+                candidateLocalityMap[candidatePosition.locality.type] = [ candidate ]
+            }
+        }
+        return candidateLocalityMap
     }
 }
