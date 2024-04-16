@@ -51,10 +51,12 @@ struct GuestQuestionView: View {
             // Answered all questions, time to get results
             NavigationView {
                 VStack {
-                    Text("Get Results")
+                    Text("Questions Complete")
                         .font(.title2)
-                    NavigationLink(destination: GuestMatchesView()) {
-                        RectangleButton_Blue(buttonText: "Submit", onPress: submitQuestion)
+                    Spacer()
+                        .frame(maxHeight: 120)
+                    NavigationLink(destination: GuestMatchesView(guestQuestionService: questionService, guestTrial: guestTrial)) {
+                        RectangleButton_Blue(buttonText: "Get Results", onPress: submitQuestion)
                     }
                 }
             }
@@ -70,10 +72,22 @@ struct GuestQuestionView_Preview: PreviewProvider {
     
     static var mockQuestionProvider = MockQuestionProvider()
     static var guestQuestionService = GuestQuestionService(currentQuestion: IssueQuestion.sampleData[0], provider: mockQuestionProvider)
+
     
     static var guestTrial = GuestTrial(zipcode: "12831")
     
+//    static var previews: some View {
+//        GuestQuestionView(responseValue: 5.0, maxResponseValue: 10.0, questionService: guestQuestionService, guestTrial: guestTrial)
+//    }
+    
+    static var guestTrialFullyAnswered = GuestTrial(zipcode: "12831", answeredQuestions: [
+        IssueQuestion(id: 1, issue_name: "Immmigration", external_id: UUID(), question: "The federal government should more heavily restrict who is allowed through the border", rating: 2.0),
+        IssueQuestion(id: 2, issue_name: "Abortion", external_id: UUID(),
+                      question: "Abortion is murder", rating: 0.0)
+    ])
+    
+    static var questionServiceFullyAnswered = GuestQuestionService(questions: [], provider: mockQuestionProvider)
     static var previews: some View {
-        GuestQuestionView(responseValue: 5.0, maxResponseValue: 10.0, questionService: guestQuestionService, guestTrial: guestTrial)
+        GuestQuestionView(responseValue: 5.0, maxResponseValue: 10.0, questionService: questionServiceFullyAnswered, guestTrial: guestTrialFullyAnswered)
     }
 }
