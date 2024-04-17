@@ -10,7 +10,9 @@ import SwiftUI
 struct GuestTrialZipView: View {
     @State private var isVisible = true
     @State private var animationAmount = 1.0
-    @StateObject var guestTrial: GuestTrial
+    @FocusState private var isZipEntryFocused: Bool
+    @StateObject var guestTrial: GuestTrial = GuestTrial()
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -26,12 +28,15 @@ struct GuestTrialZipView: View {
                     .padding([.bottom])
                 TextField("Zipcode", text: $guestTrial.zipcode)
                     .keyboardType(.numberPad)
+                    .focused($isZipEntryFocused)
                     .padding()
                 VStack {
-                    NavigationLink(destination: LoginView()) {
+                    NavigationLink(destination: GuestQuestionView(questionService: GuestQuestionService(provider: MockQuestionProvider()), guestTrial: guestTrial)
+                    ) {
                         Text("Continue")
                             .foregroundStyle(Theme.deep_blue.mainColor)
                     }
+                    .disabled(!guestTrial.isZipcodeValid)
                 }
                 .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
                 .padding()
@@ -53,6 +58,9 @@ struct GuestTrialZipView: View {
         }
         .navigationBarBackButtonHidden(true) // Hide default back button
         .navigationBarItems(leading: CustomBackButton_NoText())
+        .onAppear {
+            isZipEntryFocused = true
+        }
     }
 }
 

@@ -8,9 +8,28 @@
 import Foundation
 
 class GuestTrial: ObservableObject, Encodable {
+    
+   
 
     var zipcode: String = ""
     var answeredQuestions: [IssueQuestion] = []    
+    let zipRegex: Regex<Substring> = /^[0-9]{5}$/
+
+    
+    /*
+     * Determines if self.zipcode is a valid 5 digit zipcode
+     */
+    var isZipcodeValid: Bool {
+        print("Running here!")
+        do {
+            let result = try zipRegex.wholeMatch(in: self.zipcode)
+            print("Got result: \(result)")
+            return result != nil
+        } catch {
+            print("Got error: \(error.localizedDescription)")
+            return false
+        }
+    }
     
     /*
      * Initializer which is useful for tests/mocks/previews
@@ -60,5 +79,5 @@ class GuestTrial: ObservableObject, Encodable {
         try container.encode(self.computeIssueViews(), forKey: .issue_views)
     }
     
-    
+
 }

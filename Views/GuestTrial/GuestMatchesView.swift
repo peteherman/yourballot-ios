@@ -38,7 +38,15 @@ struct GuestMatchesView: View {
                 }
             }
         } else {
-            Text("Loading Candidate Matches")
+            Text("Loading Candidate Matches").onAppear {
+                Task {
+                    do {
+                        try await guestQuestionService.fetchMatches(guestTrial: guestTrial)
+                    } catch {
+                        fatalError(error.localizedDescription)
+                    }
+                }
+            }
         }
     }
 }

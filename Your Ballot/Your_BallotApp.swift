@@ -10,7 +10,6 @@ import SwiftUI
 @main
 struct Your_BallotApp: App {
     @StateObject private var questionService = QuestionService(provider: MockQuestionProvider())
-    @StateObject private var guestTrial = GuestTrial()
     var body: some Scene {
         WindowGroup {
 //            IssueQuestionView(responseValue: 0.0, maxResponseValue: 5.0, questionService: questionService)
@@ -23,7 +22,7 @@ struct Your_BallotApp: App {
 //                        fatalError(error.localizedDescription)
 //                    }
 //                }
-            WelcomeView(guestTrial: guestTrial)
+            WelcomeView()
         }
     }
 }

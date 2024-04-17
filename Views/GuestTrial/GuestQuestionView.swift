@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct GuestQuestionView: View {
-    @State var responseValue: Double
-    let maxResponseValue: Double
+    @State var responseValue: Double = 5.0
     @StateObject var questionService: GuestQuestionService
     @StateObject var guestTrial: GuestTrial
+    let maxResponseValue: Double = 10.0
     
     func resetSlider() {
         self.responseValue = maxResponseValue / 2
@@ -24,6 +24,7 @@ struct GuestQuestionView: View {
             var question = questionService.currentQuestion!
             question.rating = responseValue
             try await questionService.answerQuestion(question: question)
+            guestTrial.answerQuestion(question: question)
         }
         self.resetSlider()
     }
@@ -31,7 +32,22 @@ struct GuestQuestionView: View {
     
     @ViewBuilder
     var body: some View {
-        if questionService.currentQuestion != nil && guestTrial.answeredQuestions.count == 0 {
+        if guestTrial.answeredQuestions.count == 0 && questionService.currentQuestion == nil {
+            // Still need to fetch questions
+            Text("Loading Questions")
+                .onAppear {
+                    Task {
+                        do {
+                            try await questionService.fetchQuestions()
+                            questionService.currentQuestion = questionService.popFirstQuestion()
+                        } catch {
+                            fatalError(error.localizedDescription)
+                        }
+                    }
+                }
+                .toolbar(.hidden)
+        }
+        else if questionService.currentQuestion != nil {
             VStack {
                 Text(questionService.currentQuestion!.question)
                     .padding([.top, .leading, .trailing])
@@ -47,6 +63,7 @@ struct GuestQuestionView: View {
                 .padding([.leading, .trailing])
             }
             .padding(.top)
+            .toolbar(.hidden)
         } else if questionService.answeredAllQuestions && guestTrial.answeredQuestions.count > 0 {
             // Answered all questions, time to get results
             NavigationView {
@@ -56,14 +73,12 @@ struct GuestQuestionView: View {
                     Spacer()
                         .frame(maxHeight: 120)
                     NavigationLink(destination: GuestMatchesView(guestQuestionService: questionService, guestTrial: guestTrial)) {
-                        RectangleButton_Blue(buttonText: "Get Results", onPress: submitQuestion)
+                        RectangularView_Blue(buttonText: "Get Results")
                     }
                 }
             }
+            .toolbar(.hidden)
             
-        } else {
-            // Still need to fetch questions
-            Text("Loading Questions")
         }
     }
 }
@@ -88,6 +103,6 @@ struct GuestQuestionView_Preview: PreviewProvider {
     
     static var questionServiceFullyAnswered = GuestQuestionService(questions: [], provider: mockQuestionProvider)
     static var previews: some View {
-        GuestQuestionView(responseValue: 5.0, maxResponseValue: 10.0, questionService: questionServiceFullyAnswered, guestTrial: guestTrialFullyAnswered)
+        GuestQuestionView(questionService: questionServiceFullyAnswered, guestTrial: guestTrialFullyAnswered)
     }
 }
