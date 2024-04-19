@@ -8,27 +8,37 @@
 import SwiftUI
 
 struct GuestQuestionView: View {
-    @State var responseValue: Double = 5.0
+    
+}
+
+struct GuestQuestion_LoadingView: ContentView {
+    
+}
+
+struct GuestQuestionView: View {
     @StateObject var questionService: GuestQuestionService
-    @StateObject var guestTrial: GuestTrial
+//    @StateObject var guestTrial: GuestTrial
+//    let zipcode: String
+    @State var responseValue: Double = 5.0
     let maxResponseValue: Double = 10.0
+    
     
     func resetSlider() {
         self.responseValue = maxResponseValue / 2
     }
     
-    // Score question, save to local data, and update current question
-    func submitQuestion() {
-        guard questionService.currentQuestion != nil else { return }
-        Task {
-            var question = questionService.currentQuestion!
-            question.rating = responseValue
-            try await questionService.answerQuestion(question: question)
-            guestTrial.answerQuestion(question: question)
-        }
-        self.resetSlider()
-    }
-    
+//    // Score question, save to local data, and update current question
+//    func submitQuestion() {
+//        guard questionService.currentQuestion != nil else { return }
+//        Task {
+//            var question = questionService.currentQuestion!
+//            question.rating = responseValue
+//            try await questionService.answerQuestion(question: question)
+//            guestTrial.answerQuestion(question: question)
+//        }
+//        self.resetSlider()
+//    }
+//    
     
     @ViewBuilder
     var body: some View {
@@ -58,7 +68,7 @@ struct GuestQuestionView: View {
                     .cornerRadius(10.0)
                     .padding([.leading, .trailing])
                 HStack {
-                    RectangleButton_Blue(buttonText: "Submit", onPress: submitQuestion)
+                    RectangleButton_Blue(buttonText: "Submit", onPress: {})
                 }
                 .padding([.leading, .trailing])
             }

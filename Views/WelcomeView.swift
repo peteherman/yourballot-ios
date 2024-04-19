@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WelcomeView: View {
+    @StateObject var guestTrial = GuestTrial()
     var body: some View {
         NavigationView {
             VStack {

@@ -11,7 +11,7 @@ struct GuestTrialZipView: View {
     @State private var isVisible = true
     @State private var animationAmount = 1.0
     @FocusState private var isZipEntryFocused: Bool
-    @StateObject var guestTrial: GuestTrial = GuestTrial()
+    @State private var zipcode: String = ""
     
     var body: some View {
         NavigationView {
@@ -26,17 +26,17 @@ struct GuestTrialZipView: View {
                     .font(.caption)
                     .multilineTextAlignment(.center)
                     .padding([.bottom])
-                TextField("Zipcode", text: $guestTrial.zipcode)
+                TextField("Zipcode", text: $zipcode)
                     .keyboardType(.numberPad)
                     .focused($isZipEntryFocused)
                     .padding()
                 VStack {
-                    NavigationLink(destination: GuestQuestionView(questionService: GuestQuestionService(provider: MockQuestionProvider()), guestTrial: guestTrial)
+                    NavigationLink(destination: GuestQuestionView(questionService: GuestQuestionService(provider: MockQuestionProvider()))
                     ) {
                         Text("Continue")
                             .foregroundStyle(Theme.deep_blue.mainColor)
                     }
-                    .disabled(!guestTrial.isZipcodeValid)
+                    .disabled(zipcode.count != 5)
                 }
                 .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
                 .padding()
@@ -65,5 +65,5 @@ struct GuestTrialZipView: View {
 }
 
 #Preview {
-    GuestTrialZipView(guestTrial: GuestTrial())
+    GuestTrialZipView()
 }
