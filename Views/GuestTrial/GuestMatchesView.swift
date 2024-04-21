@@ -8,38 +8,29 @@
 import SwiftUI
 
 struct GuestMatchesView: View {
-    let guestQuestionService: GuestQuestionService
+    @ObservedObject var guestQuestionService: GuestQuestionService
     let zipcode: String
     let answeredQuestions: [IssueQuestion]
     
     @ViewBuilder
     var body: some View {
         if guestQuestionService.candidateMatches.count > 0 {
-            let candidateLocalityMap = guestQuestionService.groupCandidatesByLocalityType()
-            VStack {
-                ScrollView {
-                    Text("Your Matches")
-                        .font(.title2)
-                        .foregroundStyle(Theme.deep_blue.mainColor)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding([.leading], 20)
-                        .padding([.bottom])
-                    ForEach(Array(candidateLocalityMap.keys), id: \.self) { localityType in
-                        VStack(spacing: 5) {
-                            Text("\(localityType.pretty)")
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding([.leading, ], 20)
-                            CandidateListComponent(candidates: candidateLocalityMap[localityType]!)
-                        }
-                    }
-                }
-                HStack {
-                    Button("Sign-Up", action: {})
-                    Button("Restart", action: {})
-                }
-            }
+            GuestMatchesView_CandidateList(guestQuestionService: guestQuestionService)
         } else {
-            Text("Loading Candidate Matches").onAppear {
+            GuestMatchesView_LoadingCandidates(guestQuestionService: guestQuestionService, zipcode: zipcode, answeredQuestions: answeredQuestions)
+        }
+    }
+}
+
+struct GuestMatchesView_LoadingCandidates: View {
+    @ObservedObject var guestQuestionService: GuestQuestionService
+    let zipcode: String
+    let answeredQuestions: [IssueQuestion]
+    
+    var body: some View {
+        // Still need to fetch questions
+        Text("Finding Candidates")
+            .onAppear {
                 Task {
                     do {
                         try await guestQuestionService.fetchMatches(zipcode: zipcode, answeredQuestions: answeredQuestions)
@@ -48,7 +39,37 @@ struct GuestMatchesView: View {
                     }
                 }
             }
+            .toolbar(.hidden)
+    }
+}
+
+struct GuestMatchesView_CandidateList: View {
+    @ObservedObject var guestQuestionService: GuestQuestionService
+    var body: some View {
+        let candidateLocalityMap = guestQuestionService.groupCandidatesByLocalityType()
+        VStack {
+            ScrollView {
+                Text("Your Matches")
+                    .font(.title2)
+                    .foregroundStyle(Theme.deep_blue.mainColor)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding([.leading], 20)
+                    .padding([.bottom])
+                ForEach(Array(candidateLocalityMap.keys), id: \.self) { localityType in
+                    VStack(spacing: 5) {
+                        Text("\(localityType.pretty)")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding([.leading, ], 20)
+                        CandidateListComponent(candidates: candidateLocalityMap[localityType]!)
+                    }
+                }
+            }
+            HStack {
+                Button("Sign-Up", action: {})
+                Button("Restart", action: {})
+            }
         }
+        .toolbar(.hidden)
     }
 }
 

@@ -41,7 +41,8 @@ struct CandidateListComponentCard: View {
         .frame(maxWidth: .infinity)
         .background(Theme.light_blue.mainColor)
         .cornerRadius(10.0)
-        .padding()
+        .padding([.top, .leading, .trailing])
+        .padding([.bottom], 3.0)
     }
 }
 

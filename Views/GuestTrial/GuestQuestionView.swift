@@ -27,7 +27,7 @@ struct GuestQuestionView: View {
 }
 
 struct GuestQuestionView_Loading: View {
-    @StateObject var questionService: GuestQuestionService
+    @ObservedObject var questionService: GuestQuestionService
 
     var body: some View {
         // Still need to fetch questions
@@ -42,7 +42,6 @@ struct GuestQuestionView_Loading: View {
                     }
                 }
             }
-            .toolbar(.hidden)
     }
 }
 
@@ -101,15 +100,13 @@ struct GuestQuestionView_QuestionsCompleted: View {
     let zipcode: String
     let answeredQuestions: [IssueQuestion]
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("Questions Complete")
-                    .font(.title2)
-                Spacer()
-                    .frame(maxHeight: 120)
-                NavigationLink(destination: GuestMatchesView(guestQuestionService: questionService, zipcode: zipcode, answeredQuestions: answeredQuestions)) {
-                    RectangularView_Blue(buttonText: "Get Results")
-                }
+        VStack {
+            Text("Questions Complete")
+                .font(.title2)
+            Spacer()
+                .frame(maxHeight: 120)
+            NavigationLink(destination: GuestMatchesView(guestQuestionService: questionService, zipcode: zipcode, answeredQuestions: answeredQuestions)) {
+                RectangularView_Blue(buttonText: "Get Results")
             }
         }
         .toolbar(.hidden)
