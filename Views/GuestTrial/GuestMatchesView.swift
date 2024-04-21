@@ -15,7 +15,7 @@ struct GuestMatchesView: View {
     @ViewBuilder
     var body: some View {
         if guestQuestionService.candidateMatches.count > 0 {
-            GuestMatchesView_CandidateList(guestQuestionService: guestQuestionService)
+            GuestMatchesView_CandidateList(guestQuestionService: guestQuestionService, zipcode: zipcode, answeredQuestions: answeredQuestions)
         } else {
             GuestMatchesView_LoadingCandidates(guestQuestionService: guestQuestionService, zipcode: zipcode, answeredQuestions: answeredQuestions)
         }
@@ -45,6 +45,8 @@ struct GuestMatchesView_LoadingCandidates: View {
 
 struct GuestMatchesView_CandidateList: View {
     @ObservedObject var guestQuestionService: GuestQuestionService
+    let zipcode: String
+    let answeredQuestions: [IssueQuestion]
     var body: some View {
         let candidateLocalityMap = guestQuestionService.groupCandidatesByLocalityType()
         VStack {
@@ -65,8 +67,14 @@ struct GuestMatchesView_CandidateList: View {
                 }
             }
             HStack {
-                Button("Sign-Up", action: {})
-                Button("Restart", action: {})
+                NavigationLink(destination: SignUpView(zipcode: zipcode, answeredQuestions: answeredQuestions)) {
+                    RoundedRectangle_Blue(buttonText: "Sign-Up")
+                }
+                
+                NavigationLink(destination: WelcomeView()) {
+                    RoundedRectangle_Red(buttonText: "Restart")
+                }
+                .isDetailLink(false)
             }
         }
         .toolbar(.hidden)

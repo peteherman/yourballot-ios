@@ -117,6 +117,9 @@
 		C1C903752BBD718F00B8AE94 /* PoliticalIssueSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C903742BBD718F00B8AE94 /* PoliticalIssueSlider.swift */; };
 		C1C903782BBD759C00B8AE94 /* SizeCalculatorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C903772BBD759C00B8AE94 /* SizeCalculatorModifier.swift */; };
 		C1D0CB122BC6ABF6003EB8FE /* TestCandidateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D0CB112BC6ABF6003EB8FE /* TestCandidateService.swift */; };
+		C1EC67DB2BD589120046844B /* LabelAndField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EC67DA2BD589120046844B /* LabelAndField.swift */; };
+		C1EC67DE2BD5BAA10046844B /* RoundedRectangle_Blue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EC67DD2BD5BAA10046844B /* RoundedRectangle_Blue.swift */; };
+		C1EC67E02BD5BB610046844B /* RoundedRectangle_Red.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EC67DF2BD5BB610046844B /* RoundedRectangle_Red.swift */; };
 		C1F261F42BC55602006181C2 /* CandidateAuthenticatedDetailedSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F261F32BC55602006181C2 /* CandidateAuthenticatedDetailedSerializer.swift */; };
 		C1F261F72BC5564F006181C2 /* IssueViewsSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F261F62BC5564F006181C2 /* IssueViewsSummary.swift */; };
 		C1F261FA2BC55A51006181C2 /* SingleCandidateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F261F92BC55A51006181C2 /* SingleCandidateService.swift */; };
@@ -215,6 +218,9 @@
 		C1C903742BBD718F00B8AE94 /* PoliticalIssueSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticalIssueSlider.swift; sourceTree = "<group>"; };
 		C1C903772BBD759C00B8AE94 /* SizeCalculatorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCalculatorModifier.swift; sourceTree = "<group>"; };
 		C1D0CB112BC6ABF6003EB8FE /* TestCandidateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCandidateService.swift; sourceTree = "<group>"; };
+		C1EC67DA2BD589120046844B /* LabelAndField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAndField.swift; sourceTree = "<group>"; };
+		C1EC67DD2BD5BAA10046844B /* RoundedRectangle_Blue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangle_Blue.swift; sourceTree = "<group>"; };
+		C1EC67DF2BD5BB610046844B /* RoundedRectangle_Red.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangle_Red.swift; sourceTree = "<group>"; };
 		C1F261F32BC55602006181C2 /* CandidateAuthenticatedDetailedSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateAuthenticatedDetailedSerializer.swift; sourceTree = "<group>"; };
 		C1F261F62BC5564F006181C2 /* IssueViewsSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueViewsSummary.swift; sourceTree = "<group>"; };
 		C1F261F92BC55A51006181C2 /* SingleCandidateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCandidateService.swift; sourceTree = "<group>"; };
@@ -434,6 +440,7 @@
 		C15327162BA860FD00A8A591 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C1EC67D92BD589060046844B /* Form */,
 				C1C903762BBD758D00B8AE94 /* Modifiers */,
 				C16511532BBC21150056E640 /* Candidate */,
 				C163C60A2BBA0AA700A03E14 /* Buttons */,
@@ -493,6 +500,8 @@
 				C163C60D2BBA0B9900A03E14 /* RectangleButton_Blue.swift */,
 				C140F0862BCC1D1C0036DE89 /* RectangularView+Blue.swift */,
 				C19B0F182BCFE35300D9106A /* NavigationButton+Rounded.swift */,
+				C1EC67DD2BD5BAA10046844B /* RoundedRectangle_Blue.swift */,
+				C1EC67DF2BD5BB610046844B /* RoundedRectangle_Red.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -625,6 +634,14 @@
 				C10494C12BA9AA16000C3F36 /* TestQuestionData.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		C1EC67D92BD589060046844B /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				C1EC67DA2BD589120046844B /* LabelAndField.swift */,
+			);
+			path = Form;
 			sourceTree = "<group>";
 		};
 		C1F261F22BC555EF006181C2 /* Candidate */ = {
@@ -811,12 +828,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1C9036D2BBD6BD700B8AE94 /* PoliticalProfileLabelCard.swift in Sources */,
+				C1EC67E02BD5BB610046844B /* RoundedRectangle_Red.swift in Sources */,
 				C12FB3232BC94D1900F66512 /* VoterCandidatesService.swift in Sources */,
 				C163C60C2BBA0AC000A03E14 /* RectangleButton+Red.swift in Sources */,
 				C12279582BB79E5200BF5A60 /* PoliticalParty.swift in Sources */,
 				C12279532BB79DB500BF5A60 /* Race.swift in Sources */,
 				C1F262142BC56042006181C2 /* PoliticalLocality.swift in Sources */,
 				C18CA1A62BC7FA6B00900F16 /* VoterIssueViewService.swift in Sources */,
+				C1EC67DE2BD5BAA10046844B /* RoundedRectangle_Blue.swift in Sources */,
 				C1F2620C2BC55FBB006181C2 /* CandidatePosition.swift in Sources */,
 				C12FB32A2BC94EA900F66512 /* MockVoterCandidatesProvider.swift in Sources */,
 				C1C903782BBD759C00B8AE94 /* SizeCalculatorModifier.swift in Sources */,
@@ -843,6 +862,7 @@
 				C1F262112BC5603F006181C2 /* PoliticalLocalityType.swift in Sources */,
 				C12279502BB79D7600BF5A60 /* Ethnicity.swift in Sources */,
 				C12FB31C2BC94C2A00F66512 /* VoterCandidatesView.swift in Sources */,
+				C1EC67DB2BD589120046844B /* LabelAndField.swift in Sources */,
 				C18CA19D2BC7F87A00900F16 /* TestVoterIssueViewSummaryData.swift in Sources */,
 				C18CA19B2BC7F86B00900F16 /* MockVoterIssueViewSummaryProvider.swift in Sources */,
 				C15327262BA90BD400A8A591 /* IssueQuestion.swift in Sources */,

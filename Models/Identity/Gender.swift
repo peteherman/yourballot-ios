@@ -7,10 +7,11 @@
 
 import Foundation
 
-enum Gender: String, Decodable {
-    case female
-    case male
-    case transgender
-    case nonbinary
-    case other
+enum Gender: String, Decodable, CaseIterable {
+    case female = "Female"
+    case male = "Male"
+    case transgender = "Transgender"
+    case nonbinary = "Nonbinary"
+    case other = "Other"
+    case choose_not_to_share = "Choose not to share"
 }

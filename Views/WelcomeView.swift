@@ -19,7 +19,7 @@ struct WelcomeView: View {
                 NavigationButton_Rounded(destination: LoginView()) {
                     Text("Login")
                 }
-                NavigationButton_Rounded(destination: LoginView()) {
+                NavigationButton_Rounded(destination: SignUpView()) {
                     Text("Sign-Up")
                 }
                 NavigationLink(destination: GuestTrialZipView()) {
@@ -27,6 +27,7 @@ struct WelcomeView: View {
                 }
             }
         }
+        .toolbar(.hidden)
     }
 }
 

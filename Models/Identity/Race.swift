@@ -13,4 +13,5 @@ enum Race: String, Decodable {
     case black_or_african_american
     case native_hawaiian_or_pacific_islander
     case white
+    case choose_not_to_share
 }

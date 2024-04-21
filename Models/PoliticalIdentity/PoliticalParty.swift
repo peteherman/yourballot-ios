@@ -7,7 +7,8 @@
 
 import Foundation
 
-enum PoliticalParty: String, Decodable {
+enum PoliticalParty: String, Decodable, CaseIterable {
+    case choose_not_to_share
     case democratic
     case republican
     case independent
@@ -172,6 +173,8 @@ extension PoliticalParty {
             return "Socialist Action"
         case .transhumanist:
             return "Transhumanist"
+        case .choose_not_to_share:
+            return "Choose not to share"
         }
 
     }
