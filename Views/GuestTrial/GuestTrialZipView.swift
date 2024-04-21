@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+import Combine
 
 struct GuestTrialZipView: View {
     @State private var isVisible = true
     @State private var animationAmount = 1.0
     @FocusState private var isZipEntryFocused: Bool
     @State private var zipcode: String = ""
+    
+    func limitTextLength(_ length: Int) {
+        if zipcode.count > length {
+            zipcode = String(zipcode.prefix(length))
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -27,11 +34,14 @@ struct GuestTrialZipView: View {
                     .multilineTextAlignment(.center)
                     .padding([.bottom])
                 TextField("Zipcode", text: $zipcode)
+                    .onReceive(Just(zipcode), perform: { _ in
+                        limitTextLength(5)
+                    })
                     .keyboardType(.numberPad)
                     .focused($isZipEntryFocused)
                     .padding()
                 VStack {
-                    NavigationLink(destination: GuestQuestionView(questionService: GuestQuestionService(provider: MockQuestionProvider()), zipcode: zipcode)
+                    NavigationLink(destination: GuestQuestionView(questionService: GuestQuestionService(provider: MockGuestQuestionProvider()), zipcode: zipcode)
                     ) {
                         Text("Continue")
                             .foregroundStyle(Theme.deep_blue.mainColor)
