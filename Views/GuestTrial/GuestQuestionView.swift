@@ -8,56 +8,70 @@
 import SwiftUI
 
 struct GuestQuestionView: View {
-    
-}
-
-struct GuestQuestion_LoadingView: ContentView {
-    
-}
-
-struct GuestQuestionView: View {
     @StateObject var questionService: GuestQuestionService
-//    @StateObject var guestTrial: GuestTrial
-//    let zipcode: String
+    let zipcode: String
     @State var responseValue: Double = 5.0
+    @State var answeredQuestions: [IssueQuestion] = []
     let maxResponseValue: Double = 10.0
     
+    
+    var body: some View {
+        if answeredQuestions.count == 0 && questionService.currentQuestion == nil {
+            GuestQuestionView_Loading(questionService: questionService)
+        } else if questionService.currentQuestion != nil {
+            GuestQuestionView_AnswerQuestion(questionService: questionService, answeredQuestions: $answeredQuestions, responseValue: $responseValue, maxResponseValue: maxResponseValue, zipcode: zipcode)
+        } else if questionService.answeredAllQuestions && answeredQuestions.count > 0 {
+            GuestQuestionView_QuestionsCompleted(questionService: questionService, zipcode: zipcode, answeredQuestions: answeredQuestions)
+        }
+    }
+}
+
+struct GuestQuestionView_Loading: View {
+    @StateObject var questionService: GuestQuestionService
+
+    var body: some View {
+        // Still need to fetch questions
+        Text("Loading Questions")
+            .onAppear {
+                Task {
+                    do {
+                        try await questionService.fetchQuestions()
+                        questionService.currentQuestion = questionService.popFirstQuestion()
+                    } catch {
+                        fatalError(error.localizedDescription)
+                    }
+                }
+            }
+            .toolbar(.hidden)
+    }
+}
+
+struct GuestQuestionView_AnswerQuestion: View {
+    @ObservedObject var questionService: GuestQuestionService
+    @Binding var answeredQuestions: [IssueQuestion]
+    @Binding var responseValue: Double
+    let maxResponseValue: Double
+    let zipcode: String
     
     func resetSlider() {
         self.responseValue = maxResponseValue / 2
     }
     
-//    // Score question, save to local data, and update current question
-//    func submitQuestion() {
-//        guard questionService.currentQuestion != nil else { return }
-//        Task {
-//            var question = questionService.currentQuestion!
-//            question.rating = responseValue
-//            try await questionService.answerQuestion(question: question)
-//            guestTrial.answerQuestion(question: question)
-//        }
-//        self.resetSlider()
-//    }
-//    
-    
-    @ViewBuilder
-    var body: some View {
-        if guestTrial.answeredQuestions.count == 0 && questionService.currentQuestion == nil {
-            // Still need to fetch questions
-            Text("Loading Questions")
-                .onAppear {
-                    Task {
-                        do {
-                            try await questionService.fetchQuestions()
-                            questionService.currentQuestion = questionService.popFirstQuestion()
-                        } catch {
-                            fatalError(error.localizedDescription)
-                        }
-                    }
-                }
-                .toolbar(.hidden)
+    // Score question, save to local data, and update current question
+    func submitQuestion() {
+        guard questionService.currentQuestion != nil else { return }
+        Task {
+            var question = questionService.currentQuestion!
+            question.rating = responseValue
+            try await questionService.answerQuestion(question: question)
+            answeredQuestions.append(question)
         }
-        else if questionService.currentQuestion != nil {
+        self.resetSlider()
+    }
+    
+    
+    var body: some View {
+        if (questionService.currentQuestion != nil) {
             VStack {
                 Text(questionService.currentQuestion!.question)
                     .padding([.top, .leading, .trailing])
@@ -68,30 +82,40 @@ struct GuestQuestionView: View {
                     .cornerRadius(10.0)
                     .padding([.leading, .trailing])
                 HStack {
-                    RectangleButton_Blue(buttonText: "Submit", onPress: {})
+                    RectangleButton_Blue(buttonText: "Submit", onPress: {
+                        self.submitQuestion()
+                    })
                 }
                 .padding([.leading, .trailing])
             }
             .padding(.top)
             .toolbar(.hidden)
-        } else if questionService.answeredAllQuestions && guestTrial.answeredQuestions.count > 0 {
-            // Answered all questions, time to get results
-            NavigationView {
-                VStack {
-                    Text("Questions Complete")
-                        .font(.title2)
-                    Spacer()
-                        .frame(maxHeight: 120)
-                    NavigationLink(destination: GuestMatchesView(guestQuestionService: questionService, guestTrial: guestTrial)) {
-                        RectangularView_Blue(buttonText: "Get Results")
-                    }
-                }
-            }
-            .toolbar(.hidden)
-            
+        } else {
+            GuestQuestionView_QuestionsCompleted(questionService: questionService, zipcode: zipcode, answeredQuestions: answeredQuestions)
         }
     }
 }
+    
+struct GuestQuestionView_QuestionsCompleted: View {
+    @ObservedObject var questionService: GuestQuestionService
+    let zipcode: String
+    let answeredQuestions: [IssueQuestion]
+    var body: some View {
+        NavigationView {
+            VStack {
+                Text("Questions Complete")
+                    .font(.title2)
+                Spacer()
+                    .frame(maxHeight: 120)
+                NavigationLink(destination: GuestMatchesView(guestQuestionService: questionService, zipcode: zipcode, answeredQuestions: answeredQuestions)) {
+                    RectangularView_Blue(buttonText: "Get Results")
+                }
+            }
+        }
+        .toolbar(.hidden)
+    }
+}
+
 
 struct GuestQuestionView_Preview: PreviewProvider {
     
@@ -113,6 +137,6 @@ struct GuestQuestionView_Preview: PreviewProvider {
     
     static var questionServiceFullyAnswered = GuestQuestionService(questions: [], provider: mockQuestionProvider)
     static var previews: some View {
-        GuestQuestionView(questionService: questionServiceFullyAnswered, guestTrial: guestTrialFullyAnswered)
+        GuestQuestionView(questionService: guestQuestionService, zipcode: "12381")
     }
 }

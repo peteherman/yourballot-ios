@@ -9,7 +9,8 @@ import SwiftUI
 
 struct GuestMatchesView: View {
     let guestQuestionService: GuestQuestionService
-    let guestTrial: GuestTrial
+    let zipcode: String
+    let answeredQuestions: [IssueQuestion]
     
     @ViewBuilder
     var body: some View {
@@ -41,7 +42,7 @@ struct GuestMatchesView: View {
             Text("Loading Candidate Matches").onAppear {
                 Task {
                     do {
-                        try await guestQuestionService.fetchMatches(guestTrial: guestTrial)
+                        try await guestQuestionService.fetchMatches(zipcode: zipcode, answeredQuestions: answeredQuestions)
                     } catch {
                         fatalError(error.localizedDescription)
                     }
@@ -56,6 +57,6 @@ struct GuestMatches_Preview: PreviewProvider {
     static var guestQuestionService = GuestQuestionService(provider: mockGuestQuestionProvider, candidateMatches: Candidate.sampleData)
     static var guestTrial = GuestTrial()
     static var previews: some View {
-        GuestMatchesView(guestQuestionService: guestQuestionService, guestTrial: guestTrial)
+        GuestMatchesView(guestQuestionService: guestQuestionService, zipcode: "12831", answeredQuestions: [])
     }
 }

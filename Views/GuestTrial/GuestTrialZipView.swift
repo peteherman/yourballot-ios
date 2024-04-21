@@ -31,7 +31,7 @@ struct GuestTrialZipView: View {
                     .focused($isZipEntryFocused)
                     .padding()
                 VStack {
-                    NavigationLink(destination: GuestQuestionView(questionService: GuestQuestionService(provider: MockQuestionProvider()))
+                    NavigationLink(destination: GuestQuestionView(questionService: GuestQuestionService(provider: MockQuestionProvider()), zipcode: zipcode)
                     ) {
                         Text("Continue")
                             .foregroundStyle(Theme.deep_blue.mainColor)

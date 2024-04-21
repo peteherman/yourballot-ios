@@ -87,8 +87,9 @@ class GuestQuestionService: ObservableObject {
      * to form the request body
      * Matches are stored within self.candidateMatches
      */
-    func fetchMatches(guestTrial: GuestTrial) async throws {
+    func fetchMatches(zipcode: String, answeredQuestions: [IssueQuestion]) async throws {
         let task = Task<[Candidate], Error> {
+            let guestTrial = GuestTrial(zipcode: zipcode, answeredQuestions: answeredQuestions)
             let postBody = try self.createPostBody(from: guestTrial)
             let candidateData = try await provider.postHttp(data: postBody, to: getMatchesURL)
             let candidateSerializer = try decoder.decode(VoterCandidatesSerializer.self, from: candidateData)
