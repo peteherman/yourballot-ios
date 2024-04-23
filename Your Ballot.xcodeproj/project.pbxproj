@@ -111,6 +111,10 @@
 		C18C57A92BD74D5500828BE8 /* VoterIssueSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18C57A72BD74D5500828BE8 /* VoterIssueSlider.swift */; };
 		C18C57AC2BD74F4700828BE8 /* ColorInterpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18C57AB2BD74F4700828BE8 /* ColorInterpolation.swift */; };
 		C18C57AD2BD74F4700828BE8 /* ColorInterpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18C57AB2BD74F4700828BE8 /* ColorInterpolation.swift */; };
+		C18C57B02BD7D2B100828BE8 /* IssueRankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18C57AF2BD7D2B100828BE8 /* IssueRankingView.swift */; };
+		C18C57B12BD7D2B100828BE8 /* IssueRankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18C57AF2BD7D2B100828BE8 /* IssueRankingView.swift */; };
+		C18C57B32BD7D53F00828BE8 /* IssueRankRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18C57B22BD7D53E00828BE8 /* IssueRankRegion.swift */; };
+		C18C57B42BD7D53F00828BE8 /* IssueRankRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18C57B22BD7D53E00828BE8 /* IssueRankRegion.swift */; };
 		C18CA1922BC7F73500900F16 /* VoterIssueViewSummarySerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18CA1912BC7F73500900F16 /* VoterIssueViewSummarySerializer.swift */; };
 		C18CA1932BC7F73500900F16 /* VoterIssueViewSummarySerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18CA1912BC7F73500900F16 /* VoterIssueViewSummarySerializer.swift */; };
 		C18CA19A2BC7F86900900F16 /* MockVoterIssueViewSummaryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18CA1982BC7F84900900F16 /* MockVoterIssueViewSummaryProvider.swift */; };
@@ -228,6 +232,8 @@
 		C18C57A32BD74B9A00828BE8 /* PoliticalProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticalProfileHeaderView.swift; sourceTree = "<group>"; };
 		C18C57A72BD74D5500828BE8 /* VoterIssueSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoterIssueSlider.swift; sourceTree = "<group>"; };
 		C18C57AB2BD74F4700828BE8 /* ColorInterpolation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorInterpolation.swift; sourceTree = "<group>"; };
+		C18C57AF2BD7D2B100828BE8 /* IssueRankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueRankingView.swift; sourceTree = "<group>"; };
+		C18C57B22BD7D53E00828BE8 /* IssueRankRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueRankRegion.swift; sourceTree = "<group>"; };
 		C18CA1912BC7F73500900F16 /* VoterIssueViewSummarySerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoterIssueViewSummarySerializer.swift; sourceTree = "<group>"; };
 		C18CA1962BC7F7FA00900F16 /* TestVoterIssueViewSummaryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVoterIssueViewSummaryData.swift; sourceTree = "<group>"; };
 		C18CA1982BC7F84900900F16 /* MockVoterIssueViewSummaryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockVoterIssueViewSummaryProvider.swift; sourceTree = "<group>"; };
@@ -464,6 +470,7 @@
 		C15327162BA860FD00A8A591 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C18C57AE2BD7D29500828BE8 /* Profile */,
 				C18C57A62BD74D2B00828BE8 /* Voter */,
 				C1EC67D92BD589060046844B /* Form */,
 				C1C903762BBD758D00B8AE94 /* Modifiers */,
@@ -566,7 +573,7 @@
 			isa = PBXGroup;
 			children = (
 				C18C579D2BD73E4B00828BE8 /* HomeProfileView.swift */,
-				C18C57A32BD74B9A00828BE8 /* PoliticalProfileHeaderView.swift */,
+				C18C57AF2BD7D2B100828BE8 /* IssueRankingView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -577,6 +584,15 @@
 				C18C57A72BD74D5500828BE8 /* VoterIssueSlider.swift */,
 			);
 			path = Voter;
+			sourceTree = "<group>";
+		};
+		C18C57AE2BD7D29500828BE8 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C18C57A32BD74B9A00828BE8 /* PoliticalProfileHeaderView.swift */,
+				C18C57B22BD7D53E00828BE8 /* IssueRankRegion.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		C18CA18A2BC7F6AC00900F16 /* Voter */ = {
@@ -896,6 +912,7 @@
 				C12FB3232BC94D1900F66512 /* VoterCandidatesService.swift in Sources */,
 				C18C579E2BD73E4B00828BE8 /* HomeProfileView.swift in Sources */,
 				C163C60C2BBA0AC000A03E14 /* RectangleButton+Red.swift in Sources */,
+				C18C57B02BD7D2B100828BE8 /* IssueRankingView.swift in Sources */,
 				C18C57A42BD74B9A00828BE8 /* PoliticalProfileHeaderView.swift in Sources */,
 				C12279582BB79E5200BF5A60 /* PoliticalParty.swift in Sources */,
 				C12279532BB79DB500BF5A60 /* Race.swift in Sources */,
@@ -953,6 +970,7 @@
 				C140F0752BCC088C0036DE89 /* GuestTrialZipView.swift in Sources */,
 				C10494BC2BA9A865000C3F36 /* APIError.swift in Sources */,
 				C122794B2BB79C4D00BF5A60 /* Candidate.swift in Sources */,
+				C18C57B32BD7D53F00828BE8 /* IssueRankRegion.swift in Sources */,
 				C11075AA2BA7780200E28F5E /* Your_BallotApp.swift in Sources */,
 				C16511522BBC189A0056E640 /* CandidateView.swift in Sources */,
 				C140F0872BCC1D1C0036DE89 /* RectangularView+Blue.swift in Sources */,
@@ -1007,6 +1025,7 @@
 				C14CE03D2BCAF27B008D7CD8 /* CandidateListComponentCard.swift in Sources */,
 				C19B0F1A2BCFE35300D9106A /* NavigationButton+Rounded.swift in Sources */,
 				C18CA1A32BC7F9E800900F16 /* VoterIssueViews.swift in Sources */,
+				C18C57B12BD7D2B100828BE8 /* IssueRankingView.swift in Sources */,
 				C140F08B2BCC1D5C0036DE89 /* GuestMatchesView.swift in Sources */,
 				C140F06E2BCC07B20036DE89 /* LoginView.swift in Sources */,
 				C140F0852BCC17D40036DE89 /* GuestQuestionView.swift in Sources */,
@@ -1031,6 +1050,7 @@
 				C17ABE572BBF9BC500BE8CB0 /* Ethnicity.swift in Sources */,
 				C140F0822BCC173E0036DE89 /* GuestQuestionService.swift in Sources */,
 				C17ABE582BBF9BC500BE8CB0 /* IssueQuestion.swift in Sources */,
+				C18C57B42BD7D53F00828BE8 /* IssueRankRegion.swift in Sources */,
 				C17ABE592BBF9BC500BE8CB0 /* TestQuestionData.swift in Sources */,
 				C17ABE5A2BBF9BC500BE8CB0 /* ContentView.swift in Sources */,
 				C1F262062BC55EF3006181C2 /* SingleCandidateService.swift in Sources */,

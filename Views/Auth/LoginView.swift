@@ -10,6 +10,9 @@ import SwiftUI
 struct LoginView: View {
     var body: some View {
         Text("Login View")
+        NavigationLink(destination: MainAuthenticatedView()) {
+            Text("Go Home")
+        }
     }
 }
 

@@ -31,7 +31,9 @@ struct HomeProfileView: View {
                     Text("Prior Responses")
                 }
                 .padding([.bottom], 10)
-                Text("Change what matters most to you")
+                NavigationLink(destination: IssueRankingView()) {
+                    Text("Change what matters most to you")
+                }
                 if (voter.issue_views == nil) {
                     Text("Answer some questions so you can view your Political Profile!")
                         .multilineTextAlignment(.center)
