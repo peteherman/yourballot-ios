@@ -30,21 +30,22 @@ func harshColorFromValue(_ value: Double) -> Color {
 }
 
 func lightColorFromValue(_ value: Double) -> Color {
-    return colorFromValue(value, leftColor: Theme.deep_blue.mainColor, rightColor: Theme.deep_red.mainColor)
+    return colorFromValue(value, leftColor: Theme.blue_accent.mainColor, rightColor: Theme.red_accent.mainColor)
 }
 
-func colorFromValue(_ value: Double, leftColor: Color, rightColor: Color, midColor: Color = .white) -> Color {
-    let grayRGB = rgbFromColor(midColor)
+func colorFromValue(_ value: Double, leftColor: Color, rightColor: Color, midColor: Color = Theme.very_light_gray.mainColor) -> Color {
     let blueRGB = rgbFromColor(leftColor)
     let redRGB = rgbFromColor(rightColor)
     
     let rgb: [Double]
-    if value <= 0.0 {
+    if value == 0.0 {
+        return midColor
+    } else if value <= 0.0 {
         let ratio = (value + 10.0) / 10.0
-        rgb = interpolateColor(grayRGB, and: blueRGB, with: ratio)
+        rgb = interpolateColor(rgbFromColor(Theme.light_blue.mainColor), and: blueRGB, with: ratio)
     } else {
         let ratio = value / 10.0
-        rgb = interpolateColor(grayRGB, and: redRGB, with: ratio)
+        rgb = interpolateColor(rgbFromColor(Theme.light_red.mainColor), and: redRGB, with: ratio)
     }
     
     return Color(red: rgb[0], green: rgb[1], blue: rgb[2])
