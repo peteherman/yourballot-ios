@@ -57,5 +57,5 @@ struct VoterIssueSlider: View {
 }
 
 #Preview {
-    VoterIssueSlider(issueName: "Healthcare", voterRating: -5.0)
+    VoterIssueSlider(issueName: "Healthcare", voterRating: -1.0)
 }

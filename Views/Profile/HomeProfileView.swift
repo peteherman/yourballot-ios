@@ -47,6 +47,7 @@ struct HomeProfileView: View {
                                 .padding([.leading, .trailing])
                         }
                     }
+                    .padding([.bottom])
                 }
             }
             .padding([.leading, .trailing], 20)

@@ -26,26 +26,28 @@ func rgbFromColor(_ color: Color) -> Array<Double> {
 }
 
 func harshColorFromValue(_ value: Double) -> Color {
-    return colorFromValue(value, leftColor: Theme.deep_blue.mainColor, rightColor: Theme.deep_red.mainColor)
+    return colorFromValue(value, leftStartColor: Theme.light_blue.mainColor, leftEndColor: Theme.deep_blue.mainColor, rightStartColor: Theme.light_red.mainColor, rightEndColor: Theme.deep_red.mainColor)
 }
 
 func lightColorFromValue(_ value: Double) -> Color {
-    return colorFromValue(value, leftColor: Theme.blue_accent.mainColor, rightColor: Theme.red_accent.mainColor)
+    return colorFromValue(value, leftStartColor: Theme.light_blue.mainColor, leftEndColor: Theme.candidate_blue.mainColor, rightStartColor: Theme.light_red.mainColor, rightEndColor: Theme.candidate_red.mainColor)
 }
 
-func colorFromValue(_ value: Double, leftColor: Color, rightColor: Color, midColor: Color = Theme.very_light_gray.mainColor) -> Color {
-    let blueRGB = rgbFromColor(leftColor)
-    let redRGB = rgbFromColor(rightColor)
+func colorFromValue(_ value: Double, leftStartColor: Color, leftEndColor: Color, rightStartColor: Color, rightEndColor: Color, midColor: Color = Theme.very_light_gray.mainColor) -> Color {
+    let leftStartRGB = rgbFromColor(leftStartColor)
+    let leftEndRGB = rgbFromColor(leftEndColor)
+    let rightStartRGB = rgbFromColor(rightStartColor)
+    let rightEndRGB = rgbFromColor(rightEndColor)
     
     let rgb: [Double]
     if value == 0.0 {
         return midColor
     } else if value <= 0.0 {
         let ratio = (value + 10.0) / 10.0
-        rgb = interpolateColor(rgbFromColor(Theme.light_blue.mainColor), and: blueRGB, with: ratio)
+        rgb = interpolateColor(leftEndRGB, and: leftStartRGB, with: ratio)
     } else {
         let ratio = value / 10.0
-        rgb = interpolateColor(rgbFromColor(Theme.light_red.mainColor), and: redRGB, with: ratio)
+        rgb = interpolateColor(rightStartRGB, and: rightEndRGB, with: ratio)
     }
     
     return Color(red: rgb[0], green: rgb[1], blue: rgb[2])
