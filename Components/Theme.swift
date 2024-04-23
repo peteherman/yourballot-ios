@@ -16,6 +16,8 @@ enum Theme: String {
     case light_gray
     case white
     case deep_blue
+    case deep_red
+    case very_light_gray
     
     var mainColor: Color {
         Color(rawValue)

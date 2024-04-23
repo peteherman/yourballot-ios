@@ -18,6 +18,7 @@ struct SignUpView: View {
     @State private var gender: Gender = .choose_not_to_share
     @State private var political_party: PoliticalParty  = .choose_not_to_share
     @State private var zipcode: String = ""
+    @State private var political_identity: String = ""
     private var answeredQuestions: [IssueQuestion] = []
     let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
     
@@ -103,6 +104,9 @@ struct SignUpView: View {
                         }
                     }
                     .pickerStyle(MenuPickerStyle())
+                }
+                LabelAndField(label: "Political Identity") {
+                    TextField("How would you describe yourself, politically", text: $political_identity)
                 }
             }
             .padding([.leading, .trailing], 15.0)

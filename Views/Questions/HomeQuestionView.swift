@@ -8,11 +8,66 @@
 import SwiftUI
 
 struct HomeQuestionView: View {
+    @State var responseValue: Double
+    let maxResponseValue: Double
+    @StateObject var questionService: QuestionService
+    
+    func resetSlider() {
+        self.responseValue = maxResponseValue / 2
+    }
+    
+    // Score question, submit to api, and update current question
+    func submitQuestion() {
+        guard questionService.currentQuestion != nil else { return }
+        Task {
+            var question = questionService.currentQuestion!
+            question.rating = responseValue
+            try await questionService.answerQuestion(question: question)
+        }
+        self.resetSlider()
+    }
+    
+    func skipQuestion() {
+        guard questionService.currentQuestion != nil else { return }
+        Task {
+            let question = questionService.currentQuestion!
+            questionService.skipQuestion(question: question)
+        }
+        self.resetSlider()
+    }
+    
+    @ViewBuilder
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if questionService.currentQuestion != nil {
+            VStack {
+                Text(questionService.currentQuestion!.question)
+                    .padding([.top, .leading, .trailing])
+                    .multilineTextAlignment(.center)
+                    .font(.title2)
+                Spacer()
+                Slider_Draggable(value: $responseValue, maxValue: maxResponseValue)
+                    .cornerRadius(10.0)
+                    .padding([.leading, .trailing])
+                HStack {
+                    RectangleButton_Red(buttonText: "Skip", onPress: skipQuestion)
+                    RectangleButton_Blue(buttonText: "Submit", onPress: submitQuestion)
+                }
+                .padding([.leading, .trailing])
+            }
+            .padding(.top)
+        }
+        else {
+            Text("No more questions at this time")
+        }
     }
 }
 
-#Preview {
-    HomeQuestionView()
+struct HomeQuestionView_Preview : PreviewProvider {
+    static let maxValue: Double = 10.0
+    static var value: Double = 5.0
+    static var questionProvider: any HTTPProvider = MockQuestionProvider()
+    static var questionService = QuestionService(provider: questionProvider)
+    static var previews: some View {
+        HomeQuestionView(responseValue: value, maxResponseValue: maxValue, questionService: questionService)
+    }
 }
