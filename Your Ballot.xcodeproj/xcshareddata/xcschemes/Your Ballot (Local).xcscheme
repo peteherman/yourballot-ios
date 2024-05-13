@@ -53,7 +53,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "API_BASE_URI"
-            value = "https://localhost:8080"
+            value = "http://localhost:8080"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

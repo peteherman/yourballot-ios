@@ -1,0 +1,35 @@
+{
+  "configurations" : [
+    {
+      "id" : "E65B2273-22F4-49B1-8E31-C5BB03839592",
+      "name" : "Configuration 1",
+      "options" : {
+        "environmentVariableEntries" : [
+          {
+            "key" : "API_BASE_URI",
+            "value" : "https:\/\/yourballot-staging.peteherman.codes"
+          }
+        ]
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "QuestionServiceTests",
+        "TestCandidateService",
+        "TestVoterCandidates",
+        "TestVoterIssueViewSummary"
+      ],
+      "target" : {
+        "containerPath" : "container:Your Ballot.xcodeproj",
+        "identifier" : "C11075B52BA7780300E28F5E",
+        "name" : "Your BallotTests"
+      }
+    }
+  ],
+  "version" : 1
+}
