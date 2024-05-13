@@ -8,29 +8,6 @@
 import XCTest
 @testable import Your_Ballot
 
-class IgnoreSSLDelegate: NSObject, URLSessionDelegate {
-    // Implement URLSessionDelegate methods to bypass SSL validation
-    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
-            // Bypass SSL validation
-            let credential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
-            completionHandler(.useCredential, credential)
-        }
-    }
-}
-
-// Create a URLSession with custom URLSessionConfiguration
-func createURLSession() -> URLSession {
-    let delegate = IgnoreSSLDelegate()
-    let sessionConfig = URLSessionConfiguration.default
-    sessionConfig.timeoutIntervalForRequest = 30  // Optional timeout interval
-    
-    // Configure URLSession to bypass SSL verification
-    let session = URLSession(configuration: sessionConfig, delegate: delegate, delegateQueue: nil)
-    return session
-}
-
-
 final class TestGuestTrialE2E: XCTestCase {
 
     override func setUpWithError() throws {
@@ -57,8 +34,7 @@ final class TestGuestTrialE2E: XCTestCase {
     }
     
     func testGuestQuestionProviderNonEmptyListOfQuestions() async throws {
-        let delegate = IgnoreSSLDelegate()
-        let provider = URLSession(configuration: .default, delegate: delegate, delegateQueue: nil)
+        let provider = URLSession(configuration: .default)
         let guestQuestionService = await GuestQuestionService(provider: provider)
         do {
             try await guestQuestionService.fetchQuestions()
