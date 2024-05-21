@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import OSLog
 
 let environment = ProcessInfo.processInfo.environment
 
@@ -19,6 +20,7 @@ protocol HTTPProvider {
 }
 
 extension URLSession: HTTPProvider {
+    
     func getHttp(from url: URL) async throws -> Data {
         guard let (data, response) = try await self.data(from: url, delegate: nil) as? (Data, HTTPURLResponse),
               validStatus.contains(response.statusCode) else {
@@ -33,12 +35,19 @@ extension URLSession: HTTPProvider {
         request.httpMethod = "POST"
         let encoder = JSONEncoder()
         let data = try encoder.encode(message)
-        request.httpBody = data
 
-        guard let (_, response) = try await self.upload(for: request, from: data, delegate: nil) as? (Data, HTTPURLResponse),
-              validStatus.contains(response.statusCode) else {
-                  throw APIError.unexpectedError(error: "Received unknown")
+        let (responseData, response) = try await self.upload(for: request, from: data)
+        let httpResponse = response as! HTTPURLResponse
+        if httpResponse.statusCode >= 200 && httpResponse.statusCode < 300 {
+            return responseData
+        } else {
+            let logger = Logger()
+            logger.debug("Received non-200 response from API on POST request. Status: \(httpResponse.statusCode)")
+            if let str = String(data: responseData, encoding: .utf8) {
+                logger.debug("Response Data: \(str)")
+            }
+            let error = NSError(domain: "UploadError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])
+            throw error
         }
-        return data
     }
 }

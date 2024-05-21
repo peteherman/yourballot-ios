@@ -91,6 +91,10 @@ class GuestQuestionService: ObservableObject {
         let task = Task<[Candidate], Error> {
             let guestTrial = GuestTrial(zipcode: zipcode, answeredQuestions: answeredQuestions)
             let postBody = try self.createPostBody(from: guestTrial)
+            print("Post body")
+            if let str = String(data: postBody, encoding: .utf8) {
+                print("Post body: \(str)")
+            }
             let candidateData = try await provider.postHttp(data: postBody, to: getMatchesURL)
             let candidateSerializer = try decoder.decode(VoterCandidatesSerializer.self, from: candidateData)
             return candidateSerializer.candidates

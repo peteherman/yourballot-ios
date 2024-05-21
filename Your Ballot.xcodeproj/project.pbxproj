@@ -17,6 +17,7 @@
 		C11075BB2BA7780300E28F5E /* QuestionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11075BA2BA7780300E28F5E /* QuestionServiceTests.swift */; };
 		C11075C52BA7780300E28F5E /* Your_BallotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11075C42BA7780300E28F5E /* Your_BallotUITests.swift */; };
 		C11075C72BA7780300E28F5E /* Your_BallotUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11075C62BA7780300E28F5E /* Your_BallotUITestsLaunchTests.swift */; };
+		C1206AFE2BF4D7F400D53956 /* intermediate-ca.crt in Resources */ = {isa = PBXBuildFile; fileRef = C1206AFD2BF4D7F400D53956 /* intermediate-ca.crt */; };
 		C1212BF32BF2290D00AE35BA /* PoliticalProfileLabelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9036C2BBD6BD700B8AE94 /* PoliticalProfileLabelCard.swift */; };
 		C1212BF42BF2290D00AE35BA /* RoundedRectangle_Red.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EC67DF2BD5BB610046844B /* RoundedRectangle_Red.swift */; };
 		C1212BF52BF2290D00AE35BA /* VoterCandidatesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FB3222BC94D1900F66512 /* VoterCandidatesService.swift */; };
@@ -264,6 +265,9 @@
 		C11075C02BA7780300E28F5E /* Your BallotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Your BallotUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C11075C42BA7780300E28F5E /* Your_BallotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Your_BallotUITests.swift; sourceTree = "<group>"; };
 		C11075C62BA7780300E28F5E /* Your_BallotUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Your_BallotUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C11F48892BF96A3A0074F847 /* Your-BallotTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Your-BallotTests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		C11F488A2BF96C2D0074F847 /* Your-Ballot-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Your-Ballot-Info.plist"; sourceTree = SOURCE_ROOT; };
+		C1206AFD2BF4D7F400D53956 /* intermediate-ca.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "intermediate-ca.crt"; path = "../../ballot/secrets/intermediate-ca.crt"; sourceTree = "<group>"; };
 		C1212C412BF2290D00AE35BA /* Your Ballot (Staging).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Your Ballot (Staging).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1212C4E2BF22DA300AE35BA /* TestGuestTrialE2E.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGuestTrialE2E.swift; sourceTree = "<group>"; };
 		C1212C512BF22E4C00AE35BA /* Staging TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Staging TestPlan.xctestplan"; path = "Your BallotTests/Staging TestPlan.xctestplan"; sourceTree = SOURCE_ROOT; };
@@ -398,6 +402,7 @@
 		C110759D2BA7780200E28F5E = {
 			isa = PBXGroup;
 			children = (
+				C1206AF72BF4D31300D53956 /* Certs */,
 				C14749742BAB024800B969F5 /* Serializers */,
 				C147496F2BAAFE6100B969F5 /* Services */,
 				C10494B82BA9A6D1000C3F36 /* Providers */,
@@ -426,6 +431,7 @@
 		C11075A82BA7780200E28F5E /* Your Ballot */ = {
 			isa = PBXGroup;
 			children = (
+				C11F488A2BF96C2D0074F847 /* Your-Ballot-Info.plist */,
 				C11075A92BA7780200E28F5E /* Your_BallotApp.swift */,
 				C11075AB2BA7780200E28F5E /* ContentView.swift */,
 				C11075AD2BA7780300E28F5E /* Assets.xcassets */,
@@ -445,6 +451,7 @@
 		C11075B92BA7780300E28F5E /* Your BallotTests */ = {
 			isa = PBXGroup;
 			children = (
+				C11F48892BF96A3A0074F847 /* Your-BallotTests-Info.plist */,
 				C1212C512BF22E4C00AE35BA /* Staging TestPlan.xctestplan */,
 				C1212C422BF229A900AE35BA /* Integration */,
 				C1B629552BAD0B0F00340ADF /* Unittests */,
@@ -459,6 +466,14 @@
 				C11075C62BA7780300E28F5E /* Your_BallotUITestsLaunchTests.swift */,
 			);
 			path = "Your BallotUITests";
+			sourceTree = "<group>";
+		};
+		C1206AF72BF4D31300D53956 /* Certs */ = {
+			isa = PBXGroup;
+			children = (
+				C1206AFD2BF4D7F400D53956 /* intermediate-ca.crt */,
+			);
+			path = Certs;
 			sourceTree = "<group>";
 		};
 		C1212C422BF229A900AE35BA /* Integration */ = {
@@ -1016,6 +1031,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1206AFE2BF4D7F400D53956 /* intermediate-ca.crt in Resources */,
 				C1212C3C2BF2290D00AE35BA /* Preview Assets.xcassets in Resources */,
 				C1212C3D2BF2290D00AE35BA /* Assets.xcassets in Resources */,
 			);
@@ -1431,6 +1447,7 @@
 				DEVELOPMENT_TEAM = 3332HA7UZ3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Your-Ballot-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Your Ballot";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1463,6 +1480,7 @@
 				DEVELOPMENT_TEAM = 3332HA7UZ3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Your-Ballot-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Your Ballot";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1493,6 +1511,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YK85XQVZZM;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Your-BallotTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "codes.peteherman.proto.Your-BallotTests";
@@ -1513,6 +1532,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YK85XQVZZM;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Your-BallotTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "codes.peteherman.proto.Your-BallotTests";
@@ -1571,6 +1591,7 @@
 				DEVELOPMENT_TEAM = 3332HA7UZ3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Your-Ballot--Staging--Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Your Ballot";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1603,6 +1624,7 @@
 				DEVELOPMENT_TEAM = 3332HA7UZ3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Your-Ballot--Staging--Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Your Ballot";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

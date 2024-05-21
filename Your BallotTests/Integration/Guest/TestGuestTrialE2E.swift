@@ -8,6 +8,15 @@
 import XCTest
 @testable import Your_Ballot
 
+class CustomSessionDelegate: NSObject, URLSessionDelegate {
+    public func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+       
+        //Trust the certificate even if not valid
+        let urlCredential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
+        completionHandler(.useCredential, urlCredential)
+    }
+}
+
 final class TestGuestTrialE2E: XCTestCase {
 
     override func setUpWithError() throws {
@@ -30,11 +39,13 @@ final class TestGuestTrialE2E: XCTestCase {
             XCTFail("API_BASE_URI was nil!")
             return
         }
-        XCTAssertEqual(environment["API_BASE_URI"]!, "https://yourballot-staging.peteherman.codes")
+        XCTAssertEqual(environment["API_BASE_URI"]!, "https://yourballot.local")
     }
     
     func testGuestQuestionProviderNonEmptyListOfQuestions() async throws {
-        let provider = URLSession(configuration: .default)
+        let insecureDelegate = CustomSessionDelegate()
+        let provider = URLSession(configuration: .default, delegate: insecureDelegate, delegateQueue: nil)
+
         let guestQuestionService = await GuestQuestionService(provider: provider)
         do {
             try await guestQuestionService.fetchQuestions()
@@ -47,6 +58,46 @@ final class TestGuestTrialE2E: XCTestCase {
         } catch {
             XCTFail("Received exception: \(error)")
         }
+    }
+    
+    func testGuestQuestionProviderAnswerQuestions() async throws {
+        let insecureDelegate = CustomSessionDelegate()
+        let provider = URLSession(configuration: .default, delegate: insecureDelegate, delegateQueue: nil)
+
+        let guestQuestionService = await GuestQuestionService(provider: provider)
+        do {
+            // Fetch questions from API
+            try await guestQuestionService.fetchQuestions()
+            
+            let questionQueue = await guestQuestionService.getQuestionQueue()
+            if questionQueue.count <= 0 {
+                XCTFail("Guest Question Service Failed to Retrieve any Questions")
+                return
+            }
+            
+            var answeredQuestions: [IssueQuestion] = []
+            // Answer some questions
+            for i in 0..<(questionQueue.count / 2) {
+                var currentQuestion = await guestQuestionService.popFirstQuestion()
+                if currentQuestion == nil {
+                    break
+                }
+                currentQuestion?.rating = 3.0
+                // try await guestQuestionService.answerQuestion(question: currentQuestion!)
+                answeredQuestions.append(currentQuestion!)
+            }
+            
+            // Now fetch matches
+            try await guestQuestionService.fetchMatches(zipcode: "12831", answeredQuestions: answeredQuestions)
+            // Check that matches returned were not none
+            if await guestQuestionService.candidateMatches.count <= 0 {
+                XCTFail("Guest Question Service failed to retrieve any matches")
+            }
+            
+        } catch {
+            XCTFail("Received exception: \(error)")
+        }
+        
     }
 
 }

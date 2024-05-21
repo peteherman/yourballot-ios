@@ -7,7 +7,7 @@
         "environmentVariableEntries" : [
           {
             "key" : "API_BASE_URI",
-            "value" : "https:\/\/yourballot-staging.peteherman.codes"
+            "value" : "https:\/\/yourballot.local"
           }
         ]
       }
