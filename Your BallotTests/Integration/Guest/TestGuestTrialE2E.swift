@@ -86,12 +86,13 @@ final class TestGuestTrialE2E: XCTestCase {
                 // try await guestQuestionService.answerQuestion(question: currentQuestion!)
                 answeredQuestions.append(currentQuestion!)
             }
-            
+                        
             // Now fetch matches
-            try await guestQuestionService.fetchMatches(zipcode: "12831", answeredQuestions: answeredQuestions)
+            let testZipcode = "12831"
+            try await guestQuestionService.fetchMatches(zipcode: testZipcode, answeredQuestions: answeredQuestions)
             // Check that matches returned were not none
             if await guestQuestionService.candidateMatches.count <= 0 {
-                XCTFail("Guest Question Service failed to retrieve any matches")
+                XCTFail("Guest Question Service failed to retrieve any matches for test zipcode: \(testZipcode)")
             }
             
         } catch {

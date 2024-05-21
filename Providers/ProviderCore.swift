@@ -16,7 +16,7 @@ let validStatus = 200...299
 
 protocol HTTPProvider {
     func getHttp(from url: URL) async throws -> Data
-    func postHttp(data message: Codable, to url: URL) async throws -> Data
+    func postHttp(data message: Encodable, to url: URL) async throws -> Data
 }
 
 extension URLSession: HTTPProvider {
@@ -29,12 +29,15 @@ extension URLSession: HTTPProvider {
         return data
     }
     
-    func postHttp(data message: Codable, to url: URL) async throws -> Data {
+    func postHttp(data message: Encodable, to url: URL) async throws -> Data {
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         let encoder = JSONEncoder()
         let data = try encoder.encode(message)
+        if let str = String(data: data, encoding: .utf8) {
+            print("Post Data: \(str)")
+        }
 
         let (responseData, response) = try await self.upload(for: request, from: data)
         let httpResponse = response as! HTTPURLResponse
