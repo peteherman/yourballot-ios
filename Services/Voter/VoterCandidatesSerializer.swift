@@ -13,12 +13,7 @@ class VoterCandidatesSerializer: BaseSerializer {
         try super.init(from: decoder)
         let rootContainer = try decoder.container(keyedBy: RootCodingKeys.self)
         let _ = try rootContainer.nestedContainer(keyedBy: PaginationCodingKeys.self, forKey: RootCodingKeys.result_info)
-        var candidatesContainer = try rootContainer.nestedUnkeyedContainer(forKey: RootCodingKeys.result)
-        while !candidatesContainer.isAtEnd {
-            if let candidate = try? candidatesContainer.decode(Candidate.self) {
-                candidates.append(candidate)
-            }
-        }
+        let subCandidates = try rootContainer.decode([Candidate].self, forKey: RootCodingKeys.result)
+        candidates = subCandidates
     }
-    
 }

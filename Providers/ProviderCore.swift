@@ -54,3 +54,21 @@ extension URLSession: HTTPProvider {
         }
     }
 }
+
+
+class CustomSessionDelegate: NSObject, URLSessionDelegate {
+    public func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+       
+        //Trust the certificate even if not valid
+        let urlCredential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
+        completionHandler(.useCredential, urlCredential)
+    }
+}
+
+
+func insecure_provider() -> URLSession {
+    let insecureDelegate = CustomSessionDelegate()
+    let provider = URLSession(configuration: .default, delegate: insecureDelegate, delegateQueue: nil)
+    
+    return provider
+}

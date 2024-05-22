@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import OSLog
 
 @MainActor
 class GuestQuestionService: ObservableObject {
@@ -18,6 +19,7 @@ class GuestQuestionService: ObservableObject {
     private let decoder: JSONDecoder = JSONDecoder()
     private let provider: any HTTPProvider
     private var questionQueue: [IssueQuestion] = []
+    private var logger = Logger()
     
     var answeredAllQuestions: Bool {
         return currentQuestion == nil && questionQueue.count == 0
@@ -44,6 +46,7 @@ class GuestQuestionService: ObservableObject {
      * Fetches guest questions from the API. Decodes and stores response within self.questionQueue
      */
     func fetchQuestions() async throws {
+        logger.debug("Fetching Questions from API")
         let task = Task<[IssueQuestion], Error> {
             let questionData = try await provider.getHttp(from: getQuestionsURL)
             let issueQuestionListSerializer = try decoder.decode(IssueQuestionListSerializer.self, from: questionData)
@@ -51,6 +54,7 @@ class GuestQuestionService: ObservableObject {
         }
         let issueQuestions = try await task.value
         self.questionQueue = issueQuestions
+        logger.debug("Received \(self.questionQueue.count) questions from the API")
     }
     
     /*
@@ -71,7 +75,7 @@ class GuestQuestionService: ObservableObject {
      * API
      * @param question should contain an IssueQuestion where .rating != nil
      */
-    func answerQuestion(question: IssueQuestion) async throws {
+    func answerQuestion(question: IssueQuestion) {
         self.currentQuestion = self.popFirstQuestion()
     }
     
@@ -88,14 +92,16 @@ class GuestQuestionService: ObservableObject {
      * Matches are stored within self.candidateMatches
      */
     func fetchMatches(zipcode: String, answeredQuestions: [IssueQuestion]) async throws {
+        logger.debug("Fetching candidate matches from the API")
+        let guestTrial = GuestTrial(zipcode: zipcode, answeredQuestions: answeredQuestions)
         let task = Task<[Candidate], Error> {
-            let guestTrial = GuestTrial(zipcode: zipcode, answeredQuestions: answeredQuestions)
             let candidateData = try await provider.postHttp(data: guestTrial, to: getMatchesURL)
             let candidateSerializer = try decoder.decode(VoterCandidatesSerializer.self, from: candidateData)
             return candidateSerializer.candidates
         }
         let matchedCandidates = try await task.value
         self.candidateMatches = matchedCandidates
+        logger.debug("Received \(self.candidateMatches.count) candidate matches")
     }
     
     

@@ -77,7 +77,7 @@ final class TestGuestTrialE2E: XCTestCase {
             
             var answeredQuestions: [IssueQuestion] = []
             // Answer some questions
-            for i in 0..<(questionQueue.count / 2) {
+            for _ in 0..<(questionQueue.count / 2) {
                 var currentQuestion = await guestQuestionService.popFirstQuestion()
                 if currentQuestion == nil {
                     break
@@ -93,6 +93,8 @@ final class TestGuestTrialE2E: XCTestCase {
             // Check that matches returned were not none
             if await guestQuestionService.candidateMatches.count <= 0 {
                 XCTFail("Guest Question Service failed to retrieve any matches for test zipcode: \(testZipcode)")
+            } else {
+                print("Received matches!")
             }
             
         } catch {

@@ -23,7 +23,6 @@ class GuestTrial: ObservableObject, Encodable {
         print("Running here!")
         do {
             let result = try zipRegex.wholeMatch(in: self.zipcode)
-            print("Got result: \(result)")
             return result != nil
         } catch {
             print("Got error: \(error.localizedDescription)")

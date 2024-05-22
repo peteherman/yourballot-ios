@@ -53,7 +53,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "API_BASE_URI"
-            value = "http://localhost:8080"
+            value = "https://yourballot.local"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

@@ -59,12 +59,10 @@ struct GuestQuestionView_AnswerQuestion: View {
     // Score question, save to local data, and update current question
     func submitQuestion() {
         guard questionService.currentQuestion != nil else { return }
-        Task {
-            var question = questionService.currentQuestion!
-            question.rating = responseValue
-            try await questionService.answerQuestion(question: question)
-            answeredQuestions.append(question)
-        }
+        var question = questionService.currentQuestion!
+        question.rating = responseValue
+        questionService.answerQuestion(question: question)
+        answeredQuestions.append(question)
         self.resetSlider()
     }
     
