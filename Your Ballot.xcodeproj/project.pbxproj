@@ -10,6 +10,20 @@
 		C10494BA2BA9A6E3000C3F36 /* ProviderCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10494B92BA9A6E3000C3F36 /* ProviderCore.swift */; };
 		C10494BC2BA9A865000C3F36 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10494BB2BA9A865000C3F36 /* APIError.swift */; };
 		C10494BF2BA9A985000C3F36 /* MockQuestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10494BD2BA9A96C000C3F36 /* MockQuestionProvider.swift */; };
+		C10DC3712C00B1E700E1A6B0 /* VoterLoginRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC3702C00B1E700E1A6B0 /* VoterLoginRequestBody.swift */; };
+		C10DC3722C00B1E700E1A6B0 /* VoterLoginRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC3702C00B1E700E1A6B0 /* VoterLoginRequestBody.swift */; };
+		C10DC3732C00B1E700E1A6B0 /* VoterLoginRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC3702C00B1E700E1A6B0 /* VoterLoginRequestBody.swift */; };
+		C10DC3752C00B31F00E1A6B0 /* VoterAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC3742C00B31F00E1A6B0 /* VoterAuthService.swift */; };
+		C10DC3762C00B31F00E1A6B0 /* VoterAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC3742C00B31F00E1A6B0 /* VoterAuthService.swift */; };
+		C10DC3772C00B31F00E1A6B0 /* VoterAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC3742C00B31F00E1A6B0 /* VoterAuthService.swift */; };
+		C10DC37A2C00B38500E1A6B0 /* AuthTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC3792C00B38500E1A6B0 /* AuthTokens.swift */; };
+		C10DC37B2C00B38500E1A6B0 /* AuthTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC3792C00B38500E1A6B0 /* AuthTokens.swift */; };
+		C10DC37C2C00B38500E1A6B0 /* AuthTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC3792C00B38500E1A6B0 /* AuthTokens.swift */; };
+		C10DC37F2C00B4D300E1A6B0 /* AuthResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC37E2C00B4D300E1A6B0 /* AuthResponseSerializer.swift */; };
+		C10DC3802C00B4D300E1A6B0 /* AuthResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC37E2C00B4D300E1A6B0 /* AuthResponseSerializer.swift */; };
+		C10DC3812C00B4D300E1A6B0 /* AuthResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC37E2C00B4D300E1A6B0 /* AuthResponseSerializer.swift */; };
+		C10DC3852C00B5E300E1A6B0 /* TestAuthTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC3842C00B5E300E1A6B0 /* TestAuthTestData.swift */; };
+		C10DC3872C00B63E00E1A6B0 /* TestAuthSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC3862C00B63E00E1A6B0 /* TestAuthSerializer.swift */; };
 		C11075AA2BA7780200E28F5E /* Your_BallotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11075A92BA7780200E28F5E /* Your_BallotApp.swift */; };
 		C11075AC2BA7780200E28F5E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11075AB2BA7780200E28F5E /* ContentView.swift */; };
 		C11075AE2BA7780300E28F5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C11075AD2BA7780300E28F5E /* Assets.xcassets */; };
@@ -258,6 +272,12 @@
 		C10494BB2BA9A865000C3F36 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		C10494BD2BA9A96C000C3F36 /* MockQuestionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuestionProvider.swift; sourceTree = "<group>"; };
 		C10494C12BA9AA16000C3F36 /* TestQuestionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestQuestionData.swift; sourceTree = "<group>"; };
+		C10DC3702C00B1E700E1A6B0 /* VoterLoginRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoterLoginRequestBody.swift; sourceTree = "<group>"; };
+		C10DC3742C00B31F00E1A6B0 /* VoterAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoterAuthService.swift; sourceTree = "<group>"; };
+		C10DC3792C00B38500E1A6B0 /* AuthTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokens.swift; sourceTree = "<group>"; };
+		C10DC37E2C00B4D300E1A6B0 /* AuthResponseSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseSerializer.swift; sourceTree = "<group>"; };
+		C10DC3842C00B5E300E1A6B0 /* TestAuthTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAuthTestData.swift; sourceTree = "<group>"; };
+		C10DC3862C00B63E00E1A6B0 /* TestAuthSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAuthSerializer.swift; sourceTree = "<group>"; };
 		C11075A62BA7780200E28F5E /* Your Ballot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Your Ballot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C11075A92BA7780200E28F5E /* Your_BallotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Your_BallotApp.swift; sourceTree = "<group>"; };
 		C11075AB2BA7780200E28F5E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -400,6 +420,39 @@
 				C11075BA2BA7780300E28F5E /* QuestionServiceTests.swift */,
 			);
 			path = Questions;
+			sourceTree = "<group>";
+		};
+		C10DC3782C00B37800E1A6B0 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C10DC3792C00B38500E1A6B0 /* AuthTokens.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		C10DC37D2C00B4BF00E1A6B0 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C10DC37E2C00B4D300E1A6B0 /* AuthResponseSerializer.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		C10DC3822C00B5C500E1A6B0 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C10DC3832C00B5CC00E1A6B0 /* Mocks */,
+				C10DC3862C00B63E00E1A6B0 /* TestAuthSerializer.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		C10DC3832C00B5CC00E1A6B0 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				C10DC3842C00B5E300E1A6B0 /* TestAuthTestData.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		C110759D2BA7780200E28F5E = {
@@ -573,6 +626,7 @@
 		C14749742BAB024800B969F5 /* Serializers */ = {
 			isa = PBXGroup;
 			children = (
+				C10DC37D2C00B4BF00E1A6B0 /* Auth */,
 				C18CA18A2BC7F6AC00900F16 /* Voter */,
 				C14749722BAB007400B969F5 /* BaseSerializer.swift */,
 				C14749752BAB024D00B969F5 /* Questions */,
@@ -631,6 +685,7 @@
 		C15327232BA90BC200A8A591 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C10DC3782C00B37800E1A6B0 /* Auth */,
 				C140F07B2BCC14F40036DE89 /* Guest */,
 				C18CA1A02BC7F9D500900F16 /* Voter */,
 				C1F2620D2BC55FE9006181C2 /* Locality */,
@@ -751,6 +806,7 @@
 			children = (
 				C18CA1A12BC7F9E800900F16 /* VoterIssueViews.swift */,
 				C18C57A02BD748A300828BE8 /* Voter.swift */,
+				C10DC3702C00B1E700E1A6B0 /* VoterLoginRequestBody.swift */,
 			);
 			path = Voter;
 			sourceTree = "<group>";
@@ -760,6 +816,7 @@
 			children = (
 				C12FB3222BC94D1900F66512 /* VoterCandidatesService.swift */,
 				C18CA1A52BC7FA6B00900F16 /* VoterIssueViewService.swift */,
+				C10DC3742C00B31F00E1A6B0 /* VoterAuthService.swift */,
 			);
 			path = Voter;
 			sourceTree = "<group>";
@@ -767,6 +824,7 @@
 		C1B629552BAD0B0F00340ADF /* Unittests */ = {
 			isa = PBXGroup;
 			children = (
+				C10DC3822C00B5C500E1A6B0 /* Auth */,
 				C1C4D7F52BCE9669009D3DAB /* Guest */,
 				C18CA1942BC7F7D300900F16 /* Voter */,
 				C1F261FB2BC55DC8006181C2 /* Candidates */,
@@ -1068,6 +1126,7 @@
 				C1F262142BC56042006181C2 /* PoliticalLocality.swift in Sources */,
 				C18CA1A62BC7FA6B00900F16 /* VoterIssueViewService.swift in Sources */,
 				C1EC67DE2BD5BAA10046844B /* RoundedRectangle_Blue.swift in Sources */,
+				C10DC3752C00B31F00E1A6B0 /* VoterAuthService.swift in Sources */,
 				C1F2620C2BC55FBB006181C2 /* CandidatePosition.swift in Sources */,
 				C12FB32A2BC94EA900F66512 /* MockVoterCandidatesProvider.swift in Sources */,
 				C1C903782BBD759C00B8AE94 /* SizeCalculatorModifier.swift in Sources */,
@@ -1076,6 +1135,7 @@
 				C18CA1A92BC7FCE400900F16 /* CandidateVoterSliderComparison.swift in Sources */,
 				C14CE03C2BCAF27B008D7CD8 /* CandidateListComponentCard.swift in Sources */,
 				C19B0F192BCFE35300D9106A /* NavigationButton+Rounded.swift in Sources */,
+				C10DC3712C00B1E700E1A6B0 /* VoterLoginRequestBody.swift in Sources */,
 				C18C57A12BD748A300828BE8 /* Voter.swift in Sources */,
 				C18CA1A22BC7F9E800900F16 /* VoterIssueViews.swift in Sources */,
 				C140F08A2BCC1D5C0036DE89 /* GuestMatchesView.swift in Sources */,
@@ -1109,10 +1169,12 @@
 				C18C57982BD73E1A00828BE8 /* HomeQuestionView.swift in Sources */,
 				C18CA1922BC7F73500900F16 /* VoterIssueViewSummarySerializer.swift in Sources */,
 				C163C60E2BBA0B9900A03E14 /* RectangleButton_Blue.swift in Sources */,
+				C10DC37A2C00B38500E1A6B0 /* AuthTokens.swift in Sources */,
 				C1F261F72BC5564F006181C2 /* IssueViewsSummary.swift in Sources */,
 				C1F262052BC55EC4006181C2 /* TestCandidateData.swift in Sources */,
 				C1C903752BBD718F00B8AE94 /* PoliticalIssueSlider.swift in Sources */,
 				C12FB31F2BC94CEA00F66512 /* VoterCandidatesSerializer.swift in Sources */,
+				C10DC37F2C00B4D300E1A6B0 /* AuthResponseSerializer.swift in Sources */,
 				C18C578D2BD73D2500828BE8 /* MainAuthenticatedView.swift in Sources */,
 				C18C57922BD73D6E00828BE8 /* HomeVoterCandidatesView.swift in Sources */,
 				C18C57AC2BD74F4700828BE8 /* ColorInterpolation.swift in Sources */,
@@ -1135,6 +1197,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C12FB32E2BC94FA200F66512 /* TestVoterCandidates.swift in Sources */,
+				C10DC3852C00B5E300E1A6B0 /* TestAuthTestData.swift in Sources */,
+				C10DC3872C00B63E00E1A6B0 /* TestAuthSerializer.swift in Sources */,
 				C11075BB2BA7780300E28F5E /* QuestionServiceTests.swift in Sources */,
 				C1D0CB122BC6ABF6003EB8FE /* TestCandidateService.swift in Sources */,
 				C18CA19F2BC7F8B100900F16 /* TestVoterIssueViewSummary.swift in Sources */,
@@ -1167,6 +1231,7 @@
 				C1212BFC2BF2290D00AE35BA /* PoliticalLocality.swift in Sources */,
 				C1212BFD2BF2290D00AE35BA /* VoterIssueViewService.swift in Sources */,
 				C1212BFE2BF2290D00AE35BA /* RoundedRectangle_Blue.swift in Sources */,
+				C10DC3762C00B31F00E1A6B0 /* VoterAuthService.swift in Sources */,
 				C1212BFF2BF2290D00AE35BA /* CandidatePosition.swift in Sources */,
 				C1212C002BF2290D00AE35BA /* MockVoterCandidatesProvider.swift in Sources */,
 				C1212C012BF2290D00AE35BA /* SizeCalculatorModifier.swift in Sources */,
@@ -1175,6 +1240,7 @@
 				C1212C042BF2290D00AE35BA /* CandidateVoterSliderComparison.swift in Sources */,
 				C1212C052BF2290D00AE35BA /* CandidateListComponentCard.swift in Sources */,
 				C1212C062BF2290D00AE35BA /* NavigationButton+Rounded.swift in Sources */,
+				C10DC3722C00B1E700E1A6B0 /* VoterLoginRequestBody.swift in Sources */,
 				C1212C072BF2290D00AE35BA /* Voter.swift in Sources */,
 				C1212C082BF2290D00AE35BA /* VoterIssueViews.swift in Sources */,
 				C1212C092BF2290D00AE35BA /* GuestMatchesView.swift in Sources */,
@@ -1208,10 +1274,12 @@
 				C1212C252BF2290D00AE35BA /* HomeQuestionView.swift in Sources */,
 				C1212C262BF2290D00AE35BA /* VoterIssueViewSummarySerializer.swift in Sources */,
 				C1212C272BF2290D00AE35BA /* RectangleButton_Blue.swift in Sources */,
+				C10DC37B2C00B38500E1A6B0 /* AuthTokens.swift in Sources */,
 				C1212C282BF2290D00AE35BA /* IssueViewsSummary.swift in Sources */,
 				C1212C292BF2290D00AE35BA /* TestCandidateData.swift in Sources */,
 				C1212C2A2BF2290D00AE35BA /* PoliticalIssueSlider.swift in Sources */,
 				C1212C2B2BF2290D00AE35BA /* VoterCandidatesSerializer.swift in Sources */,
+				C10DC3802C00B4D300E1A6B0 /* AuthResponseSerializer.swift in Sources */,
 				C1212C2C2BF2290D00AE35BA /* MainAuthenticatedView.swift in Sources */,
 				C1212C2D2BF2290D00AE35BA /* HomeVoterCandidatesView.swift in Sources */,
 				C1212C2E2BF2290D00AE35BA /* ColorInterpolation.swift in Sources */,
@@ -1245,6 +1313,7 @@
 				C1F2620B2BC55FBB006181C2 /* CandidatePosition.swift in Sources */,
 				C18C57AD2BD74F4700828BE8 /* ColorInterpolation.swift in Sources */,
 				C12FB32B2BC94EA900F66512 /* MockVoterCandidatesProvider.swift in Sources */,
+				C10DC3772C00B31F00E1A6B0 /* VoterAuthService.swift in Sources */,
 				C17ABE4F2BBF9BC500BE8CB0 /* SizeCalculatorModifier.swift in Sources */,
 				C1F262082BC55F00006181C2 /* IssueViewsSummary.swift in Sources */,
 				C17ABE502BBF9BC500BE8CB0 /* MockQuestionProvider.swift in Sources */,
@@ -1253,6 +1322,7 @@
 				C14CE03D2BCAF27B008D7CD8 /* CandidateListComponentCard.swift in Sources */,
 				C19B0F1A2BCFE35300D9106A /* NavigationButton+Rounded.swift in Sources */,
 				C18CA1A32BC7F9E800900F16 /* VoterIssueViews.swift in Sources */,
+				C10DC3732C00B1E700E1A6B0 /* VoterLoginRequestBody.swift in Sources */,
 				C18C57B12BD7D2B100828BE8 /* IssueRankingView.swift in Sources */,
 				C140F08B2BCC1D5C0036DE89 /* GuestMatchesView.swift in Sources */,
 				C140F06E2BCC07B20036DE89 /* LoginView.swift in Sources */,
@@ -1286,10 +1356,12 @@
 				C17ABE5B2BBF9BC500BE8CB0 /* QuestionService.swift in Sources */,
 				C18CA1932BC7F73500900F16 /* VoterIssueViewSummarySerializer.swift in Sources */,
 				C17ABE5C2BBF9BC500BE8CB0 /* RectangleButton_Blue.swift in Sources */,
+				C10DC37C2C00B38500E1A6B0 /* AuthTokens.swift in Sources */,
 				C18C57A22BD748A300828BE8 /* Voter.swift in Sources */,
 				C17ABE5D2BBF9BC500BE8CB0 /* PoliticalIssueSlider.swift in Sources */,
 				C17ABE5E2BBF9BC500BE8CB0 /* APIError.swift in Sources */,
 				C17ABE5F2BBF9BC500BE8CB0 /* Candidate.swift in Sources */,
+				C10DC3812C00B4D300E1A6B0 /* AuthResponseSerializer.swift in Sources */,
 				C12FB3202BC94CEA00F66512 /* VoterCandidatesSerializer.swift in Sources */,
 				C140F0762BCC088C0036DE89 /* GuestTrialZipView.swift in Sources */,
 				C1F262042BC55EC3006181C2 /* TestCandidateData.swift in Sources */,
