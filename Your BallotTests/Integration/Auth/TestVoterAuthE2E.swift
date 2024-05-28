@@ -49,5 +49,28 @@ final class TestVoterAuthE2E: XCTestCase {
             // Do nothing as this exception is expected
         }
     }
+    
+    func testVoterTokenRefreshSuccess() async throws {
+        let insecureDelegate = CustomSessionDelegate()
+        let provider = URLSession(configuration: .default, delegate: insecureDelegate, delegateQueue: nil)
+        
+        let voterAuthService = VoterAuthService(provider: provider)
+        do {
+            // Login successfully
+            let testUserEmail = "test@mail.com"
+            let testUserPassword = "password"
+            let authTokens = try await voterAuthService.login(email: testUserEmail, password: testUserPassword)
+            XCTAssertNotNil(authTokens.access)
+            XCTAssertNotNil(authTokens.refresh)
+            
+            // Now refresh tokens
+            let refreshedTokens = try await voterAuthService.refreshTokens(tokens: authTokens)
+            XCTAssertNotNil(authTokens.access)
+            XCTAssertNotNil(authTokens.refresh)
+            
+        } catch {
+            XCTFail("Received exception: \(error)")
+        }
+    }
 
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AuthTokens {
+struct AuthTokens: Encodable {
     let access: String
     let refresh: String
     let createdAt: Date
@@ -16,4 +16,8 @@ struct AuthTokens {
 struct AuthTokenResponse: Decodable {
     let access: String
     let refresh: String
+}
+
+struct RefreshTokenResponse: Decodable {
+    let access: String
 }

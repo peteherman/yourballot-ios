@@ -12,6 +12,7 @@ class VoterAuthService {
     private let provider: any HTTPProvider
     private let decoder: JSONDecoder = JSONDecoder()
     private let loginURL: URL = URL(string: "\(API_BASE)/v1/voter/login/")!
+    private let tokenRefreshURL: URL = URL(string: "\(API_BASE)/api/token/refresh/")!
     private var logger = Logger()
     
     init(provider: any HTTPProvider = URLSession.shared) {
@@ -31,6 +32,19 @@ class VoterAuthService {
         }
         let authTokens = try await task.value
         logger.debug("Successfully authenticated to the API. Returning auth tokens")
+        return authTokens
+    }
+    
+    func refreshTokens(tokens: AuthTokens) async throws -> AuthTokens {
+        logger.debug("Making token refresh request to API")
+        let task = Task<AuthTokens, Error> {
+            let tokenData = try await provider.postHttp(data: tokens, to: tokenRefreshURL)
+            let authTokenSerializer = try decoder.decode(RefreshTokenResponse.self, from: tokenData)
+            let authTokens = AuthTokens(access: authTokenSerializer.access, refresh: tokens.refresh, createdAt: Date())
+            return authTokens
+        }
+        let authTokens = try await task.value
+        logger.debug("Successfully refreshed tokens. Returning auth tokens")
         return authTokens
     }
     
