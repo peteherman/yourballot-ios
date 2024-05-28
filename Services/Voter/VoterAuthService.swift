@@ -13,6 +13,7 @@ class VoterAuthService {
     private let decoder: JSONDecoder = JSONDecoder()
     private let loginURL: URL = URL(string: "\(API_BASE)/v1/voter/login/")!
     private let tokenRefreshURL: URL = URL(string: "\(API_BASE)/api/token/refresh/")!
+    private let registerURL: URL = URL(string: "\(API_BASE)/v1/voter/register/")!
     private var logger = Logger()
     
     init(provider: any HTTPProvider = URLSession.shared) {
@@ -45,6 +46,21 @@ class VoterAuthService {
         }
         let authTokens = try await task.value
         logger.debug("Successfully refreshed tokens. Returning auth tokens")
+        return authTokens
+    }
+    
+    func register(registerBody: VoterRegistrationRequestBody) async throws -> AuthTokens {
+        logger.debug("Making registration request to API")
+        let task = Task<AuthTokens, Error> {
+            let tokenData = try await provider.postHttp(data: registerBody, to: registerURL)
+            let authTokenSerializer = try decoder.decode(AuthResponseSerializer.self, from: tokenData)
+            if authTokenSerializer.authTokens != nil {
+                return authTokenSerializer.authTokens!
+            }
+            throw APIError.unexpectedError(error: "Auth token serializer was unable to decode the response from the API")
+        }
+        let authTokens = try await task.value
+        logger.debug("Successfully authenticated to the API. Returning auth tokens")
         return authTokens
     }
     

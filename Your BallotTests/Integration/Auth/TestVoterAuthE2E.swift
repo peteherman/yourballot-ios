@@ -72,5 +72,23 @@ final class TestVoterAuthE2E: XCTestCase {
             XCTFail("Received exception: \(error)")
         }
     }
+    
+    func testVoterRegisterSuccess() async throws {
+        let insecureDelegate = CustomSessionDelegate()
+        let provider = URLSession(configuration: .default, delegate: insecureDelegate, delegateQueue: nil)
+        
+        let voterAuthService = VoterAuthService(provider: provider)
+        do {
+            // Login successfully
+            let testUserEmail = "test2@mail.com"
+            let testUserPassword = "password"
+            let voterRegistration = VoterRegistrationRequestBody(email: testUserEmail, password: testUserPassword, zipcode: "12831", political_identity: "")
+            let authTokens = try await voterAuthService.register(registerBody: voterRegistration)
+            XCTAssertNotNil(authTokens.access)
+            XCTAssertNotNil(authTokens.refresh)
+        } catch {
+            XCTFail("Received exception: \(error)")
+        }
+    }
 
 }

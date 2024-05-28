@@ -11,3 +11,4 @@ struct VoterLoginRequestBody: Encodable {
     let email: String
     let password: String
 }
+

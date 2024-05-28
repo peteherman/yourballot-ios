@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PoliticalParty: String, Decodable, CaseIterable {
+enum PoliticalParty: String, Codable, CaseIterable {
     case choose_not_to_share
     case democratic
     case republican
