@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct VoterLoginRequestBody {
+struct VoterLoginRequestBody: Encodable {
     let email: String
     let password: String
 }

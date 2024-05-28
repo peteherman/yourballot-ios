@@ -217,6 +217,7 @@
 		C18CA1A72BC7FA6B00900F16 /* VoterIssueViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18CA1A52BC7FA6B00900F16 /* VoterIssueViewService.swift */; };
 		C18CA1A92BC7FCE400900F16 /* CandidateVoterSliderComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18CA1A82BC7FCE400900F16 /* CandidateVoterSliderComparison.swift */; };
 		C18CA1AA2BC7FCE400900F16 /* CandidateVoterSliderComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18CA1A82BC7FCE400900F16 /* CandidateVoterSliderComparison.swift */; };
+		C198805A2C05F33E0060455A /* TestVoterAuthE2E.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19880592C05F33E0060455A /* TestVoterAuthE2E.swift */; };
 		C19B0F192BCFE35300D9106A /* NavigationButton+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19B0F182BCFE35300D9106A /* NavigationButton+Rounded.swift */; };
 		C19B0F1A2BCFE35300D9106A /* NavigationButton+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19B0F182BCFE35300D9106A /* NavigationButton+Rounded.swift */; };
 		C1C4D7F92BCE969C009D3DAB /* MockGuestQuestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C4D7F72BCE9688009D3DAB /* MockGuestQuestionProvider.swift */; };
@@ -345,6 +346,7 @@
 		C18CA1A12BC7F9E800900F16 /* VoterIssueViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoterIssueViews.swift; sourceTree = "<group>"; };
 		C18CA1A52BC7FA6B00900F16 /* VoterIssueViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoterIssueViewService.swift; sourceTree = "<group>"; };
 		C18CA1A82BC7FCE400900F16 /* CandidateVoterSliderComparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateVoterSliderComparison.swift; sourceTree = "<group>"; };
+		C19880592C05F33E0060455A /* TestVoterAuthE2E.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVoterAuthE2E.swift; sourceTree = "<group>"; };
 		C19B0F182BCFE35300D9106A /* NavigationButton+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationButton+Rounded.swift"; sourceTree = "<group>"; };
 		C1C4D7F72BCE9688009D3DAB /* MockGuestQuestionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGuestQuestionProvider.swift; sourceTree = "<group>"; };
 		C1C9036C2BBD6BD700B8AE94 /* PoliticalProfileLabelCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticalProfileLabelCard.swift; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 		C1212C422BF229A900AE35BA /* Integration */ = {
 			isa = PBXGroup;
 			children = (
+				C19880582C05F3300060455A /* Auth */,
 				C1212C432BF229E400AE35BA /* Guest */,
 			);
 			path = Integration;
@@ -819,6 +822,14 @@
 				C10DC3742C00B31F00E1A6B0 /* VoterAuthService.swift */,
 			);
 			path = Voter;
+			sourceTree = "<group>";
+		};
+		C19880582C05F3300060455A /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C19880592C05F33E0060455A /* TestVoterAuthE2E.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		C1B629552BAD0B0F00340ADF /* Unittests */ = {
@@ -1203,6 +1214,7 @@
 				C1D0CB122BC6ABF6003EB8FE /* TestCandidateService.swift in Sources */,
 				C18CA19F2BC7F8B100900F16 /* TestVoterIssueViewSummary.swift in Sources */,
 				C1212C4F2BF22DA300AE35BA /* TestGuestTrialE2E.swift in Sources */,
+				C198805A2C05F33E0060455A /* TestVoterAuthE2E.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
