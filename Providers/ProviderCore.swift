@@ -35,9 +35,6 @@ extension URLSession: HTTPProvider {
         request.httpMethod = "POST"
         let encoder = JSONEncoder()
         let data = try encoder.encode(message)
-        if let str = String(data: data, encoding: .utf8) {
-            print("Post Data: \(str)")
-        }
 
         let (responseData, response) = try await self.upload(for: request, from: data)
         let httpResponse = response as! HTTPURLResponse
@@ -52,6 +49,22 @@ extension URLSession: HTTPProvider {
             let error = NSError(domain: "UploadError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])
             throw error
         }
+    }
+    
+    /*
+     * Post @param data to @param url and receive a tuple containing the response data and the actual HTTPURLResponse so it's statusCode
+     * may be checked for errors
+     */
+    func postHttpResponse(data message: Encodable, to url: URL) async throws -> (Data, HTTPURLResponse) {
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        let encoder = JSONEncoder()
+        let data = try encoder.encode(message)
+
+        let (responseData, response) = try await self.upload(for: request, from: data)
+        let httpResponse = response as! HTTPURLResponse
+        return (responseData, httpResponse)
     }
 }
 

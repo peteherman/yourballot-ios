@@ -231,6 +231,12 @@
 		C19C0A2E2C073DE800179A22 /* TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C0A2C2C073DE800179A22 /* TokenStorage.swift */; };
 		C19C0A2F2C073DE800179A22 /* TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C0A2C2C073DE800179A22 /* TokenStorage.swift */; };
 		C19C0A332C073EF800179A22 /* TestTokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C0A322C073EF800179A22 /* TestTokenStorage.swift */; };
+		C19C0A382C074DF400179A22 /* ResultInfoSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C0A362C074DB100179A22 /* ResultInfoSerializer.swift */; };
+		C19C0A392C074DF400179A22 /* ResultInfoSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C0A362C074DB100179A22 /* ResultInfoSerializer.swift */; };
+		C19C0A3A2C074DF400179A22 /* ResultInfoSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C0A362C074DB100179A22 /* ResultInfoSerializer.swift */; };
+		C19C0A3B2C074E0500179A22 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C0A342C074C4F00179A22 /* Core.swift */; };
+		C19C0A3C2C074E0500179A22 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C0A342C074C4F00179A22 /* Core.swift */; };
+		C19C0A3D2C074E0500179A22 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C0A342C074C4F00179A22 /* Core.swift */; };
 		C1C4D7F92BCE969C009D3DAB /* MockGuestQuestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C4D7F72BCE9688009D3DAB /* MockGuestQuestionProvider.swift */; };
 		C1C4D7FA2BCE969C009D3DAB /* MockGuestQuestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C4D7F72BCE9688009D3DAB /* MockGuestQuestionProvider.swift */; };
 		C1C9036D2BBD6BD700B8AE94 /* PoliticalProfileLabelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9036C2BBD6BD700B8AE94 /* PoliticalProfileLabelCard.swift */; };
@@ -364,6 +370,8 @@
 		C19C0A2A2C073CA700179A22 /* TestKeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestKeychainService.swift; sourceTree = "<group>"; };
 		C19C0A2C2C073DE800179A22 /* TokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStorage.swift; sourceTree = "<group>"; };
 		C19C0A322C073EF800179A22 /* TestTokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTokenStorage.swift; sourceTree = "<group>"; };
+		C19C0A342C074C4F00179A22 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
+		C19C0A362C074DB100179A22 /* ResultInfoSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultInfoSerializer.swift; sourceTree = "<group>"; };
 		C1C4D7F72BCE9688009D3DAB /* MockGuestQuestionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGuestQuestionProvider.swift; sourceTree = "<group>"; };
 		C1C9036C2BBD6BD700B8AE94 /* PoliticalProfileLabelCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticalProfileLabelCard.swift; sourceTree = "<group>"; };
 		C1C903712BBD704700B8AE94 /* CustomSliderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSliderBar.swift; sourceTree = "<group>"; };
@@ -651,6 +659,7 @@
 				C18CA18A2BC7F6AC00900F16 /* Voter */,
 				C14749722BAB007400B969F5 /* BaseSerializer.swift */,
 				C14749752BAB024D00B969F5 /* Questions */,
+				C19C0A362C074DB100179A22 /* ResultInfoSerializer.swift */,
 			);
 			path = Serializers;
 			sourceTree = "<group>";
@@ -714,6 +723,7 @@
 				C122794C2BB79CF100BF5A60 /* Identity */,
 				C12279492BB79C3F00BF5A60 /* Candidate */,
 				C15327242BA90BC700A8A591 /* Issues */,
+				C19C0A342C074C4F00179A22 /* Core.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1218,11 +1228,13 @@
 				C122794B2BB79C4D00BF5A60 /* Candidate.swift in Sources */,
 				C18C57B32BD7D53F00828BE8 /* IssueRankRegion.swift in Sources */,
 				C11075AA2BA7780200E28F5E /* Your_BallotApp.swift in Sources */,
+				C19C0A3A2C074DF400179A22 /* ResultInfoSerializer.swift in Sources */,
 				C16511522BBC189A0056E640 /* CandidateView.swift in Sources */,
 				C140F0872BCC1D1C0036DE89 /* RectangularView+Blue.swift in Sources */,
 				C10494BA2BA9A6E3000C3F36 /* ProviderCore.swift in Sources */,
 				C12279552BB79DE200BF5A60 /* Gender.swift in Sources */,
 				C1C903722BBD704700B8AE94 /* CustomSliderBar.swift in Sources */,
+				C19C0A3D2C074E0500179A22 /* Core.swift in Sources */,
 				C14CE0392BCAF23B008D7CD8 /* CandidateListComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1329,11 +1341,13 @@
 				C1212C312BF2290D00AE35BA /* Candidate.swift in Sources */,
 				C1212C322BF2290D00AE35BA /* IssueRankRegion.swift in Sources */,
 				C1212C332BF2290D00AE35BA /* Your_BallotApp.swift in Sources */,
+				C19C0A392C074DF400179A22 /* ResultInfoSerializer.swift in Sources */,
 				C1212C342BF2290D00AE35BA /* CandidateView.swift in Sources */,
 				C1212C352BF2290D00AE35BA /* RectangularView+Blue.swift in Sources */,
 				C1212C362BF2290D00AE35BA /* ProviderCore.swift in Sources */,
 				C1212C372BF2290D00AE35BA /* Gender.swift in Sources */,
 				C1212C382BF2290D00AE35BA /* CustomSliderBar.swift in Sources */,
+				C19C0A3C2C074E0500179A22 /* Core.swift in Sources */,
 				C1212C392BF2290D00AE35BA /* CandidateListComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1414,11 +1428,13 @@
 				C17ABE612BBF9BC500BE8CB0 /* CandidateView.swift in Sources */,
 				C140F0882BCC1D1C0036DE89 /* RectangularView+Blue.swift in Sources */,
 				C17ABE622BBF9BC500BE8CB0 /* ProviderCore.swift in Sources */,
+				C19C0A382C074DF400179A22 /* ResultInfoSerializer.swift in Sources */,
 				C17ABE632BBF9BC500BE8CB0 /* Gender.swift in Sources */,
 				C17ABE642BBF9BC500BE8CB0 /* CustomSliderBar.swift in Sources */,
 				C1CFA5272BFE0C2600053961 /* RoundedRectangle_Blue.swift in Sources */,
 				C14CE03A2BCAF23B008D7CD8 /* CandidateListComponent.swift in Sources */,
 				C1CFA5262BFE0C0C00053961 /* LabelAndField.swift in Sources */,
+				C19C0A3B2C074E0500179A22 /* Core.swift in Sources */,
 				C1CFA5282BFE0C2900053961 /* RoundedRectangle_Red.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

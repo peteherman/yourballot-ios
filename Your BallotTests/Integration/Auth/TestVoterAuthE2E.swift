@@ -108,4 +108,27 @@ final class TestVoterAuthE2E: XCTestCase {
             XCTFail("Received exception: \(error)")
         }
     }
+    
+    func testVoterLoginFailureDecodeErrors() async throws {
+        let insecureDelegate = CustomSessionDelegate()
+        let provider = URLSession(configuration: .default, delegate: insecureDelegate, delegateQueue: nil)
+        let voterAuthService = VoterAuthService(provider: provider)
+        do {
+            let testUserEmail = "test@mail.com"
+            let testUserPassword = "wrong-password"
+            
+            let requestBody = VoterLoginRequestBody(email: testUserEmail, password: testUserPassword)
+            let (responseData, httpResponse) = try await provider.postHttpResponse(data: requestBody, to: URL(string: "\(API_BASE)/v1/voter/login/")!)
+            XCTAssertEqual(httpResponse.statusCode, 401)
+            
+            // Decode the response data now
+            let decoder = JSONDecoder()
+            let resultInfoSerializer = try decoder.decode(ResultInfoSerializer.self, from: responseData)
+            let results = resultInfoSerializer.resultInfo
+            print(results.errors)
+            XCTAssertFalse(results.success)
+        } catch {
+            XCTFail("Post raised exception: \(error.localizedDescription)")
+        }
+    }
 }

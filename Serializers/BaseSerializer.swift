@@ -12,10 +12,11 @@ class BaseSerializer: Decodable {
         case result_info
         case result
     }
-    
     public enum PaginationCodingKeys: String, CodingKey {
         case next
         case previous
         case total
+        case success
+        case errors
     }
 }
