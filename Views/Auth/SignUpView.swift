@@ -12,6 +12,7 @@ struct SignUpView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var confirm_password: String = ""
+    @State private var errorMessage: String = ""
     @State private var birthDate: Date = Date()
     @State private var ethnicity: Ethnicity = .choose_not_to_share
     @State private var races: Set<Ethnicity> = [.choose_not_to_share]
@@ -57,7 +58,18 @@ struct SignUpView: View {
                 Text("Register")
                     .font(.title)
                     .foregroundStyle(Theme.deep_blue.mainColor)
-                    .padding([.bottom])
+                if errorMessage == "" {
+                    Spacer()
+                        .frame(height: 50)
+                } else {
+                    Spacer()
+                        .frame(height: 25)
+                    Text("\(errorMessage)")
+                        .font(.title3)
+                        .foregroundStyle(Theme.deep_red.mainColor)
+                    Spacer()
+                        .frame(height: 25)
+                }
                 LabelAndField(label: "Email*") {
                     TextField("Email", text: $email)
                 }
