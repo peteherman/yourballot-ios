@@ -29,7 +29,7 @@ struct GuestTrialZipView: View {
                 .multilineTextAlignment(.center)
                 .padding([.bottom], 5)
             Text("We'll need this so we can \nidentify your representatives")
-                .font(.caption)
+                .font(.subheadline)
                 .multilineTextAlignment(.center)
                 .padding([.bottom])
             TextField("Zipcode", text: $zipcode)

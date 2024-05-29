@@ -28,66 +28,70 @@ struct LoginView: View {
     
     
     var body: some View {
-        VStack {
-            Text("Login")
-                .font(.title)
-                .foregroundStyle(Theme.deep_blue.mainColor)
-            if errorMessage == "" {
-                Spacer()
-                    .frame(height: 50)
+        ScrollView {
+            VStack {
+                Text("Login")
+                    .font(.title)
+                    .foregroundStyle(Theme.deep_blue.mainColor)
+                if errorMessage == "" {
+                    Spacer()
+                        .frame(height: 50)
+                } else {
+                    Spacer()
+                        .frame(height: 25)
+                    Text("\(errorMessage)")
+                        .font(.title3)
+                        .foregroundStyle(Theme.deep_red.mainColor)
+                }
+                LabelAndField(label: "Email") {
+                    TextField("Email", text: $email)
+                }
+                LabelAndField(label: "Password") {
+                    SecureField("Password", text: $password)
+                }
+            }
+            .padding([.leading, .trailing], 15.0)
+            Spacer()
+                .frame(height: 50)
+            
+            
+            
+            if (self.validForm()) {
+                Button(action: {}, label: {
+                    Text("Submit")
+                        .font(.headline)
+                        .foregroundColor(.black)
+                        .padding([.leading, .trailing])
+                })
+                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+                .padding()
+                .background(Theme.light_blue.mainColor)
+                .cornerRadius(10.0)
+                .overlay( /// apply a rounded border
+                    RoundedRectangle(cornerRadius: 10.0)
+                        .stroke(Theme.light_blue_accent.mainColor, lineWidth: 2)
+                )
+                .padding(.bottom)
             } else {
-                Spacer()
-                    .frame(height: 25)
-                Text("\(errorMessage)")
-                    .font(.title3)
-                    .foregroundStyle(Theme.deep_red.mainColor)
-            }
-            LabelAndField(label: "Email") {
-                TextField("Email", text: $email)
-            }
-            LabelAndField(label: "Password") {
-                SecureField("Password", text: $password)
+                Button(action: {}, label: {
+                    Text("Submit")
+                        .font(.headline)
+                        .foregroundColor(.black)
+                        .padding([.leading, .trailing])
+                })
+                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+                .padding()
+                .background(Theme.light_gray.mainColor)
+                .cornerRadius(10.0)
+                .overlay( /// apply a rounded border
+                    RoundedRectangle(cornerRadius: 10.0)
+                        .stroke(.gray, lineWidth: 2)
+                )
+                .padding(.bottom)
+                .disabled(true)
             }
         }
-        .padding([.leading, .trailing], 15.0)
-        Spacer()
-        .frame(height: 50)
-        
-        
-        if (self.validForm()) {
-            Button(action: {}, label: {
-                Text("Submit")
-                    .font(.headline)
-                    .foregroundColor(.black)
-                    .padding([.leading, .trailing])
-            })
-            .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
-            .padding()
-            .background(Theme.light_blue.mainColor)
-            .cornerRadius(10.0)
-            .overlay( /// apply a rounded border
-                RoundedRectangle(cornerRadius: 10.0)
-                    .stroke(Theme.light_blue_accent.mainColor, lineWidth: 2)
-            )
-            .padding(.bottom)
-        } else {
-            Button(action: {}, label: {
-                Text("Submit")
-                    .font(.headline)
-                    .foregroundColor(.black)
-                    .padding([.leading, .trailing])
-            })
-            .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
-            .padding()
-            .background(Theme.light_gray.mainColor)
-            .cornerRadius(10.0)
-            .overlay( /// apply a rounded border
-                RoundedRectangle(cornerRadius: 10.0)
-                    .stroke(.gray, lineWidth: 2)
-            )
-            .padding(.bottom)
-            .disabled(true)
-        }
+        .toolbarRole(.editor)
     }
 }
 
