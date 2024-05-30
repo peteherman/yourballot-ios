@@ -8,7 +8,7 @@
 import Foundation
 import OSLog
 
-class VoterAuthService {
+class VoterAuthService: BaseService {
     private let provider: any HTTPProvider
     private let decoder: JSONDecoder = JSONDecoder()
     private let loginURL: URL = URL(string: "\(API_BASE)/v1/voter/login/")!
@@ -20,20 +20,44 @@ class VoterAuthService {
         self.provider = provider
     }
     
-    func login(email: String, password: String) async throws -> AuthTokens {
+    /*
+     * Will atttempt to authenticate the user to the API using @param email and @param password
+     * Returns a tuple containing:
+     * AuthTokens and an empty string if the request was successful
+     * nil and an error message to be displayed if the request was not successful
+     */
+    func login(email: String, password: String) async throws -> (AuthTokens?, String) {
         let requestBody = VoterLoginRequestBody(email: email, password: password)
         logger.debug("Making login request to API")
-        let task = Task<AuthTokens, Error> {
-            let tokenData = try await provider.postHttp(data: requestBody, to: loginURL)
-            let authTokenSerializer = try decoder.decode(AuthResponseSerializer.self, from: tokenData)
-            if authTokenSerializer.authTokens != nil {
-                return authTokenSerializer.authTokens!
+        let task = Task<(AuthTokens?, String), Error> {
+            
+            let (responseData, httpResponse) = try await provider.postHttpResponse(data: requestBody, to: loginURL)
+            if self.requestSuccessful(httpResponse) {
+                let authTokens = try self.serializeAuthTokensFromLoginResponseData(data: responseData)
+                return (authTokens, "")
             }
-            throw APIError.unexpectedError(error: "Auth token serializer was unable to decode the response from the API")
+            
+            let errorMessage = try self.parseErrorMessageFromResponseData(responseData)
+            return (nil, errorMessage)
         }
-        let authTokens = try await task.value
-        logger.debug("Successfully authenticated to the API. Returning auth tokens")
-        return authTokens
+        var (authTokens, errorMessage) = try await task.value
+        
+        if let authTokens {
+            logger.debug("Successfully authenticated to the API. Returning auth tokens")
+        } else {
+            logger.debug("Failed to authenticate to the API: \(errorMessage)")
+        }
+        
+        if authTokens == nil && errorMessage == "" {
+            errorMessage = "Login attempt failed"
+        }
+        
+        return (authTokens, errorMessage)
+    }
+    
+    func serializeAuthTokensFromLoginResponseData(data: Data) throws -> AuthTokens {
+        let authTokenSerializer = try decoder.decode(AuthResponseSerializer.self, from: data)
+        return authTokenSerializer.authTokens!
     }
     
     func refreshTokens(tokens: AuthTokens) async throws -> AuthTokens {

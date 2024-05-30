@@ -152,6 +152,16 @@
 		C153271F2BA9065E00A8A591 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C153271E2BA9065E00A8A591 /* Theme.swift */; };
 		C15327222BA9093700A8A591 /* IssueQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15327212BA9093700A8A591 /* IssueQuestionView.swift */; };
 		C15327262BA90BD400A8A591 /* IssueQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15327252BA90BD400A8A591 /* IssueQuestion.swift */; };
+		C15AAC902C0890970040F3D1 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15AAC8F2C0890970040F3D1 /* BaseService.swift */; };
+		C15AAC912C0891C60040F3D1 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15AAC8F2C0890970040F3D1 /* BaseService.swift */; };
+		C15AAC922C0891C70040F3D1 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15AAC8F2C0890970040F3D1 /* BaseService.swift */; };
+		C15AAC942C0897C10040F3D1 /* MockVoterAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15AAC932C0897C10040F3D1 /* MockVoterAuthProvider.swift */; };
+		C15AAC952C0897FE0040F3D1 /* MockVoterAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15AAC932C0897C10040F3D1 /* MockVoterAuthProvider.swift */; };
+		C15AAC962C0897FE0040F3D1 /* MockVoterAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15AAC932C0897C10040F3D1 /* MockVoterAuthProvider.swift */; };
+		C15AAC972C0897FF0040F3D1 /* MockVoterAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15AAC932C0897C10040F3D1 /* MockVoterAuthProvider.swift */; };
+		C15AAC982C08987E0040F3D1 /* TestAuthTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC3842C00B5E300E1A6B0 /* TestAuthTestData.swift */; };
+		C15AAC992C08987E0040F3D1 /* TestAuthTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC3842C00B5E300E1A6B0 /* TestAuthTestData.swift */; };
+		C15AAC9A2C08987E0040F3D1 /* TestAuthTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DC3842C00B5E300E1A6B0 /* TestAuthTestData.swift */; };
 		C163C60C2BBA0AC000A03E14 /* RectangleButton+Red.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163C60B2BBA0AC000A03E14 /* RectangleButton+Red.swift */; };
 		C163C60E2BBA0B9900A03E14 /* RectangleButton_Blue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163C60D2BBA0B9900A03E14 /* RectangleButton_Blue.swift */; };
 		C16511522BBC189A0056E640 /* CandidateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16511512BBC189A0056E640 /* CandidateView.swift */; };
@@ -341,6 +351,8 @@
 		C153271E2BA9065E00A8A591 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		C15327212BA9093700A8A591 /* IssueQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueQuestionView.swift; sourceTree = "<group>"; };
 		C15327252BA90BD400A8A591 /* IssueQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueQuestion.swift; sourceTree = "<group>"; };
+		C15AAC8F2C0890970040F3D1 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		C15AAC932C0897C10040F3D1 /* MockVoterAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockVoterAuthProvider.swift; sourceTree = "<group>"; };
 		C163C60B2BBA0AC000A03E14 /* RectangleButton+Red.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RectangleButton+Red.swift"; sourceTree = "<group>"; };
 		C163C60D2BBA0B9900A03E14 /* RectangleButton_Blue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleButton_Blue.swift; sourceTree = "<group>"; };
 		C16511512BBC189A0056E640 /* CandidateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateView.swift; sourceTree = "<group>"; };
@@ -479,6 +491,7 @@
 			isa = PBXGroup;
 			children = (
 				C10DC3842C00B5E300E1A6B0 /* TestAuthTestData.swift */,
+				C15AAC932C0897C10040F3D1 /* MockVoterAuthProvider.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -643,6 +656,7 @@
 		C147496F2BAAFE6100B969F5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C15AAC8E2C08908D0040F3D1 /* Core */,
 				C140F07F2BCC172E0036DE89 /* Guest */,
 				C18CA1A42BC7FA6100900F16 /* Voter */,
 				C14749702BAAFE6C00B969F5 /* QuestionService.swift */,
@@ -734,6 +748,14 @@
 				C15327252BA90BD400A8A591 /* IssueQuestion.swift */,
 			);
 			path = Issues;
+			sourceTree = "<group>";
+		};
+		C15AAC8E2C08908D0040F3D1 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C15AAC8F2C0890970040F3D1 /* BaseService.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		C163C60A2BBA0AA700A03E14 /* Buttons */ = {
@@ -1159,6 +1181,7 @@
 				C1C9036D2BBD6BD700B8AE94 /* PoliticalProfileLabelCard.swift in Sources */,
 				C19C0A2D2C073DE800179A22 /* TokenStorage.swift in Sources */,
 				C1EC67E02BD5BB610046844B /* RoundedRectangle_Red.swift in Sources */,
+				C15AAC9A2C08987E0040F3D1 /* TestAuthTestData.swift in Sources */,
 				C12FB3232BC94D1900F66512 /* VoterCandidatesService.swift in Sources */,
 				C198805C2C05F9A10060455A /* VoterRegistrationRequestBody.swift in Sources */,
 				C18C579E2BD73E4B00828BE8 /* HomeProfileView.swift in Sources */,
@@ -1173,6 +1196,7 @@
 				C10DC3752C00B31F00E1A6B0 /* VoterAuthService.swift in Sources */,
 				C1F2620C2BC55FBB006181C2 /* CandidatePosition.swift in Sources */,
 				C12FB32A2BC94EA900F66512 /* MockVoterCandidatesProvider.swift in Sources */,
+				C15AAC902C0890970040F3D1 /* BaseService.swift in Sources */,
 				C1C903782BBD759C00B8AE94 /* SizeCalculatorModifier.swift in Sources */,
 				C10494BF2BA9A985000C3F36 /* MockQuestionProvider.swift in Sources */,
 				C1F262012BC55E6A006181C2 /* MockSingleCandidateProvider.swift in Sources */,
@@ -1194,6 +1218,7 @@
 				C16511562BBC212D0056E640 /* CandidateCard.swift in Sources */,
 				C15327222BA9093700A8A591 /* IssueQuestionView.swift in Sources */,
 				C140F06A2BCC06DC0036DE89 /* WelcomeView.swift in Sources */,
+				C15AAC962C0897FE0040F3D1 /* MockVoterAuthProvider.swift in Sources */,
 				C14749732BAB007400B969F5 /* BaseSerializer.swift in Sources */,
 				C153271F2BA9065E00A8A591 /* Theme.swift in Sources */,
 				C14749772BAB027C00B969F5 /* IssueQuestionListSerializer.swift in Sources */,
@@ -1247,6 +1272,7 @@
 				C10DC3852C00B5E300E1A6B0 /* TestAuthTestData.swift in Sources */,
 				C19C0A2B2C073CA700179A22 /* TestKeychainService.swift in Sources */,
 				C10DC3872C00B63E00E1A6B0 /* TestAuthSerializer.swift in Sources */,
+				C15AAC942C0897C10040F3D1 /* MockVoterAuthProvider.swift in Sources */,
 				C11075BB2BA7780300E28F5E /* QuestionServiceTests.swift in Sources */,
 				C19C0A332C073EF800179A22 /* TestTokenStorage.swift in Sources */,
 				C1D0CB122BC6ABF6003EB8FE /* TestCandidateService.swift in Sources */,
@@ -1272,6 +1298,7 @@
 				C1212BF32BF2290D00AE35BA /* PoliticalProfileLabelCard.swift in Sources */,
 				C19C0A2E2C073DE800179A22 /* TokenStorage.swift in Sources */,
 				C1212BF42BF2290D00AE35BA /* RoundedRectangle_Red.swift in Sources */,
+				C15AAC992C08987E0040F3D1 /* TestAuthTestData.swift in Sources */,
 				C1212BF52BF2290D00AE35BA /* VoterCandidatesService.swift in Sources */,
 				C198805D2C05F9A10060455A /* VoterRegistrationRequestBody.swift in Sources */,
 				C1212BF62BF2290D00AE35BA /* HomeProfileView.swift in Sources */,
@@ -1286,6 +1313,7 @@
 				C10DC3762C00B31F00E1A6B0 /* VoterAuthService.swift in Sources */,
 				C1212BFF2BF2290D00AE35BA /* CandidatePosition.swift in Sources */,
 				C1212C002BF2290D00AE35BA /* MockVoterCandidatesProvider.swift in Sources */,
+				C15AAC912C0891C60040F3D1 /* BaseService.swift in Sources */,
 				C1212C012BF2290D00AE35BA /* SizeCalculatorModifier.swift in Sources */,
 				C1212C022BF2290D00AE35BA /* MockQuestionProvider.swift in Sources */,
 				C1212C032BF2290D00AE35BA /* MockSingleCandidateProvider.swift in Sources */,
@@ -1307,6 +1335,7 @@
 				C1212C112BF2290D00AE35BA /* CandidateCard.swift in Sources */,
 				C1212C122BF2290D00AE35BA /* IssueQuestionView.swift in Sources */,
 				C1212C132BF2290D00AE35BA /* WelcomeView.swift in Sources */,
+				C15AAC972C0897FF0040F3D1 /* MockVoterAuthProvider.swift in Sources */,
 				C1212C142BF2290D00AE35BA /* BaseSerializer.swift in Sources */,
 				C1212C152BF2290D00AE35BA /* Theme.swift in Sources */,
 				C1212C162BF2290D00AE35BA /* IssueQuestionListSerializer.swift in Sources */,
@@ -1359,6 +1388,7 @@
 				C17ABE4B2BBF9BC500BE8CB0 /* PoliticalProfileLabelCard.swift in Sources */,
 				C19C0A2F2C073DE800179A22 /* TokenStorage.swift in Sources */,
 				C18C57992BD73E1A00828BE8 /* HomeQuestionView.swift in Sources */,
+				C15AAC982C08987E0040F3D1 /* TestAuthTestData.swift in Sources */,
 				C12FB3242BC94D1900F66512 /* VoterCandidatesService.swift in Sources */,
 				C198805E2C05F9A10060455A /* VoterRegistrationRequestBody.swift in Sources */,
 				C17ABE4C2BBF9BC500BE8CB0 /* RectangleButton+Red.swift in Sources */,
@@ -1373,6 +1403,7 @@
 				C10DC3772C00B31F00E1A6B0 /* VoterAuthService.swift in Sources */,
 				C17ABE4F2BBF9BC500BE8CB0 /* SizeCalculatorModifier.swift in Sources */,
 				C1F262082BC55F00006181C2 /* IssueViewsSummary.swift in Sources */,
+				C15AAC922C0891C70040F3D1 /* BaseService.swift in Sources */,
 				C17ABE502BBF9BC500BE8CB0 /* MockQuestionProvider.swift in Sources */,
 				C18CA1AA2BC7FCE400900F16 /* CandidateVoterSliderComparison.swift in Sources */,
 				C18C57A92BD74D5500828BE8 /* VoterIssueSlider.swift in Sources */,
@@ -1394,6 +1425,7 @@
 				C140F06B2BCC06DC0036DE89 /* WelcomeView.swift in Sources */,
 				C17ABE532BBF9BC500BE8CB0 /* IssueQuestionView.swift in Sources */,
 				C17ABE542BBF9BC500BE8CB0 /* BaseSerializer.swift in Sources */,
+				C15AAC952C0897FE0040F3D1 /* MockVoterAuthProvider.swift in Sources */,
 				C17ABE552BBF9BC500BE8CB0 /* Theme.swift in Sources */,
 				C140F07E2BCC15010036DE89 /* GuestTrial.swift in Sources */,
 				C1F262122BC5603F006181C2 /* PoliticalLocalityType.swift in Sources */,

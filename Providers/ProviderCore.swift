@@ -17,6 +17,7 @@ let validStatus = 200...299
 protocol HTTPProvider {
     func getHttp(from url: URL) async throws -> Data
     func postHttp(data message: Encodable, to url: URL) async throws -> Data
+    func postHttpResponse(data message: Encodable, to url: URL) async throws -> (Data, HTTPURLResponse)
 }
 
 extension URLSession: HTTPProvider {

@@ -16,7 +16,7 @@ struct WelcomeView: View {
                     .font(.title)
                     .foregroundStyle(Theme.blue_accent.mainColor)
                     .padding()
-                NavigationButton_Rounded(destination: LoginView()) {
+                NavigationButton_Rounded(destination: LoginView(provider: URLSession(configuration: .default, delegate: CustomSessionDelegate(), delegateQueue: nil))) {
                     Text("Login")
                 }
                 NavigationButton_Rounded(destination: SignUpView()) {

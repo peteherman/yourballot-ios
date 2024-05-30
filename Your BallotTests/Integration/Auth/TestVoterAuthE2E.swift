@@ -26,9 +26,13 @@ final class TestVoterAuthE2E: XCTestCase {
         do {
             let testUserEmail = "test@mail.com"
             let testUserPassword = "password"
-            let authTokens = try await voterAuthService.login(email: testUserEmail, password: testUserPassword)
-            XCTAssertNotNil(authTokens.access)
-            XCTAssertNotNil(authTokens.refresh)
+            let (authTokens, errorMessage) = try await voterAuthService.login(email: testUserEmail, password: testUserPassword)
+            if let authTokens {
+                XCTAssertNotNil(authTokens.access)
+                XCTAssertNotNil(authTokens.refresh)
+            } else {
+                XCTFail("Received error message: \(errorMessage)")
+            }
 
         } catch {
             XCTFail("Received exception: \(error)")
@@ -43,10 +47,13 @@ final class TestVoterAuthE2E: XCTestCase {
         do {
             let testUserEmail = "test@mail.com"
             let testUserPassword = "wrong-password"
-            let authTokens = try await voterAuthService.login(email: testUserEmail, password: testUserPassword)
-            XCTFail("Should have raised exception")
+            let (authTokens, errorMessage) = try await voterAuthService.login(email: testUserEmail, password: testUserPassword)
+            if errorMessage == "" || authTokens != nil {
+                XCTFail("Should have received error message")
+            }
         } catch {
             // Do nothing as this exception is expected
+            XCTFail("Received unexpected exception! \(error.localizedDescription)")
         }
     }
     
@@ -59,14 +66,18 @@ final class TestVoterAuthE2E: XCTestCase {
             // Login successfully
             let testUserEmail = "test@mail.com"
             let testUserPassword = "password"
-            let authTokens = try await voterAuthService.login(email: testUserEmail, password: testUserPassword)
-            XCTAssertNotNil(authTokens.access)
-            XCTAssertNotNil(authTokens.refresh)
-            
-            // Now refresh tokens
-            let refreshedTokens = try await voterAuthService.refreshTokens(tokens: authTokens)
-            XCTAssertNotNil(authTokens.access)
-            XCTAssertNotNil(authTokens.refresh)
+            let (authTokens, errorMessage) = try await voterAuthService.login(email: testUserEmail, password: testUserPassword)
+            if let authTokens {
+                XCTAssertNotNil(authTokens.access)
+                XCTAssertNotNil(authTokens.refresh)
+                
+                // Now refresh tokens
+                _ = try await voterAuthService.refreshTokens(tokens: authTokens)
+                XCTAssertNotNil(authTokens.access)
+                XCTAssertNotNil(authTokens.refresh)
+            } else {
+                XCTFail("Authentication failed! \(errorMessage)")
+            }
             
         } catch {
             XCTFail("Received exception: \(error)")

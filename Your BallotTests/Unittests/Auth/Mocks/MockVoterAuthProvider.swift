@@ -1,29 +1,21 @@
 //
-//  MockGuestQuestionProvider.swift
+//  MockVoterAuthProvider.swift
 //  Your BallotTests
 //
-//  Created by Peter Herman on 4/16/24.
+//  Created by Peter Herman on 5/30/24.
 //
 
 import Foundation
 
-class MockGuestQuestionProvider: HTTPProvider {
+class MockVoterAuthProviderSuccess: HTTPProvider {
     func getHttp(from url: URL) async throws -> Data {
-        try await Task.sleep(nanoseconds: UInt64.random(in: 100_000_000...500_000_000))
-        let urlPath = url.path()
-        switch url.pathExtension {
-        case _ where urlPath.contains("/candidate/matches"):
-            return testVoterCandidatesData
-        default:
-            print("\(urlPath) didn't match any cases")
-            return allQuestions
-        }
+        throw APIError.unexpectedError(error: "Not implemented")
     }
     func postHttp(data message: Encodable, to url: URL) async throws -> Data {
         try await Task.sleep(nanoseconds: UInt64.random(in: 100_000_000...500_000_000))
         let urlPath = url.path()
         switch url.pathExtension {
-        case _ where urlPath.contains("/guest/candidates"):
+        case _ where urlPath.contains("/voter/login"):
             return testVoterCandidatesData
         default:
             print("\(urlPath) didn't match any cases")
@@ -32,7 +24,8 @@ class MockGuestQuestionProvider: HTTPProvider {
     }
     
     func postHttpResponse(data message: any Encodable, to url: URL) async throws -> (Data, HTTPURLResponse) {
-        throw APIError.unexpectedError(error: "Not Implemented")
+        try await Task.sleep(nanoseconds: UInt64.random(in: 100_000_000...500_000_000))
+        let httpResponse = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)!
+        return (testVoterLoginResponse, httpResponse)
     }
 }
-
