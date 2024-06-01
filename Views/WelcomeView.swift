@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WelcomeView: View {
     @StateObject var guestTrial = GuestTrial()
+    @StateObject var voterAuthService: VoterAuthService
     var body: some View {
         NavigationView {
             VStack {
@@ -32,7 +33,8 @@ struct WelcomeView: View {
 }
 
 struct WelcomeView_Preview: PreviewProvider {
+    static var voterAuthService = VoterAuthService(provider: MockVoterAuthProviderSuccess())
     static var previews: some View {
-        WelcomeView()
+        WelcomeView(voterAuthService: voterAuthService)
     }
 }

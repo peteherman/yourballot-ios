@@ -32,6 +32,9 @@ struct NavigationButton_Rounded<Content: View, Destination: View>: View {
     }
 }
 
-#Preview {
-    NavigationButton_Rounded(destination: WelcomeView(), content: {})
+struct NavigationButton_Rounded_Preview: PreviewProvider {
+    static var voterAuthService = VoterAuthService(provider: MockVoterAuthProviderSuccess())
+    static var previews: some View {
+        NavigationButton_Rounded(destination: WelcomeView(voterAuthService: voterAuthService), content: {})
+    }
 }

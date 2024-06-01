@@ -10,6 +10,8 @@ import SwiftUI
 @main
 struct Your_BallotApp: App {
     @StateObject private var questionService = QuestionService(provider: MockQuestionProvider())
+    @StateObject private var voterAuthService = VoterAuthService(provider: URLSession(configuration: .default, delegate: CustomSessionDelegate(), delegateQueue: nil))
+    
     var body: some Scene {
         WindowGroup {
 //            IssueQuestionView(responseValue: 0.0, maxResponseValue: 5.0, questionService: questionService)
@@ -22,7 +24,7 @@ struct Your_BallotApp: App {
 //                        fatalError(error.localizedDescription)
 //                    }
 //                }
-            WelcomeView()
+            WelcomeView(voterAuthService: voterAuthService)
         }
     }
 }
