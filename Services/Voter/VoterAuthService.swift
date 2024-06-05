@@ -160,9 +160,9 @@ class VoterAuthService: BaseService, ObservableObject {
     func isAuthenticatedTryTokens() async throws -> Bool {
         if self.isAuthenticated {
             do {
-                logger.debug("Auth tokens exist, attempting to get tokens for next API request")
+                logger.info("Auth tokens exist, attempting to get tokens for next API request")
                 _ = try await self.getTokensForAuthenticatedRequest()
-                logger.debug("Tokens are not expired. Returning true")
+                logger.info("Tokens are not expired. Returning true")
                 return true
             } catch {
                 logger.info("Exception occurred when attempting to fetch tokens for the next API request: \(error.localizedDescription)")

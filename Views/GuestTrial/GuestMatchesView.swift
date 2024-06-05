@@ -71,7 +71,7 @@ struct GuestMatchesView_CandidateList: View {
                     RoundedRectangle_Blue(buttonText: "Sign-Up")
                 }
                 
-                NavigationLink(destination: WelcomeView()) {
+                NavigationLink(destination: WelcomeView(voterAuthService: VoterAuthService(provider: URLSession(configuration: .default, delegate: CustomSessionDelegate(), delegateQueue: nil)))) {
                     RoundedRectangle_Red(buttonText: "Restart")
                 }
                 .isDetailLink(false)

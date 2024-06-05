@@ -6,10 +6,22 @@
 //
 
 import SwiftUI
+import OSLog
 
 struct HomeVoterCandidatesView: View {
     let candidateService: VoterCandidatesService
+    let voterAuthService: VoterAuthService
+    let logger: Logger = Logger()
     
+    init(candidateService: VoterCandidatesService, voterAuthService: VoterAuthService? = nil) {
+        self.candidateService = candidateService
+        if voterAuthService != nil {
+            self.voterAuthService = voterAuthService!
+        } else {
+            let provider = URLSession(configuration: .default, delegate: CustomSessionDelegate(), delegateQueue: nil)
+            self.voterAuthService = VoterAuthService(provider: provider)
+        }
+    }
     
     @ViewBuilder
     var body: some View {
@@ -34,6 +46,9 @@ struct HomeVoterCandidatesView: View {
                 }
             } else {
                 Text("Loading Representatives")
+                    .task {
+                        try? await candidateService.fetchCandidates()
+                    }
             }
         }
     }

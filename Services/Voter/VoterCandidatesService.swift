@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import OSLog
 
 @MainActor
 class VoterCandidatesService: ObservableObject {
     private let provider: any HTTPProvider
     private let decoder: JSONDecoder = JSONDecoder()
+    private let logger: Logger = Logger()
     
     @Published var candidates: [Candidate]
     
@@ -32,12 +34,14 @@ class VoterCandidatesService: ObservableObject {
      * which is saved as a @Published var candidates on this class
      */
     func fetchCandidates() async throws {
+        logger.debug("Fetching candidates")
         let task = Task<[Candidate], Error> {
             let candidateData = try await provider.getHttp(from: URL(string:"\(API_BASE)/v1/voter/candidate/")!)
             let voterCandidatesSerializer = try decoder.decode(VoterCandidatesSerializer.self, from: candidateData)
             return voterCandidatesSerializer.candidates
         }
         let fetchedCandidates = try await task.value
+        logger.debug("Received candidates: \(fetchedCandidates)")
         self.candidates = fetchedCandidates
     }
     
