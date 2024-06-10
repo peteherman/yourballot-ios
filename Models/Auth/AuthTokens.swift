@@ -16,8 +16,8 @@ struct AuthTokens: Encodable {
     
     var expired: Bool {
         let currentTime = Date()
-        let expirationTime = Calendar.current.date(byAdding: .minute, value: expirationMinutes, to: currentTime)!
-        return createdAt > expirationTime
+        let expirationTime = Calendar.current.date(byAdding: .minute, value: -1 * expirationMinutes, to: currentTime)!
+        return createdAt <= expirationTime
     }
 }
 

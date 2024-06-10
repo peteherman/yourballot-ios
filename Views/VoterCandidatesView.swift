@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct VoterCandidatesView: View {
-    let candidateService: VoterCandidatesService
+    @ObservedObject var candidateService: VoterCandidatesService
     
     
     @ViewBuilder

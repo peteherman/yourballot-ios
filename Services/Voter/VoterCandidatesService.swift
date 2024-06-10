@@ -13,20 +13,31 @@ class VoterCandidatesService: ObservableObject {
     private let provider: any HTTPProvider
     private let decoder: JSONDecoder = JSONDecoder()
     private let logger: Logger = Logger()
+    private let voterAuthService: VoterAuthService
     
     @Published var candidates: [Candidate]
     
-    init(provider: any HTTPProvider = URLSession.shared) {
+    init(provider: any HTTPProvider = URLSession.shared, voterAuthService: VoterAuthService? = nil) {
         self.provider = provider
         self.candidates = []
+        if voterAuthService != nil {
+            self.voterAuthService = voterAuthService!
+        } else {
+            self.voterAuthService = VoterAuthService(provider: self.provider)
+        }
     }
     
     /*
      * Initializer/constructor useful for previews
      */
-    init(candidates: [Candidate], provider: any HTTPProvider = URLSession.shared) {
+    init(candidates: [Candidate], provider: any HTTPProvider = URLSession.shared, voterAuthService: VoterAuthService? = nil) {
         self.candidates = candidates
         self.provider = provider
+        if voterAuthService != nil {
+            self.voterAuthService = voterAuthService!
+        } else {
+            self.voterAuthService = VoterAuthService(provider: self.provider)
+        }
     }
     
     /*
@@ -34,9 +45,10 @@ class VoterCandidatesService: ObservableObject {
      * which is saved as a @Published var candidates on this class
      */
     func fetchCandidates() async throws {
-        logger.debug("Fetching candidates")
+        logger.debug("Fetching candidates")        
         let task = Task<[Candidate], Error> {
-            let candidateData = try await provider.getHttp(from: URL(string:"\(API_BASE)/v1/voter/candidate/")!)
+            let authTokens = try await self.voterAuthService.getTokensForAuthenticatedRequest()
+            let candidateData = try await provider.authenticatedGetHttp(from: URL(string:"\(API_BASE)/v1/voter/candidate/")!, accessToken: authTokens.access)
             let voterCandidatesSerializer = try decoder.decode(VoterCandidatesSerializer.self, from: candidateData)
             return voterCandidatesSerializer.candidates
         }

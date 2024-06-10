@@ -34,5 +34,8 @@ class MockGuestQuestionProvider: HTTPProvider {
     func postHttpResponse(data message: any Encodable, to url: URL) async throws -> (Data, HTTPURLResponse) {
         throw APIError.unexpectedError(error: "Not Implemented")
     }
+    func authenticatedGetHttp(from url: URL, accessToken: String) async throws -> Data {
+        throw APIError.unexpectedError(error: "Not Implemented")
+    }
 }
 

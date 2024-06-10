@@ -16,11 +16,23 @@ let validStatus = 200...299
 
 protocol HTTPProvider {
     func getHttp(from url: URL) async throws -> Data
+    func authenticatedGetHttp(from url: URL, accessToken: String) async throws -> Data
     func postHttp(data message: Encodable, to url: URL) async throws -> Data
     func postHttpResponse(data message: Encodable, to url: URL) async throws -> (Data, HTTPURLResponse)
 }
 
 extension URLSession: HTTPProvider {
+    
+    func authenticatedGetHttp(from url: URL, accessToken: String) async throws -> Data {
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        guard let (data, response) = try await self.data(for: request) as? (Data, HTTPURLResponse),
+              validStatus.contains(response.statusCode) else {
+            throw APIError.unexpectedError(error: "Received unknown error")
+        }
+        return data
+    }
     
     func getHttp(from url: URL) async throws -> Data {
         guard let (data, response) = try await self.data(from: url, delegate: nil) as? (Data, HTTPURLResponse),

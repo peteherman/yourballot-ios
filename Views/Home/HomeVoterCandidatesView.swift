@@ -9,7 +9,7 @@ import SwiftUI
 import OSLog
 
 struct HomeVoterCandidatesView: View {
-    let candidateService: VoterCandidatesService
+    @ObservedObject var candidateService: VoterCandidatesService
     let voterAuthService: VoterAuthService
     let logger: Logger = Logger()
     

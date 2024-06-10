@@ -133,9 +133,16 @@ class VoterAuthService: BaseService, ObservableObject {
      */
     func getTokensForAuthenticatedRequest() async throws -> AuthTokens {
         
+        if self.authTokens == nil {
+            let isAuth = try await self.isAuthenticatedTryTokens()
+            if !isAuth {
+                throw APIError.unexpectedError(error: "Unable to gather auth tokens")
+            }
+        }
         let currentTokens = self.authTokens!
         
         if currentTokens.expired {
+            logger.info("Detected expired tokens. Refreshing tokens now")
             let newTokens = try await self.refreshTokens(tokens: currentTokens)
             self.authTokens = newTokens
             self.saveTokens(newTokens)
