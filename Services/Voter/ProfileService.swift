@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+class ProfileService: BaseService, ObservableObject {
+    
+    private let provider: any HTTPProvider
+    
+    init(provider: any HTTPProvider = URLSession.shared) {
+        self.provider = provider
+    }
+    
+}
+

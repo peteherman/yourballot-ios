@@ -166,6 +166,12 @@
 		C163C60E2BBA0B9900A03E14 /* RectangleButton_Blue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163C60D2BBA0B9900A03E14 /* RectangleButton_Blue.swift */; };
 		C16511522BBC189A0056E640 /* CandidateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16511512BBC189A0056E640 /* CandidateView.swift */; };
 		C16511562BBC212D0056E640 /* CandidateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16511552BBC212D0056E640 /* CandidateCard.swift */; };
+		C179331F2C21A1D200CA9157 /* ProfileSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C179331E2C21A1D200CA9157 /* ProfileSettings.swift */; };
+		C17933202C21A1D200CA9157 /* ProfileSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C179331E2C21A1D200CA9157 /* ProfileSettings.swift */; };
+		C17933212C21A1D200CA9157 /* ProfileSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C179331E2C21A1D200CA9157 /* ProfileSettings.swift */; };
+		C17933232C21A2AC00CA9157 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17933222C21A2AC00CA9157 /* ProfileService.swift */; };
+		C17933242C21A2AC00CA9157 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17933222C21A2AC00CA9157 /* ProfileService.swift */; };
+		C17933252C21A2AC00CA9157 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17933222C21A2AC00CA9157 /* ProfileService.swift */; };
 		C17ABE4B2BBF9BC500BE8CB0 /* PoliticalProfileLabelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9036C2BBD6BD700B8AE94 /* PoliticalProfileLabelCard.swift */; };
 		C17ABE4C2BBF9BC500BE8CB0 /* RectangleButton+Red.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163C60B2BBA0AC000A03E14 /* RectangleButton+Red.swift */; };
 		C17ABE4D2BBF9BC500BE8CB0 /* PoliticalParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12279572BB79E5200BF5A60 /* PoliticalParty.swift */; };
@@ -357,6 +363,8 @@
 		C163C60D2BBA0B9900A03E14 /* RectangleButton_Blue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleButton_Blue.swift; sourceTree = "<group>"; };
 		C16511512BBC189A0056E640 /* CandidateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateView.swift; sourceTree = "<group>"; };
 		C16511552BBC212D0056E640 /* CandidateCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateCard.swift; sourceTree = "<group>"; };
+		C179331E2C21A1D200CA9157 /* ProfileSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettings.swift; sourceTree = "<group>"; };
+		C17933222C21A2AC00CA9157 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		C17ABE6C2BBF9BC500BE8CB0 /* Your Ballot (Local).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Your Ballot (Local).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C18C578C2BD73D2500828BE8 /* MainAuthenticatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAuthenticatedView.swift; sourceTree = "<group>"; };
 		C18C57912BD73D6E00828BE8 /* HomeVoterCandidatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVoterCandidatesView.swift; sourceTree = "<group>"; };
@@ -803,6 +811,7 @@
 			children = (
 				C18C579D2BD73E4B00828BE8 /* HomeProfileView.swift */,
 				C18C57AF2BD7D2B100828BE8 /* IssueRankingView.swift */,
+				C179331E2C21A1D200CA9157 /* ProfileSettings.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -871,6 +880,7 @@
 				C12FB3222BC94D1900F66512 /* VoterCandidatesService.swift */,
 				C18CA1A52BC7FA6B00900F16 /* VoterIssueViewService.swift */,
 				C10DC3742C00B31F00E1A6B0 /* VoterAuthService.swift */,
+				C17933222C21A2AC00CA9157 /* ProfileService.swift */,
 			);
 			path = Voter;
 			sourceTree = "<group>";
@@ -1202,6 +1212,7 @@
 				C1F262012BC55E6A006181C2 /* MockSingleCandidateProvider.swift in Sources */,
 				C18CA1A92BC7FCE400900F16 /* CandidateVoterSliderComparison.swift in Sources */,
 				C14CE03C2BCAF27B008D7CD8 /* CandidateListComponentCard.swift in Sources */,
+				C17933232C21A2AC00CA9157 /* ProfileService.swift in Sources */,
 				C19B0F192BCFE35300D9106A /* NavigationButton+Rounded.swift in Sources */,
 				C10DC3712C00B1E700E1A6B0 /* VoterLoginRequestBody.swift in Sources */,
 				C18C57A12BD748A300828BE8 /* Voter.swift in Sources */,
@@ -1228,6 +1239,7 @@
 				C12FB31C2BC94C2A00F66512 /* VoterCandidatesView.swift in Sources */,
 				C1EC67DB2BD589120046844B /* LabelAndField.swift in Sources */,
 				C18CA19D2BC7F87A00900F16 /* TestVoterIssueViewSummaryData.swift in Sources */,
+				C179331F2C21A1D200CA9157 /* ProfileSettings.swift in Sources */,
 				C18CA19B2BC7F86B00900F16 /* MockVoterIssueViewSummaryProvider.swift in Sources */,
 				C15327262BA90BD400A8A591 /* IssueQuestion.swift in Sources */,
 				C140F0812BCC173E0036DE89 /* GuestQuestionService.swift in Sources */,
@@ -1319,6 +1331,7 @@
 				C1212C032BF2290D00AE35BA /* MockSingleCandidateProvider.swift in Sources */,
 				C1212C042BF2290D00AE35BA /* CandidateVoterSliderComparison.swift in Sources */,
 				C1212C052BF2290D00AE35BA /* CandidateListComponentCard.swift in Sources */,
+				C17933242C21A2AC00CA9157 /* ProfileService.swift in Sources */,
 				C1212C062BF2290D00AE35BA /* NavigationButton+Rounded.swift in Sources */,
 				C10DC3722C00B1E700E1A6B0 /* VoterLoginRequestBody.swift in Sources */,
 				C1212C072BF2290D00AE35BA /* Voter.swift in Sources */,
@@ -1345,6 +1358,7 @@
 				C1212C1A2BF2290D00AE35BA /* VoterCandidatesView.swift in Sources */,
 				C1212C1B2BF2290D00AE35BA /* LabelAndField.swift in Sources */,
 				C1212C1C2BF2290D00AE35BA /* TestVoterIssueViewSummaryData.swift in Sources */,
+				C17933202C21A1D200CA9157 /* ProfileSettings.swift in Sources */,
 				C1212C1D2BF2290D00AE35BA /* MockVoterIssueViewSummaryProvider.swift in Sources */,
 				C1212C1E2BF2290D00AE35BA /* IssueQuestion.swift in Sources */,
 				C1212C1F2BF2290D00AE35BA /* GuestQuestionService.swift in Sources */,
@@ -1409,6 +1423,7 @@
 				C18C57A92BD74D5500828BE8 /* VoterIssueSlider.swift in Sources */,
 				C14CE03D2BCAF27B008D7CD8 /* CandidateListComponentCard.swift in Sources */,
 				C19B0F1A2BCFE35300D9106A /* NavigationButton+Rounded.swift in Sources */,
+				C17933252C21A2AC00CA9157 /* ProfileService.swift in Sources */,
 				C18CA1A32BC7F9E800900F16 /* VoterIssueViews.swift in Sources */,
 				C10DC3732C00B1E700E1A6B0 /* VoterLoginRequestBody.swift in Sources */,
 				C18C57B12BD7D2B100828BE8 /* IssueRankingView.swift in Sources */,
@@ -1435,6 +1450,7 @@
 				C18CA19C2BC7F87900900F16 /* TestVoterIssueViewSummaryData.swift in Sources */,
 				C18C578E2BD73D2500828BE8 /* MainAuthenticatedView.swift in Sources */,
 				C18CA19A2BC7F86900900F16 /* MockVoterIssueViewSummaryProvider.swift in Sources */,
+				C17933212C21A1D200CA9157 /* ProfileSettings.swift in Sources */,
 				C17ABE572BBF9BC500BE8CB0 /* Ethnicity.swift in Sources */,
 				C140F0822BCC173E0036DE89 /* GuestQuestionService.swift in Sources */,
 				C17ABE582BBF9BC500BE8CB0 /* IssueQuestion.swift in Sources */,

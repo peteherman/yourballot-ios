@@ -10,25 +10,30 @@ import SwiftUI
 struct WelcomeView: View {
     @StateObject var guestTrial = GuestTrial()
     @StateObject var voterAuthService: VoterAuthService
+    @State var authSucceeded: Bool = false
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("Your Ballot")
-                    .font(.title)
-                    .foregroundStyle(Theme.blue_accent.mainColor)
-                    .padding()
-                NavigationButton_Rounded(destination: LoginView(provider: URLSession(configuration: .default, delegate: CustomSessionDelegate(), delegateQueue: nil))) {
-                    Text("Login")
+        if self.authSucceeded {
+            MainAuthenticatedView()
+        } else {
+            NavigationView {
+                VStack {
+                    Text("Your Ballot")
+                        .font(.title)
+                        .foregroundStyle(Theme.blue_accent.mainColor)
+                        .padding()
+                    NavigationButton_Rounded(destination: LoginView(provider: URLSession(configuration: .default, delegate: CustomSessionDelegate(), delegateQueue: nil), authSucceeded: $authSucceeded)) {
+                        Text("Login")
+                    }
+                    NavigationButton_Rounded(destination: SignUpView()) {
+                        Text("Sign-Up")
+                    }
+                    NavigationLink(destination: GuestTrialZipView()) {
+                        Text("Try as Guest")
+                    }
                 }
-                NavigationButton_Rounded(destination: SignUpView()) {
-                    Text("Sign-Up")
-                }
-                NavigationLink(destination: GuestTrialZipView()) {
-                    Text("Try as Guest")
-                }
-            }
+            }        .toolbar(.hidden)
         }
-        .toolbar(.hidden)
+
     }
 }
 

@@ -12,14 +12,15 @@ struct HomeProfileView: View {
     var body: some View {
         ScrollView {
             VStack {
-                HStack {
-                    Text("Profile")
-                        .font(.title2)
-                    Image(systemName: "gearshape")
-                    
+                NavigationLink(destination: ProfileSettings()) {
+                    HStack {
+                        Text("Profile")
+                            .font(.title2)
+                        Image(systemName: "gearshape")
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding([.bottom], 10)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding([.bottom], 10)
                 Text("Political Profile")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding([.bottom], 5)

@@ -12,17 +12,17 @@ struct LoginView: View {
     @State private var password: String = ""
     @State private var errorMessage: String = ""
     @State private var loading: Bool = false
-    @State private var authSucceeded: Bool = false
+    @Binding var authSucceeded: Bool
     private var provider: any HTTPProvider = URLSession(configuration: .default)
     public var voterAuthService: VoterAuthService
     
-    init(email: String = "", password: String = "", errorMessage: String = "", loading: Bool = false, authSucceeded: Bool = false, provider: any HTTPProvider = URLSession(configuration: .default), voterAuthService: VoterAuthService? = nil) {
+    init(email: String = "", password: String = "", errorMessage: String = "", loading: Bool = false, provider: any HTTPProvider = URLSession(configuration: .default), voterAuthService: VoterAuthService? = nil, authSucceeded: Binding<Bool>) {
         self.email = email
         self.password = password
         self.errorMessage = errorMessage
         self.loading = loading
-        self.authSucceeded = authSucceeded
         self.provider = provider
+        self._authSucceeded = authSucceeded
         if voterAuthService == nil {
             self.voterAuthService = VoterAuthService(provider: self.provider)
         } else {
@@ -52,10 +52,14 @@ struct LoginView: View {
             let (authTokens, apiErrorMessage) = try await self.voterAuthService.login(email: email, password: password)
             self.loading = false
             if authTokens != nil {
-                self.authSucceeded = true
+                await MainActor.run {
+                    self.authSucceeded = true
+                }
             } else {
-                self.errorMessage = apiErrorMessage
-                self.authSucceeded = false
+                await MainActor.run {
+                    self.errorMessage = apiErrorMessage
+                    self.authSucceeded = false
+                }
             }
         } catch {
             errorMessage = "An unknown error occurred. Please try again later"
@@ -178,6 +182,7 @@ struct LoginView_Preview: PreviewProvider {
     static var provider = MockVoterAuthProviderSuccess()
     static var voterAuthService = VoterAuthService(provider: provider)
     static var previews: some View {
-        LoginView(voterAuthService: voterAuthService)
+        @State var authSuceeded: Bool = false
+        LoginView(voterAuthService: voterAuthService, authSucceeded: $authSuceeded)
     }
 }

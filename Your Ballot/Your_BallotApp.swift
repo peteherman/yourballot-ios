@@ -18,7 +18,8 @@ struct Your_BallotApp: App {
     var body: some Scene {
         WindowGroup {
             if self.isAuth {
-                HomeVoterCandidatesView(candidateService: VoterCandidatesService(provider: insecure_provider()), voterAuthService: voterAuthService)
+                //HomeVoterCandidatesView(candidateService: VoterCandidatesService(provider: insecure_provider()), voterAuthService: voterAuthService)
+                MainAuthenticatedView()
             } else {
                 WelcomeView(voterAuthService: voterAuthService)
                     .task {

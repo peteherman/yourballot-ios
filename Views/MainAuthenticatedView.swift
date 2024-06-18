@@ -15,7 +15,7 @@ struct MainAuthenticatedView: View {
     private var value: Double = 5.0
     private var questionProvider: any HTTPProvider = MockQuestionProvider()
     
-    @State private var selection = 2
+    @State private var selection = 1
     
     var body: some View {
         TabView(selection: $selection) {
