@@ -11,11 +11,12 @@ struct GuestMatchesView: View {
     @ObservedObject var guestQuestionService: GuestQuestionService
     let zipcode: String
     let answeredQuestions: [IssueQuestion]
+    @Binding var authSucceeded: Bool
     
     @ViewBuilder
     var body: some View {
         if guestQuestionService.candidateMatches.count > 0 {
-            GuestMatchesView_CandidateList(guestQuestionService: guestQuestionService, zipcode: zipcode, answeredQuestions: answeredQuestions)
+            GuestMatchesView_CandidateList(guestQuestionService: guestQuestionService, zipcode: zipcode, answeredQuestions: answeredQuestions, authSucceeded: $authSucceeded)
         } else {
             GuestMatchesView_LoadingCandidates(guestQuestionService: guestQuestionService, zipcode: zipcode, answeredQuestions: answeredQuestions)
         }
@@ -47,6 +48,7 @@ struct GuestMatchesView_CandidateList: View {
     @ObservedObject var guestQuestionService: GuestQuestionService
     let zipcode: String
     let answeredQuestions: [IssueQuestion]
+    @Binding var authSucceeded: Bool
     var body: some View {
         let candidateLocalityMap = guestQuestionService.groupCandidatesByLocalityType()
         VStack {
@@ -67,7 +69,7 @@ struct GuestMatchesView_CandidateList: View {
                 }
             }
             HStack {
-                NavigationLink(destination: SignUpView(zipcode: zipcode, answeredQuestions: answeredQuestions)) {
+                NavigationLink(destination: SignUpView(zipcode: zipcode, answeredQuestions: answeredQuestions, authSucceeded: $authSucceeded)) {
                     RoundedRectangle_Blue(buttonText: "Sign-Up")
                 }
                 
@@ -86,6 +88,7 @@ struct GuestMatches_Preview: PreviewProvider {
     static var guestQuestionService = GuestQuestionService(provider: mockGuestQuestionProvider, candidateMatches: Candidate.sampleData)
     static var guestTrial = GuestTrial()
     static var previews: some View {
-        GuestMatchesView(guestQuestionService: guestQuestionService, zipcode: "12831", answeredQuestions: [])
+        @State var authSucceeded: Bool = false
+        GuestMatchesView(guestQuestionService: guestQuestionService, zipcode: "12831", answeredQuestions: [], authSucceeded: $authSucceeded)
     }
 }

@@ -15,12 +15,16 @@ struct SignUpView: View {
     @State private var errorMessage: String = ""
     @State private var birthDate: Date = Date()
     @State private var ethnicity: Ethnicity = .choose_not_to_share
-    @State private var races: Set<Ethnicity> = [.choose_not_to_share]
+    @State private var races: Set<Race> = [.choose_not_to_share]
     @State private var gender: Gender = .choose_not_to_share
     @State private var political_party: PoliticalParty  = .choose_not_to_share
     @State private var zipcode: String = ""
     @State private var political_identity: String = ""
+    @State private var loading: Bool = false
+    @Binding var authSucceeded: Bool
     private var answeredQuestions: [IssueQuestion] = []
+    private var provider: any HTTPProvider = URLSession(configuration: .default)
+    public var voterAuthService: VoterAuthService
     let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
     
     
@@ -47,9 +51,44 @@ struct SignUpView: View {
         }
     }
     
-    init(zipcode: String = "", answeredQuestions: [IssueQuestion] = []) {
+    init(zipcode: String = "", answeredQuestions: [IssueQuestion] = [], voterAuthService: VoterAuthService? = nil, authSucceeded: Binding<Bool>) {
         _zipcode = State(initialValue: zipcode)
         self.answeredQuestions = answeredQuestions
+        if voterAuthService != nil {
+            self.voterAuthService = voterAuthService!
+        } else {
+            self.voterAuthService = VoterAuthService(provider: insecure_provider())
+        }
+        
+        self._authSucceeded = authSucceeded
+    }
+    
+    func makeRegisterRequest() async -> Void {
+        // TODO: Cleanup this guy, not grabbing everything, multiple races, etc
+        let voterRegistrationBody = VoterRegistrationRequestBody(email: email, password: password, zipcode: zipcode, political_identity: political_identity, age: nil, ethnicity: ethnicity, gender: gender, race: races.first, political_party: political_party)
+        
+        self.loading = true
+        self.errorMessage = ""
+        
+        do {
+            let (authTokens, apiErrorMessage) = try await self.voterAuthService.register(registerBody: voterRegistrationBody)
+            self.loading = false
+            if authTokens != nil {
+                await MainActor.run {
+                    self.authSucceeded = true
+                }
+            } else {
+                await MainActor.run {
+                    self.authSucceeded = false
+                    self.errorMessage = apiErrorMessage
+                }
+            }
+        } catch {
+            await MainActor.run {
+                self.errorMessage = "An unknown error occurred. Please try again later"
+                self.loading = false
+            }
+        }
     }
     
     var body: some View {
@@ -94,10 +133,10 @@ struct SignUpView: View {
                     .pickerStyle(MenuPickerStyle())
                 }
                 LabelAndField(label: "Race") {
-                    ForEach(Ethnicity.allCases, id: \.self) { ethnicity in
-                        Toggle(ethnicity.rawValue, isOn: Binding<Bool>(
-                            get: { self.races.contains(ethnicity) },
-                            set: { if $0 { self.races.insert(ethnicity) } else { self.races.remove(ethnicity) } }
+                    ForEach(Race.allCases, id: \.self) { race in
+                        Toggle(race.rawValue, isOn: Binding<Bool>(
+                            get: { self.races.contains(race) },
+                            set: { if $0 { self.races.insert(race) } else { self.races.remove(race) } }
                         ))
                     }
                 }
@@ -125,7 +164,11 @@ struct SignUpView: View {
             Spacer()
                 .frame(height: 50)
             if (self.validForm()) {
-                Button(action: {}, label: {
+                Button(action: {
+                    Task {
+                        await makeRegisterRequest()
+                    }    
+                }, label: {
                     Text("Submit")
                         .font(.headline)
                         .foregroundColor(.black)
@@ -163,6 +206,11 @@ struct SignUpView: View {
     }
 }
 
-#Preview {
-    SignUpView()
+struct SignUpView_Preview: PreviewProvider {
+    static var provider = MockVoterAuthProviderSuccess()
+    static var voterAuthService = VoterAuthService(provider: provider)
+    static var previews: some View {
+        @State var authSuceeded: Bool = false
+        SignUpView(voterAuthService: voterAuthService, authSucceeded: $authSuceeded)
+    }
 }

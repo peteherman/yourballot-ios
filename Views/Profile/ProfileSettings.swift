@@ -12,6 +12,7 @@ struct ProfileSettings: View {
     @State private var errorMessage: String = ""
     @State private var showEditEmailView: Bool = false
     @State private var showEditPasswordView: Bool = false
+    @State private var showConfirmLogoutView: Bool = false
 
     init(profileService: ProfileService? = nil) {
         let provider = insecure_provider()
@@ -38,6 +39,11 @@ struct ProfileSettings: View {
                 .onTapGesture {
                     showEditPasswordView = true
                 }
+            Button(action: {
+                self.showConfirmLogoutView = true
+            }) {
+                Text("Logout")
+            }
             Spacer()
         }
         .padding([.leading, .trailing], 20)
@@ -46,6 +52,9 @@ struct ProfileSettings: View {
         }
         .sheet(isPresented: $showEditPasswordView) {
             Text("Edit Password")
+        }
+        .sheet(isPresented: $showConfirmLogoutView) {
+            ConfirmLogoutView(voterAuthService: VoterAuthService(provider: insecure_provider()))
         }
     }
 }
@@ -71,6 +80,17 @@ struct StaticLabelAndField: View {
             .padding([.leading, .trailing], 5.0)
             .background(Theme.light_blue.mainColor)
             .cornerRadius(5.0)
+        }
+    }
+}
+
+struct ConfirmLogoutView: View {
+    public var voterAuthService: VoterAuthService
+    var body: some View {
+        Button(action: {
+            voterAuthService.clearTokens()
+        }) {
+            Text("Logout")
         }
     }
 }

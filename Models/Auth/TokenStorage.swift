@@ -16,6 +16,11 @@ class TokenStorage {
         KeychainService.shared.save(refreshTokenKey, value: authTokens.refresh)
     }
     
+    func clearTokens() -> Void {
+        KeychainService.shared.delete(accessTokenKey)
+        KeychainService.shared.delete(refreshTokenKey)
+    }
+    
     func getAccessToken() -> String? {
         return KeychainService.shared.get(accessTokenKey)
     }

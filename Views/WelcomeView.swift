@@ -24,10 +24,10 @@ struct WelcomeView: View {
                     NavigationButton_Rounded(destination: LoginView(provider: URLSession(configuration: .default, delegate: CustomSessionDelegate(), delegateQueue: nil), authSucceeded: $authSucceeded)) {
                         Text("Login")
                     }
-                    NavigationButton_Rounded(destination: SignUpView()) {
+                    NavigationButton_Rounded(destination: SignUpView(voterAuthService: voterAuthService, authSucceeded: $authSucceeded)) {
                         Text("Sign-Up")
                     }
-                    NavigationLink(destination: GuestTrialZipView()) {
+                    NavigationLink(destination: GuestTrialZipView(authSucceeded: $authSucceeded)) {
                         Text("Try as Guest")
                     }
                 }

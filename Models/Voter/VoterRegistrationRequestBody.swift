@@ -13,10 +13,10 @@ struct VoterRegistrationRequestBody: Encodable {
     let zipcode: String
     let political_identity: String
     let age: Int?
-    let ethnicity: Ethnicity?
-    let gender: Gender?
-    let race: Race?
-    let political_party: PoliticalParty?
+    let ethnicity: Ethnicity
+    let gender: Gender
+    let race: Race
+    let political_party: PoliticalParty
     
     init(email: String, password: String, zipcode: String, political_identity: String = "", age: Int? = nil, ethnicity: Ethnicity? = nil, gender: Gender? = nil, race: Race? = nil, political_party: PoliticalParty? = nil) {
         self.email = email
@@ -24,9 +24,27 @@ struct VoterRegistrationRequestBody: Encodable {
         self.zipcode = zipcode
         self.political_identity = political_identity
         self.age = age
-        self.ethnicity = ethnicity
-        self.gender = gender
-        self.race = race
-        self.political_party = political_party
+        if ethnicity != nil {
+            self.ethnicity = ethnicity!
+        } else {
+            self.ethnicity = Ethnicity.choose_not_to_share
+        }
+        if gender != nil {
+            self.gender = gender!
+        } else {
+            self.gender = Gender.choose_not_to_share
+        }
+        
+        if race != nil {
+            self.race = race!
+        } else {
+            self.race = Race.choose_not_to_share
+        }
+        
+        if political_party != nil {
+            self.political_party = political_party!
+        } else {
+            self.political_party = PoliticalParty.choose_not_to_share
+        }
     }
 }

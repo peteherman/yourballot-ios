@@ -13,6 +13,7 @@ struct GuestTrialZipView: View {
     @State private var animationAmount = 1.0
     @FocusState private var isZipEntryFocused: Bool
     @State private var zipcode: String = ""
+    @Binding var authSucceeded: Bool
     
     func limitTextLength(_ length: Int) {
         if zipcode.count > length {
@@ -40,7 +41,7 @@ struct GuestTrialZipView: View {
                 .focused($isZipEntryFocused)
                 .padding()
             VStack {
-                NavigationLink(destination: GuestQuestionView(questionService: GuestQuestionService(provider: insecure_provider()), zipcode: zipcode)
+                NavigationLink(destination: GuestQuestionView(questionService: GuestQuestionService(provider: insecure_provider()), zipcode: zipcode, authSucceeded: $authSucceeded)
                 ) {
                     Text("Continue")
                         .foregroundStyle(Theme.deep_blue.mainColor)
@@ -68,6 +69,9 @@ struct GuestTrialZipView: View {
     }
 }
 
-#Preview {
-    GuestTrialZipView()
+struct GuestTrialZipView_Preview: PreviewProvider {
+    static var previews: some View {
+        @State var authSucceeded: Bool = false
+        GuestTrialZipView(authSucceeded: $authSucceeded)
+    }
 }

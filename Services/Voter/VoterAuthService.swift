@@ -107,21 +107,32 @@ class VoterAuthService: BaseService, ObservableObject {
         return authTokens
     }
     
-    func register(registerBody: VoterRegistrationRequestBody) async throws -> AuthTokens {
+    func register(registerBody: VoterRegistrationRequestBody) async throws -> (AuthTokens?, String) {
         logger.debug("Making registration request to API")
-        let task = Task<AuthTokens, Error> {
-            let tokenData = try await provider.postHttp(data: registerBody, to: registerURL)
-            let authTokenSerializer = try decoder.decode(AuthResponseSerializer.self, from: tokenData)
-            if authTokenSerializer.authTokens != nil {
-                let tokens = authTokenSerializer.authTokens!
-                self.saveTokens(tokens)
-                return tokens
+        logger.debug("Race: \(registerBody.race.string())")
+        logger.debug("Gender: \(registerBody.gender.string())")
+        let task = Task<(AuthTokens?, String), Error> {
+            let (responseData, httpResponse) = try await provider.postHttpResponse(data: registerBody, to: registerURL)
+            if self.requestSuccessful(httpResponse) {
+                let authTokens = try self.serializeAuthTokensFromLoginResponseData(data: responseData)
+                self.saveTokens(authTokens)
+                return (authTokens, "")
             }
-            throw APIError.unexpectedError(error: "Auth token serializer was unable to decode the response from the API")
+            let errorMessage = try self.parseErrorMessageFromResponseData(responseData)
+            return (nil, errorMessage)
         }
-        let authTokens = try await task.value
-        logger.debug("Successfully authenticated to the API. Returning auth tokens")
-        return authTokens
+        var (authTokens, errorMessage) = try await task.value
+        if let authTokens {
+            self.authTokens = authTokens
+            logger.debug("Successfully registered and authenticated to the API. Returning auth tokens")
+        } else {
+            self.authTokens = nil
+            logger.debug("Failed to authenticate to the API: \(errorMessage)")
+        }
+        if authTokens == nil && errorMessage == "" {
+            errorMessage = "Registration attempt failed. Please try again later"
+        }
+        return (authTokens, errorMessage)
     }
     
     /*
@@ -157,6 +168,11 @@ class VoterAuthService: BaseService, ObservableObject {
         tokenStorage.saveTokens(authTokens: tokens)
     }
     
+    func clearTokens() -> Void {
+        let tokenStorage = TokenStorage()
+        tokenStorage.clearTokens()
+    }
+    
     /*
      * Really only executed upon startup-up of app
      * Will return false if self.authTokens don't exist
@@ -173,6 +189,7 @@ class VoterAuthService: BaseService, ObservableObject {
                 return true
             } catch {
                 logger.info("Exception occurred when attempting to fetch tokens for the next API request: \(error.localizedDescription)")
+                self.clearTokens()
                 return false
             }
         }

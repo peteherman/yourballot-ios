@@ -12,6 +12,7 @@ struct GuestQuestionView: View {
     let zipcode: String
     @State var responseValue: Double = 5.0
     @State var answeredQuestions: [IssueQuestion] = []
+    @Binding var authSucceeded: Bool
     let maxResponseValue: Double = 10.0
     
     
@@ -19,9 +20,9 @@ struct GuestQuestionView: View {
         if answeredQuestions.count == 0 && questionService.currentQuestion == nil {
             GuestQuestionView_Loading(questionService: questionService)
         } else if questionService.currentQuestion != nil {
-            GuestQuestionView_AnswerQuestion(questionService: questionService, answeredQuestions: $answeredQuestions, responseValue: $responseValue, maxResponseValue: maxResponseValue, zipcode: zipcode)
+            GuestQuestionView_AnswerQuestion(questionService: questionService, answeredQuestions: $answeredQuestions, responseValue: $responseValue, authSucceeded: $authSucceeded, maxResponseValue: maxResponseValue, zipcode: zipcode)
         } else if questionService.answeredAllQuestions && answeredQuestions.count > 0 {
-            GuestQuestionView_QuestionsCompleted(questionService: questionService, zipcode: zipcode, answeredQuestions: answeredQuestions)
+            GuestQuestionView_QuestionsCompleted(questionService: questionService, authSucceeded: $authSucceeded, zipcode: zipcode, answeredQuestions: answeredQuestions)
         }
     }
 }
@@ -49,6 +50,7 @@ struct GuestQuestionView_AnswerQuestion: View {
     @ObservedObject var questionService: GuestQuestionService
     @Binding var answeredQuestions: [IssueQuestion]
     @Binding var responseValue: Double
+    @Binding var authSucceeded: Bool
     let maxResponseValue: Double
     let zipcode: String
     
@@ -88,13 +90,14 @@ struct GuestQuestionView_AnswerQuestion: View {
             .padding(.top)
             .toolbar(.hidden)
         } else {
-            GuestQuestionView_QuestionsCompleted(questionService: questionService, zipcode: zipcode, answeredQuestions: answeredQuestions)
+            GuestQuestionView_QuestionsCompleted(questionService: questionService, authSucceeded: $authSucceeded, zipcode: zipcode, answeredQuestions: answeredQuestions)
         }
     }
 }
     
 struct GuestQuestionView_QuestionsCompleted: View {
     @ObservedObject var questionService: GuestQuestionService
+    @Binding var authSucceeded: Bool
     let zipcode: String
     let answeredQuestions: [IssueQuestion]
     var body: some View {
@@ -103,7 +106,7 @@ struct GuestQuestionView_QuestionsCompleted: View {
                 .font(.title2)
             Spacer()
                 .frame(maxHeight: 120)
-            NavigationLink(destination: GuestMatchesView(guestQuestionService: questionService, zipcode: zipcode, answeredQuestions: answeredQuestions)) {
+            NavigationLink(destination: GuestMatchesView(guestQuestionService: questionService, zipcode: zipcode, answeredQuestions: answeredQuestions, authSucceeded: $authSucceeded)) {
                 RectangularView_Blue(buttonText: "Get Results")
             }
         }
@@ -132,6 +135,7 @@ struct GuestQuestionView_Preview: PreviewProvider {
     
     static var questionServiceFullyAnswered = GuestQuestionService(questions: [], provider: mockQuestionProvider)
     static var previews: some View {
-        GuestQuestionView(questionService: guestQuestionService, zipcode: "12381")
+        @State var authSucceeded: Bool = false
+        GuestQuestionView(questionService: guestQuestionService, zipcode: "12381", authSucceeded: $authSucceeded)
     }
 }
