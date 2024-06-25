@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Voter {
+struct Voter: Decodable {
     let id: Int64
     let external_id: UUID
     let age: Int
@@ -18,6 +18,7 @@ struct Voter {
     let political_identity: String
     let political_party: PoliticalParty
     let issue_views: IssueViewsSummary?
+    let email: String
 }
 
 extension Voter {
@@ -28,6 +29,6 @@ extension Voter {
             "Gun Control": -5.0,
             "Environment": 8.0,
             "Immigration": -6.0
-        ])
+        ], email: "sampleuser@mail.com")
     ]
 }

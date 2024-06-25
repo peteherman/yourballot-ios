@@ -94,9 +94,10 @@ final class TestVoterAuthE2E: XCTestCase {
             let testUserEmail = "test2@mail.com"
             let testUserPassword = "password"
             let voterRegistration = VoterRegistrationRequestBody(email: testUserEmail, password: testUserPassword, zipcode: "12831", political_identity: "")
-            let authTokens = try await voterAuthService.register(registerBody: voterRegistration)
-            XCTAssertNotNil(authTokens.access)
-            XCTAssertNotNil(authTokens.refresh)
+            let (authTokens, errorMessage): (AuthTokens?, String) = try await voterAuthService.register(registerBody: voterRegistration)
+            XCTAssertNotNil(authTokens)
+            XCTAssertNotNil(authTokens!.access)
+            XCTAssertNotNil(authTokens!.refresh)
         } catch {
             XCTFail("Received exception: \(error)")
         }
@@ -112,9 +113,10 @@ final class TestVoterAuthE2E: XCTestCase {
             let testUserEmail = "test3@mail.com"
             let testUserPassword = "password"
             let voterRegistration = VoterRegistrationRequestBody(email: testUserEmail, password: testUserPassword, zipcode: "12831", political_identity: "some political identity", age: 24, ethnicity: Ethnicity.choose_not_to_share, gender: Gender.other, race: Race.asian)
-            let authTokens = try await voterAuthService.register(registerBody: voterRegistration)
-            XCTAssertNotNil(authTokens.access)
-            XCTAssertNotNil(authTokens.refresh)
+            let (authTokens, errorMessage): (AuthTokens?, String) = try await voterAuthService.register(registerBody: voterRegistration)
+            XCTAssertNotNil(authTokens)
+            XCTAssertNotNil(authTokens!.access)
+            XCTAssertNotNil(authTokens!.refresh)
         } catch {
             XCTFail("Received exception: \(error)")
         }

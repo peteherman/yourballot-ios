@@ -8,14 +8,14 @@
 import XCTest
 @testable import Your_Ballot
 
-class CustomSessionDelegate: NSObject, URLSessionDelegate {
-    public func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-       
-        //Trust the certificate even if not valid
-        let urlCredential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
-        completionHandler(.useCredential, urlCredential)
-    }
-}
+//class CustomSessionDelegate: NSObject, URLSessionDelegate {
+//    public func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+//       
+//        //Trust the certificate even if not valid
+//        let urlCredential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
+//        completionHandler(.useCredential, urlCredential)
+//    }
+//}
 
 final class TestGuestTrialE2E: XCTestCase {
 

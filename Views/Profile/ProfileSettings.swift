@@ -8,20 +8,12 @@
 import SwiftUI
 
 struct ProfileSettings: View {
-    private var profileService: ProfileService
+    public var profileService: ProfileService
     @State private var errorMessage: String = ""
     @State private var showEditEmailView: Bool = false
     @State private var showEditPasswordView: Bool = false
     @State private var showConfirmLogoutView: Bool = false
 
-    init(profileService: ProfileService? = nil) {
-        let provider = insecure_provider()
-        if profileService == nil {
-            self.profileService = ProfileService(provider: provider)
-        } else {
-            self.profileService = profileService!
-        }
-    }
     
     var body: some View {
         VStack {
@@ -31,7 +23,7 @@ struct ProfileSettings: View {
             }
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
             .padding([.top, .bottom], 20)
-            StaticLabelAndField(label: "Email", field: "test@mail.com")
+            StaticLabelAndField(label: "Email", field: profileService.voter?.email ?? "")
                 .onTapGesture {
                     showEditEmailView = true
                 }
@@ -96,5 +88,5 @@ struct ConfirmLogoutView: View {
 }
 
 #Preview {
-    ProfileSettings()
+    ProfileSettings(profileService: ProfileService(provider: insecure_provider()))
 }

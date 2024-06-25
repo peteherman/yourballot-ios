@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct MainAuthenticatedView: View {
-    private var voterCandidateProvider = MockVoterCandidatesProvider()
-    private var sampleCandidates = Candidate.sampleData
     
     let maxValue: Double = 10.0
     private var value: Double = 5.0
@@ -20,7 +18,7 @@ struct MainAuthenticatedView: View {
     var body: some View {
         TabView(selection: $selection) {
             NavigationView {
-                HomeQuestionView(responseValue: 5.0, maxResponseValue: maxValue, questionService: QuestionService(provider: questionProvider))
+                HomeQuestionView(responseValue: 5.0, maxResponseValue: maxValue, questionService: QuestionService(provider: insecure_provider()))
             }
             .tabItem {
                 Label("Questions", systemImage: "questionmark.circle")
@@ -28,14 +26,14 @@ struct MainAuthenticatedView: View {
             .tag(0)
             
             NavigationView {
-                HomeVoterCandidatesView(candidateService: VoterCandidatesService(candidates: sampleCandidates, provider: voterCandidateProvider))
+                HomeVoterCandidatesView(candidateService: VoterCandidatesService(provider: insecure_provider()))
             }
             .tabItem {
                 Label("Home", systemImage: "house")
             }
             .tag(1)
             NavigationView {
-                HomeProfileView(voter: Voter.sampleData[0])
+                HomeProfileView()
             }
             .tabItem {
                 Label("Profile", systemImage: "person.crop.circle")

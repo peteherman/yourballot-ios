@@ -8,11 +8,64 @@
 import SwiftUI
 
 struct HomeProfileView: View {
-    let voter: Voter
+    public var profileService: ProfileService
+    @State private var loading: Bool = true
+    @State private var errorMessage: String = ""
+    
+    
+    init(profileService: ProfileService? = nil) {
+        let provider = insecure_provider()
+        if profileService == nil {
+            self.profileService = ProfileService(provider: provider)
+        } else {
+            self.profileService = profileService!
+        }
+    }
+    
+    func fetchProfile() async -> Void {
+        do {
+            try await profileService.fetchProfile()
+            await MainActor.run {
+                self.loading = false
+            }
+        } catch {
+            print("Caught error: \(error.localizedDescription)")
+            await MainActor.run {
+                self.errorMessage = "An unknown error occurred. Please try again later"
+                self.loading = false
+            }
+        }
+        
+    }
+    
     var body: some View {
+        if loading {
+            loadingSpinner
+                .task {
+                    await fetchProfile()
+                }
+        } else if !loading && profileService.voter != nil {
+            profileView
+        } else {
+            VStack {
+                Text("\(errorMessage)")
+                    .padding()
+                    .multilineTextAlignment(.center)
+            }
+        }
+    }
+    
+    var loadingSpinner: some View {
+        ProgressView()
+            .progressViewStyle(CircularProgressViewStyle())
+            .scaleEffect(2)  // Optional: scale to make it larger
+            .padding()
+    }    
+    
+    var profileView: some View {
         ScrollView {
             VStack {
-                NavigationLink(destination: ProfileSettings()) {
+                NavigationLink(destination: ProfileSettings(profileService: profileService)) {
                     HStack {
                         Text("Profile")
                             .font(.title2)
@@ -24,7 +77,7 @@ struct HomeProfileView: View {
                 Text("Political Profile")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding([.bottom], 5)
-                PoliticalProfileHeaderView(voter: voter)
+                PoliticalProfileHeaderView(voter: profileService.voter!)
                     .padding([.bottom], 20)
                 HStack {
                     Text("Issues")
@@ -35,12 +88,12 @@ struct HomeProfileView: View {
                 NavigationLink(destination: IssueRankingView()) {
                     Text("Change what matters most to you")
                 }
-                if (voter.issue_views == nil) {
+                if (profileService.voter!.issue_views == nil) {
                     Text("Answer some questions so you can view your Political Profile!")
                         .multilineTextAlignment(.center)
                         .padding([.top], 30)
                 } else {
-                    let issue_views = voter.issue_views ?? [:]
+                    let issue_views = profileService.voter!.issue_views ?? [:]
                     VStack {
                         ForEach(Array(issue_views.keys), id: \.self) {
                             issue_name in
@@ -60,5 +113,5 @@ struct HomeProfileView: View {
 }
 
 #Preview {
-    HomeProfileView(voter: Voter.sampleData[0])
+    HomeProfileView(profileService: ProfileService(provider: insecure_provider()))
 }

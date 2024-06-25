@@ -179,8 +179,8 @@ struct LoginView: View {
 }
 
 struct LoginView_Preview: PreviewProvider {
-    static var provider = MockVoterAuthProviderSuccess()
-    static var voterAuthService = VoterAuthService(provider: provider)
+//    static var provider = MockVoterAuthProviderSuccess()
+    static var voterAuthService = VoterAuthService(provider: insecure_provider())
     static var previews: some View {
         @State var authSuceeded: Bool = false
         LoginView(voterAuthService: voterAuthService, authSucceeded: $authSuceeded)
