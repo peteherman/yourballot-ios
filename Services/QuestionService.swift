@@ -6,31 +6,48 @@
 //
 
 import Foundation
+import OSLog
 
 @MainActor
 class QuestionService: ObservableObject {
     // TODO: Add cache
-    private let remainingQuestionsURL = URL(string: "\(API_BASE)/v1/voter/questions.remaining")!
-    private let answerQuestionURL = URL(string: "\(API_BASE)/v1/voter/questions")!
+    private let remainingQuestionsURL = URL(string: "\(API_BASE)/v1/voter/questions.remaining/")!
+    private let answerQuestionURL = URL(string: "\(API_BASE)/v1/voter/questions/")!
     private let decoder: JSONDecoder = JSONDecoder()
     private let provider: any HTTPProvider
+    private let voterAuthService: VoterAuthService
     @Published var currentQuestion: IssueQuestion?
+    private let logger: Logger = Logger()
     
     private var questionQueue: [IssueQuestion] = []
     private var skippedQuestions: [IssueQuestion] = []
     
-    init(provider: any HTTPProvider = URLSession.shared) {
+    init(provider: any HTTPProvider = URLSession.shared, voterAuthService: VoterAuthService? = nil) {
         self.provider = provider
+        if voterAuthService != nil {
+            self.voterAuthService = voterAuthService!
+        } else {
+            self.voterAuthService = VoterAuthService(provider: insecure_provider())
+        }
     }
     
     func fetchQuestions() async throws {
         let task = Task<[IssueQuestion], Error> {
-            let questionData = try await provider.getHttp(from: remainingQuestionsURL)
+            logger.debug("Fetching voter's remaining questions")
+            let authTokens = try await self.voterAuthService.getTokensForAuthenticatedRequest()
+            let questionData = try await provider.authenticatedGetHttp(from: remainingQuestionsURL, accessToken: authTokens.access)
             let issueQuestionListSerializer = try decoder.decode(IssueQuestionListSerializer.self, from: questionData)
-            return issueQuestionListSerializer.issueQuestions
+            let receivedQuestions = issueQuestionListSerializer.issueQuestions
+            logger.debug("Received issue questions: \(receivedQuestions)")
+            return receivedQuestions
         }
         let issueQuestions = try await task.value
         self.questionQueue = issueQuestions
+    }
+    
+    func initializeQuestions() async throws {
+        try await self.fetchQuestions()
+        self.currentQuestion = self.popFirstQuestion()
     }
     
     func popFirstQuestion() -> IssueQuestion? {

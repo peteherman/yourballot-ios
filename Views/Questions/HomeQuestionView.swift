@@ -11,6 +11,23 @@ struct HomeQuestionView: View {
     @State var responseValue: Double
     let maxResponseValue: Double
     @StateObject var questionService: QuestionService
+    @State private var loading: Bool = false
+    @State private var errorMessage: String = ""
+    
+    func fetchQuestions() async -> Void {
+        do {
+            try await questionService.initializeQuestions()
+            await MainActor.run {
+                self.loading = false
+            }
+        } catch {
+            print("Caught unexpected exception: \(error.localizedDescription)")
+            await MainActor.run {
+                self.errorMessage = "An unexpected error occurred. Please try again later"
+                self.loading = false
+            }
+        }
+    }
     
     func resetSlider() {
         self.responseValue = maxResponseValue / 2
@@ -36,6 +53,13 @@ struct HomeQuestionView: View {
         self.resetSlider()
     }
     
+    var loadingSpinner: some View {
+        ProgressView()
+            .progressViewStyle(CircularProgressViewStyle())
+            .scaleEffect(2)  // Optional: scale to make it larger
+            .padding()
+    }
+    
     @ViewBuilder
     var body: some View {
         if questionService.currentQuestion != nil {
@@ -56,8 +80,23 @@ struct HomeQuestionView: View {
             }
             .padding(.top)
         }
+        else if self.loading {
+            loadingSpinner
+                .task {
+                    await fetchQuestions()
+                }
+        } else if self.errorMessage != "" {
+            VStack {
+                Text("\(self.errorMessage)")
+                    .padding()
+                    .multilineTextAlignment(.center)
+            }
+        }
         else {
             Text("No more questions at this time")
+                .task {
+                    await fetchQuestions()
+                }
         }
     }
 }
