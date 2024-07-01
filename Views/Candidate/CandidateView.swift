@@ -8,8 +8,45 @@
 import SwiftUI
 
 struct CandidateView: View {
+    public var candidate: Candidate
     @StateObject var candidateService: SingleCandidateService
     @StateObject var voterIssueViewService: VoterIssueViewService
+    @State private var candidateLoading: Bool = true
+    @State private var voterIssueViewsLoading: Bool = true
+    @State private var errorMessage: String = ""
+    
+    
+    
+    func loadCandidate() async -> Void {
+        do {
+            try await candidateService.fetchCandidate(candidateID: Int(candidate.id))
+            await MainActor.run {
+                self.candidateLoading = false
+            }
+        } catch {
+            print("Caught error: \(error.localizedDescription)")
+            await MainActor.run {
+                self.errorMessage = "An unknown error occurred. Please try again later"
+                self.candidateLoading = false
+            }
+        }
+    }
+    
+    func loadVoterIssueViews() async -> Void {
+        do {
+            try await voterIssueViewService.fetchVoterIssueViews()
+            await MainActor.run {
+                self.voterIssueViewsLoading = false
+            }
+        } catch {
+            print("Caught error: \(error.localizedDescription)")
+            await MainActor.run {
+                self.errorMessage = "An unknown error occurred. Please try again later"
+                self.voterIssueViewsLoading = false
+            }
+        }
+    }
+    
     @ViewBuilder
     var body: some View {
         if candidateService.candidate != nil {
@@ -39,6 +76,10 @@ struct CandidateView: View {
             }
         } else {
             Text("Candidate loading...")
+                .task {
+                    await loadCandidate()
+                    await loadVoterIssueViews()
+                }
         }
     }
 }
@@ -53,6 +94,6 @@ struct CandidateView_Preview: PreviewProvider {
     static var voterIssueViewService = VoterIssueViewService(issue_views: sampleVoterIssueViews)
 
     static var previews: some View {
-        CandidateView(candidateService: singleCandidateService, voterIssueViewService: voterIssueViewService)
+        CandidateView(candidate: sampleCandidate, candidateService: singleCandidateService, voterIssueViewService: voterIssueViewService)
     }
 }

@@ -11,19 +11,30 @@ import Foundation
 class SingleCandidateService: ObservableObject {
     private let provider: any HTTPProvider
     private let decoder: JSONDecoder = JSONDecoder()
+    private let voterAuthService: VoterAuthService
     
     @Published var candidate: Candidate?
     
-    init(provider: any HTTPProvider = URLSession.shared) {
+    init(provider: any HTTPProvider = URLSession.shared, voterAuthService: VoterAuthService? = nil) {
         self.provider = provider
+        if voterAuthService != nil {
+            self.voterAuthService = voterAuthService!
+        } else {
+            self.voterAuthService = VoterAuthService(provider: insecure_provider())
+        }
     }
     
     /*
      * Initializer/constructor useful for previews
      */
-    init(candidate: Candidate, provider: any HTTPProvider = URLSession.shared) {
+    init(candidate: Candidate, provider: any HTTPProvider = URLSession.shared, voterAuthService: VoterAuthService? = nil) {
         self.candidate = candidate
         self.provider = provider
+        if voterAuthService != nil {
+            self.voterAuthService = voterAuthService!
+        } else {
+            self.voterAuthService = VoterAuthService(provider: insecure_provider())
+        }
     }
     
     /*
@@ -32,7 +43,8 @@ class SingleCandidateService: ObservableObject {
      */
     func fetchCandidate(candidateID: Int) async throws {
         let task = Task<Candidate, Error> {
-            let candidateData = try await provider.getHttp(from: getCandidateURL(candidateID: candidateID))
+            let authTokens = try await self.voterAuthService.getTokensForAuthenticatedRequest()
+            let candidateData = try await provider.authenticatedGetHttp(from: getCandidateURL(candidateID: candidateID), accessToken: authTokens.access)
             decoder.dateDecodingStrategy = .iso8601
             let candidateSerializer = try decoder.decode(CandidateAuthenticatedDetailedSerializer.self, from: candidateData)
             return candidateSerializer.candidate

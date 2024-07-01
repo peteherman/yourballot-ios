@@ -13,26 +13,28 @@ struct VoterCandidatesView: View {
     
     @ViewBuilder
     var body: some View {
-        if candidateService.candidates.count > 0 {
-            let candidateLocalityMap = candidateService.groupCandidatesByLocalityType()
-            ScrollView {
-                Text("My Representatives")
-                    .font(.title2)
-                    .foregroundStyle(Theme.deep_blue.mainColor)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding([.leading], 20)
-                    .padding([.bottom])
-                ForEach(Array(candidateLocalityMap.keys), id: \.self) { localityType in
-                    VStack(spacing: 5) {
-                        Text("\(localityType.pretty)")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding([.leading, ], 20)
-                        CandidateListComponent(candidates: candidateLocalityMap[localityType]!)
+        NavigationView {
+            if candidateService.candidates.count > 0 {
+                let candidateLocalityMap = candidateService.groupCandidatesByLocalityType()
+                ScrollView {
+                    Text("My Representatives")
+                        .font(.title2)
+                        .foregroundStyle(Theme.deep_blue.mainColor)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding([.leading], 20)
+                        .padding([.bottom])
+                    ForEach(Array(candidateLocalityMap.keys), id: \.self) { localityType in
+                        VStack(spacing: 5) {
+                            Text("\(localityType.pretty)")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding([.leading, ], 20)
+                            CandidateListComponent(candidates: candidateLocalityMap[localityType]!)
+                        }
                     }
                 }
+            } else {
+                Text("Loading Representatives")
             }
-        } else {
-            Text("Loading Representatives")
         }
     }
 }

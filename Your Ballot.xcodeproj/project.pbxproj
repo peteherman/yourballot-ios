@@ -732,13 +732,13 @@
 		C15327202BA9092C00A8A591 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C1BBF0152C319AFF00135DD8 /* Candidate */,
 				C18C57962BD73E0D00828BE8 /* Profile */,
 				C18C57942BD73DF900828BE8 /* Questions */,
 				C18C57902BD73D4F00828BE8 /* Home */,
 				C140F0732BCC087A0036DE89 /* GuestTrial */,
 				C140F06F2BCC085A0036DE89 /* Auth */,
 				C15327212BA9093700A8A591 /* IssueQuestionView.swift */,
-				C16511512BBC189A0056E640 /* CandidateView.swift */,
 				C12FB31B2BC94C2A00F66512 /* VoterCandidatesView.swift */,
 				C140F0692BCC06DC0036DE89 /* WelcomeView.swift */,
 				C18C578C2BD73D2500828BE8 /* MainAuthenticatedView.swift */,
@@ -920,6 +920,14 @@
 				C10494C02BA9A9D4000C3F36 /* Questions */,
 			);
 			path = Unittests;
+			sourceTree = "<group>";
+		};
+		C1BBF0152C319AFF00135DD8 /* Candidate */ = {
+			isa = PBXGroup;
+			children = (
+				C16511512BBC189A0056E640 /* CandidateView.swift */,
+			);
+			path = Candidate;
 			sourceTree = "<group>";
 		};
 		C1C4D7F52BCE9669009D3DAB /* Guest */ = {
