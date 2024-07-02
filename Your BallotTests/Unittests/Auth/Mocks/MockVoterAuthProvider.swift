@@ -31,4 +31,7 @@ class MockVoterAuthProviderSuccess: HTTPProvider {
     func authenticatedGetHttp(from url: URL, accessToken: String) async throws -> Data {
         throw APIError.unexpectedError(error: "Not Implemented")
     }
+    func authenticatedPostHttp(data message: any Encodable, to url: URL, accessToken: String) async throws -> Data {
+        throw APIError.unexpectedError(error: "Not Implemented")
+    }
 }

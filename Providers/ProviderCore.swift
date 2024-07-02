@@ -18,6 +18,7 @@ protocol HTTPProvider {
     func getHttp(from url: URL) async throws -> Data
     func authenticatedGetHttp(from url: URL, accessToken: String) async throws -> Data
     func postHttp(data message: Encodable, to url: URL) async throws -> Data
+    func authenticatedPostHttp(data message: Encodable, to url: URL, accessToken: String) async throws -> Data
     func postHttpResponse(data message: Encodable, to url: URL) async throws -> (Data, HTTPURLResponse)
 }
 
@@ -46,6 +47,29 @@ extension URLSession: HTTPProvider {
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
+        let encoder = JSONEncoder()
+        let data = try encoder.encode(message)
+
+        let (responseData, response) = try await self.upload(for: request, from: data)
+        let httpResponse = response as! HTTPURLResponse
+        if httpResponse.statusCode >= 200 && httpResponse.statusCode < 300 {
+            return responseData
+        } else {
+            let logger = Logger()
+            logger.debug("Received non-200 response from API on POST request. Status: \(httpResponse.statusCode)")
+            if let str = String(data: responseData, encoding: .utf8) {
+                logger.debug("Response Data: \(str)")
+            }
+            let error = NSError(domain: "UploadError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])
+            throw error
+        }
+    }
+    
+    func authenticatedPostHttp(data message: Encodable, to url: URL, accessToken: String) async throws -> Data {
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         let encoder = JSONEncoder()
         let data = try encoder.encode(message)
 
