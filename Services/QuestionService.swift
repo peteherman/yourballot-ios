@@ -66,10 +66,9 @@ class QuestionService: ObservableObject {
      */
     func answerQuestion(question: IssueQuestion) async throws {
         let task = Task {
-            let encoder = JSONEncoder()
-            let encodedQuestion = try encoder.encode(question)
+            let questionAnswerBody: [String: Double] = ["issue_question": Double(question.id), "rating": question.rating ?? 5.0]
             let authTokens = try await self.voterAuthService.getTokensForAuthenticatedRequest()
-            let _ = try await provider.authenticatedPostHttp(data: encodedQuestion, to: answerQuestionURL, accessToken: authTokens.access)
+            let _ = try await provider.authenticatedPostHttp(data: questionAnswerBody, to: answerQuestionURL, accessToken: authTokens.access)
         }
         _ = try await task.value
         self.currentQuestion = self.popFirstQuestion()

@@ -71,9 +71,16 @@ extension URLSession: HTTPProvider {
         request.httpMethod = "POST"
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
         let data = try encoder.encode(message)
+        request.httpBody = data
+        
+        // Debug log to print the request body as a string
+        if let jsonString = String(data: data, encoding: .utf8) {
+            print("Request JSON Body: \(jsonString)")
+        }
 
-        let (responseData, response) = try await self.upload(for: request, from: data)
+        let (responseData, response) = try await self.data(for: request)
         let httpResponse = response as! HTTPURLResponse
         if httpResponse.statusCode >= 200 && httpResponse.statusCode < 300 {
             return responseData
