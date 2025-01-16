@@ -15,3 +15,12 @@ with these same views.
 ## Tech stack
 This repository hold the swift frontend component of the `yourballot` application. The companion backend
 application code can be found [in this repository](https://github.com/peteherman/yourballot).
+
+## Design
+![image](https://github.com/user-attachments/assets/9f0cfb1f-b8f6-47af-8251-95e43be5f7e4)
+![image](https://github.com/user-attachments/assets/62843fd8-38b9-48b2-a4a4-9f03291c4374)
+![image](https://github.com/user-attachments/assets/5dbf1943-6faf-4b17-90f2-455b7a70d76f)
+![image](https://github.com/user-attachments/assets/96ff5ef0-1ddb-40f6-9274-3d1ce1cee018)
+![image](https://github.com/user-attachments/assets/bd0cd7aa-988a-4d12-bac2-e9f6516319a5)
+
+
