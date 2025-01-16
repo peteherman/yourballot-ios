@@ -17,10 +17,18 @@ This repository hold the swift frontend component of the `yourballot` applicatio
 application code can be found [in this repository](https://github.com/peteherman/yourballot).
 
 ## Design
-![image](https://github.com/user-attachments/assets/9f0cfb1f-b8f6-47af-8251-95e43be5f7e4)
-![image](https://github.com/user-attachments/assets/62843fd8-38b9-48b2-a4a4-9f03291c4374)
-![image](https://github.com/user-attachments/assets/5dbf1943-6faf-4b17-90f2-455b7a70d76f)
-![image](https://github.com/user-attachments/assets/96ff5ef0-1ddb-40f6-9274-3d1ce1cee018)
-![image](https://github.com/user-attachments/assets/bd0cd7aa-988a-4d12-bac2-e9f6516319a5)
+![Screenshot 2025-01-15 at 11 18 51 PM](https://github.com/user-attachments/assets/cf1a1ed2-b46e-4a85-979f-da145e77a4f3)
+
+
+![Screenshot 2025-01-15 at 11 19 08 PM](https://github.com/user-attachments/assets/93c2b697-7736-47b1-b15b-851d837ab944)
+
+
+![Screenshot 2025-01-15 at 11 19 19 PM](https://github.com/user-attachments/assets/615ad5d4-d3fd-4bde-848c-0c1fc195db43)
+
+
+![Screenshot 2025-01-15 at 11 19 59 PM](https://github.com/user-attachments/assets/303a3c5a-dc75-428c-a0a4-b990eb621d2a)
+
+
+![Screenshot 2025-01-15 at 11 20 33 PM](https://github.com/user-attachments/assets/9fa9542a-b9c1-41b4-a6a3-0ca503c0ebac)
 
 
